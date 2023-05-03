@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1> Koofie Main 화면입니다.</h1>
-	<h1> Koofie Main 화면입니까?</h1>
+	<h1> Koofie Main 화면입니까??</h1>
 </body>
 </html>
