@@ -9,7 +9,7 @@ public class MainController {
     
     @RequestMapping(value="/")
     public String main(Model model) {
-        //깃테스트해봅시다!!! 넹!
+        //깃테스트해봅시다!!! 넹! 네엥
         return "index";
     }
         
