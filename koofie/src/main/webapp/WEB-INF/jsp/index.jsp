@@ -7,6 +7,6 @@
 <title>Koffie Main</title>
 </head>
 <body>
-	<h1> Koofie Main 화면입니다!!</h1>
+	<h1> Koofie Main 화면입니다!! 냥냥</h1>
 </body>
 </html>
