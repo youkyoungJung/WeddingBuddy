@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Koffie Main</title>
+<title>Koofie Main</title>
 </head>
 <body>
 	<h1> Koofie Main 화면입니다.</h1>
