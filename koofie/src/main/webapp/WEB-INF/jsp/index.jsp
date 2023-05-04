@@ -7,8 +7,11 @@
 <title>Koofie Main</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<h1> Koofie Main 화면입니다.</h1>
 	<h1> Koofie Main 화면입니까????</h1>
 	<h1> Koofie Main 화면입니까???@??></h1>
+	<h1> Koofie Main 화면입니다!!</h1>
+
 </body>
 </html>
