@@ -7,6 +7,6 @@
 <title>Koffie Main</title>
 </head>
 <body>
-	<h1> Koofie Main »≠∏È¿‘¥œ¥Ÿ!! ≥…≥… ∏“∏“</h1>
+	<h1> Koofie Main »≠∏È¿‘¥œ¥Ÿ!! ≥…≥… ∏“∏“~</h1>
 </body>
 </html>
