@@ -1,2 +1,2 @@
 # Koofie
-Kookmin Financial Education
+Kookmin WeddingBuddy Project
