@@ -11,7 +11,7 @@ public class WeddingBuddyApplication {
 		SpringApplication.run(WeddingBuddyApplication.class, args);
 	}
 	
-	/* 되냐구
+	/* 
 	 * @Bean public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 	 * return args -> {
 	 * 
