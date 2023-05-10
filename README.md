@@ -1,2 +1,2 @@
-# Koofie
+# Wedding Buddy
 Kookmin WeddingBuddy Project
