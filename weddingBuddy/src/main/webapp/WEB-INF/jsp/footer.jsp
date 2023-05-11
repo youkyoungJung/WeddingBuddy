@@ -14,7 +14,7 @@
 <body>
 	<hr class="mb-4">
 	<footer class="my-3 pt-3 text-muted text-center text-small">
-		<p class="mb-1">&copy; 2023 Kookmin WeddingBuddy Project 니나니나니고</p>
+		<p class="mb-1">&copy; 2023 Kookmin WeddingBuddy Project 니나니나</p>
 		<ul class="list-inline">
 			<li class="list-inline-item"><a href="#">Privacy</a></li>
 			<li class="list-inline-item"><a href="#">Terms</a></li>
