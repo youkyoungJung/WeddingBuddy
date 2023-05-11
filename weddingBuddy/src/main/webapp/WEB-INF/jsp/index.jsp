@@ -9,7 +9,7 @@
 </head>
 	<jsp:include page="navbar.jsp" />
 <body>
-	
+	eunning testing
 </body>
 	<jsp:include page="footer.jsp" />
 </html>
