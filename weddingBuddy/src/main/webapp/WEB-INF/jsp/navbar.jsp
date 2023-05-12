@@ -42,6 +42,7 @@ body {
 	font-family: Cafe24Simplehae;
 	background-color: #f8f9fa;
 }
+#
 </style>
 
 </head>
@@ -81,8 +82,8 @@ body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/weddingBuddy"> <img
-						src="<c:url value='/images/logo.jpg'></c:url>" width="50"
+					<a class="navbar-brand" href="/weddingBuddy" style="padding-top: 0"> <img
+						src="<c:url value='/images/logo.jpg'></c:url>" width="50" 
 						height="50" class="d-inline-block brand-image" alt=""
 						loading="lazy"></a> <a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
 				</div>

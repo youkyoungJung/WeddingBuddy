@@ -25,8 +25,8 @@
 						<label for="id" id="menu">아이디</label>
 					</div>
 					<div class="col-md-12 mb-3">
-						<input type="text" class="form-control" name="member_id" value=""
-							id="input_id" placeholder="아이디">
+						<input type="text" class="form-control" name="account_id" value=""
+							id="account_id" placeholder="아이디">
 					</div>
 				</div>
 				<br>
@@ -37,7 +37,7 @@
 					</div>
 					<div class="col-md-12 mb-3">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							id="pw" value="" name="pw" required>
+							id="password" value="" name="password" required>
 					</div>
 				</div>
 				<c:if test="${loginFailed}">
