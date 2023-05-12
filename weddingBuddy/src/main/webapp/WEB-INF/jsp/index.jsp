@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 </head>
 	<jsp:include page="navbar.jsp" />
 <body>
-	eunning testing
+
 </body>
 	<jsp:include page="footer.jsp" />
 </html>
