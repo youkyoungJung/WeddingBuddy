@@ -37,12 +37,12 @@ public class UserController {
     	logger.info("리턴VO결과(서비스에서 예외처리를 진행했으므로 null이 출력되면 코드에 문제있다는 의미) "+returnVO);
 		
 		if(returnVO != null) {
-			//5.세션값생성
+			//세션값생성
 			/*session.setAttribute("member", returnVO.getMember_id());*/
 			HttpSession session = request.getSession();
             session.setAttribute(UserSession.MEMBER_SESSION_KEY, String.valueOf(returnVO.getAccount_id()));
             session.setAttribute("isLogin", UserSession.isLoginUser(returnVO.getAccount_id(), session));
-			return "redirect:/";
+			return "index";
 			
 		} else {
 			// 해당 정보 없는 경우 : => login페이지로 이동
@@ -51,6 +51,7 @@ public class UserController {
 		}
 
     }
+    //로그아웃
     @RequestMapping(value="/logout", method=RequestMethod.GET)
     public String logOut(HttpServletRequest request, HttpServletResponse response) {
     	//세션에 저장된 사용자 이이디를 삭제하고 세션을 무효화 함 
@@ -59,7 +60,7 @@ public class UserController {
 		session.invalidate();
 		logger.info("로그인 세션 끊음");
 		
-    	return "redirect:/";
+    	return "index";
     }
         
 }

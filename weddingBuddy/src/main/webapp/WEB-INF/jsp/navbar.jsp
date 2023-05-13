@@ -5,45 +5,12 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-
+<link rel="stylesheet" href="/css/style.css">
 <!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-
-<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
- -->
-
-<style>
-@font-face {
-	font-family: 'Cafe24Simplehae';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-body {
-	font-family: Cafe24Simplehae;
-	background-color: #f8f9fa;
-}
-#
-</style>
 
 </head>
 <body>
@@ -82,18 +49,18 @@ body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/weddingBuddy" style="padding-top: 0"> <img
-						src="<c:url value='/images/logo.jpg'></c:url>" width="50" 
-						height="50" class="d-inline-block brand-image" alt=""
-						loading="lazy"></a> <a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
+					<a class="navbar-brand" href="/weddingBuddy" style="padding-top: 0">
+						<img src="<c:url value='/images/logo.jpg'></c:url>" width="50"
+						height="50" class="d-inline-block brand-image" alt="">
+					</a> <a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/index">Home</a></li>
-						<li><a href="#">플래너찾기</a></li>
+						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
+						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
 						<li><a href="#">드레스</a></li>
 						<li><a href="#">헤어</a></li>
 						<li><a href="#">메이크업</a></li>
@@ -106,10 +73,6 @@ body {
 		</nav>
 	</header>
 
-	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

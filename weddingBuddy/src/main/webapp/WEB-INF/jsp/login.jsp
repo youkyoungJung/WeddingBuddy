@@ -6,9 +6,12 @@
 <head>
 <meta charset="EUC-KR">
 <title>login Page</title>
-<jsp:include page="navbar.jsp" />
+
 <!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<jsp:include page="navbar.jsp" />
 </head>
 <body>
 	<!-- login form  -->
