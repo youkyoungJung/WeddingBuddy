@@ -7,31 +7,34 @@
 	<!-- 회원가입, data insert -->
 	<insert id="insert">
 		insert into user_account
-		values(#{name}, user_seq.nextval, #{password}, #{phone}, #{email}, #{account_id})
+		values(#{name},
+		user_seq.nextval, #{password}, #{phone}, #{email}, #{account_id})
 	</insert>
 
 	<!--로그인 -->
-	<select id="readUserWithIDPW" parameterType="String" resultType="com.multicampus.kb03.weddingBuddy.dto.User">
+	<select id="readUserWithIDPW" parameterType="String"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.User">
 		select *
 		from user_account
-		where account_id=#{account_id} and password=#{password}
+		where account_id=#{account_id} and
+		password=#{password}
 	</select>
-	
+
 	<!--회원정보 수정 -->
-  		<update id="update">
-			update user_account
-			set
-			password = #{password},
-			name = #{name},
-			email = #{email},
-			phone = #{phone}
-			where user_id = #{user_id}
-		</update>	
-		
-		<!--회원정보 삭제 -->
-  		<update id="delete">
-			delete from user_account
-			where user_id = #{user_id}
-		</update>	
+	<update id="update">
+		update user_account
+		set
+		password = #{password},
+		name = #{name},
+		email = #{email},
+		phone = #{phone}
+		where user_id = #{user_id}
+	</update>
+
+	<!--회원정보 삭제 -->
+	<update id="delete">
+		delete from user_account
+		where user_id = #{user_id}
+	</update>
 
 </mapper>

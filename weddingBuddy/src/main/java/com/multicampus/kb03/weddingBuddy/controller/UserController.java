@@ -42,7 +42,7 @@ public class UserController {
 			HttpSession session = request.getSession();
             session.setAttribute(UserSession.MEMBER_SESSION_KEY, String.valueOf(returnVO.getAccount_id()));
             session.setAttribute("isLogin", UserSession.isLoginUser(returnVO.getAccount_id(), session));
-			return "index";
+			return "redirect:/";
 			
 		} else {
 			// 해당 정보 없는 경우 : => login페이지로 이동
@@ -60,7 +60,7 @@ public class UserController {
 		session.invalidate();
 		logger.info("로그인 세션 끊음");
 		
-    	return "index";
+    	return "redirect:/login";
     }
         
 }
