@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.PlannerMapper">
+
+	<!-- 플래너 회원가입, data insert -->
+	<insert id="insert">
+		insert into planner_account
+		values(
+			planner_seq.nextval, #{name}, #{password}, 
+			#{phone}, #{email}, #{agency_id}, #{intro}, #{account_id}
+			)
+	</insert>
+
+	<!--플래너정보 수정, 플래너 아이디로 -->
+	<update id="update">
+		update planner_account
+		set
+		name = #{name},
+		password = #{password},
+		phone = #{phone},
+		email = #{email},
+		agency_id = #{agency_id},
+		intro = #{intro},
+		where planner_id = #{planner_id}
+	</update>
+
+	<!--회원정보 삭제 -->
+	<update id="delete">
+		delete from planner_account
+		where planner_id = #{planner_id}
+	</update>
+	
+	<!-- count -->
+	<select id="count">
+		select count(*) 
+		from planner_account
+	</select>
+	
+	<!-- selectOne -->
+	<select id="selectOne" parameterType="int" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+		select *
+		from planner_account
+		where id = #{id}
+	</select>
+	
+	<!-- selectAll 전체 출력 -->
+	<select id="selectAll" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+		select * from planner_account
+	</select>
+
+</mapper>

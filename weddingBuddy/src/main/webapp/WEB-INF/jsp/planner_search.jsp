@@ -151,7 +151,7 @@ img.profile-photo-lg {
 							</div>
 							<div class="col-md-7 col-sm-7">
 								<h5>
-									이름: <a href="#" class="profile-link"> 김준환 </a>
+									이름: <a href="<c:url value='/search/planner/detail'/>" class="profile-link"> 김준환 </a>
 								</h5>
 								<p>소속: 오월의 웨딩</p>
 								<p class="text-muted">소개: 영원한 추억을 담아드리겠습니다.</p>

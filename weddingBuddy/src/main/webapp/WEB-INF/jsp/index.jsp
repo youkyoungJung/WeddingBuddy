@@ -107,6 +107,10 @@ img.profile-photo-lg{
     	</div>
 	</div>
 </div>
+
+<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
+	
+	
 </body>
 
 
