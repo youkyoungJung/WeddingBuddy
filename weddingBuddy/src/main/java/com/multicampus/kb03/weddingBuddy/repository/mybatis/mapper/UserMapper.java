@@ -25,7 +25,6 @@ public interface UserMapper {
 	 * public List<User> selectAll();
 	 */
 	
-	//public User readUserWithIDPW(Map<String, Object> map);
 	public User readUserWithIDPW(@Param("account_id")String account_id, @Param("password")String password);
 
 }
