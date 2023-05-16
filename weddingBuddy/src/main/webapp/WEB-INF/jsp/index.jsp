@@ -17,6 +17,14 @@ body{
 /*==================================================
   Nearby People CSS
   ==================================================*/
+  
+  
+  
+  
+  
+ .header-avatar{
+ 	pointer-events: none;
+ } 
 
 .people-nearby .google-maps{
   background: #f8f8f8;
@@ -148,7 +156,7 @@ img.profile-photo-lg{
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" onclick="return false;" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" data-custom-css="https://github.com/youkyoungJung/WeddingBuddy/blob/a4a3f51f648d42515a611e0ebbb41929cf25722a/weddingBuddy/src/main/resources/static/css/chat.css" style="width:100%;height:600px;"></div>
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop;" style="width:100%;height:600px;" link rel = "stylesheet" data-custom-css="http://w3schools.com"></div>
 </div>
 <script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
