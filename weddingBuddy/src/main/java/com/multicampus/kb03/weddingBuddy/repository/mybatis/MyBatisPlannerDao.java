@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
 import com.multicampus.kb03.weddingBuddy.repository.UserDao;
@@ -47,8 +48,12 @@ public class MyBatisPlannerDao implements PlannerDao {
 
 	@Override
 	public List<Planner> selectAll() throws Exception {
-		// TODO Auto-generated method stub
 		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Top3Vo> selectTop3() throws Exception {
+		return mapper.selectTop3();
 	}
 
 

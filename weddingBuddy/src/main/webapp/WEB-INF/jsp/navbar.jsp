@@ -59,7 +59,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="<c:url value='/'></c:url>">Home</a></li>
+						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
 						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
 						<li><a href="#">드레스</a></li>
 						<li><a href="#">헤어</a></li>
