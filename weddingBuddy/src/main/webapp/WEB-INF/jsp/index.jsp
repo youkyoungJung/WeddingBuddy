@@ -6,13 +6,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>Searching Planner</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
-
 
 <style>
-
-
-
 
 
 body{
@@ -29,6 +24,13 @@ body{
   border: 1px solid #f1f2f2;
   padding: 20px;
   margin-bottom: 20px;
+}
+
+
+a.header-avatar {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
 }
 
 .people-nearby .google-maps .map{
@@ -60,7 +62,20 @@ img.profile-photo-lg{
 }
 
 
+
+ #tlkio {
+        display: none;
+    }
+
+
 </style>
+
+
+
+
+
+
+
 <jsp:include page="navbar.jsp" />
 
 </head>
@@ -132,10 +147,9 @@ img.profile-photo-lg{
 </head>
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-    <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image">
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="display: none;"></div>
-  </div>
-
+    <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" onclick="return false;" >
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" data-custom-css="https://github.com/youkyoungJung/WeddingBuddy/blob/a4a3f51f648d42515a611e0ebbb41929cf25722a/weddingBuddy/src/main/resources/static/css/chat.css" style="width:100%;height:600px;"></div>
+</div>
 <script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -145,8 +159,10 @@ img.profile-photo-lg{
     tlkio.setAttribute('data-disable-twitter', 'true');
 </script>
 
+
 </body>
 </html>
+
 
 </c:if>
 <script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
@@ -156,7 +172,9 @@ img.profile-photo-lg{
         $('#tlkio').toggle();
       });
     });
+       
 </script>
+
 
 </body>
 
