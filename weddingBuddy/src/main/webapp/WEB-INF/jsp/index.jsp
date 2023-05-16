@@ -6,8 +6,15 @@
 <head>
 <meta charset="EUC-KR">
 <title>Searching Planner</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
+
 
 <style>
+
+
+
+
+
 body{
     margin-top:20px;
     background:#FAFAFA;    
@@ -43,9 +50,16 @@ img.profile-photo-lg{
   border-radius: 50%;
 }
 
+
 #header{
 	margin-left:30px;
 }
+.chat-icon img {
+  width: 60px;
+  height: 60px;
+}
+
+
 </style>
 <jsp:include page="navbar.jsp" />
 
@@ -81,7 +95,7 @@ img.profile-photo-lg{
                   <div class="col-md-7 col-sm-7">
                     <h5><a href="#" class="profile-link">Emma Johnson</a></h5>
                     <p>Model at Fashion</p>
-                    <p class="text-muted">800m away</p>
+                   <p class="text-muted">800m away</p>
                   </div>
                   <div class="col-md-3 col-sm-3">
                     <button class="btn btn-primary pull-right">Add Friend</button>
@@ -108,11 +122,43 @@ img.profile-photo-lg{
 	</div>
 </div>
 
-<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
-	
-	
-</body>
 
+<c:if test="${isLogin}">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chat Room</title>
+</head>
+<body>
+<div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image">
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="display: none;"></div>
+  </div>
+
+<script async src="https://tlk.io/embed.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var tlkio = document.getElementById('tlkio');
+    var username = "<c:out value="${account_id}" />";
+    tlkio.setAttribute('data-nickname', username);
+    tlkio.setAttribute('data-disable-twitter', 'true');
+</script>
+
+</body>
+</html>
+
+</c:if>
+<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.chat-icon').click(function() {
+        $('#tlkio').toggle();
+      });
+    });
+</script>
+
+</body>
 
 <jsp:include page="footer.jsp" />
 </html>
