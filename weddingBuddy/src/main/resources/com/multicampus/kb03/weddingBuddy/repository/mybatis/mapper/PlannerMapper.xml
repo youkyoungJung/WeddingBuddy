@@ -4,13 +4,31 @@
 <mapper
 	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.PlannerMapper">
 
+<!--     <resultMap id="top3ResultMap" type="hashmap">
+        <result column="agency_name" property="agency_name" />
+        <result column="intro" property="intro" />
+        <result column="cnt" property="cnt" />
+        <result column="name" property="name" />
+        필요한 필드들 추가
+    </resultMap>
+     -->
+    <!-- select Top3 출력, join -->
+	<select id="selectTop3" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+		select P.name as "name", R.cnt as "cnt", P.intro as "intro", A.name as "agency_name"
+		from planner_account P, planner_agency A,
+		(select planner_id, count(*) as cnt from planner_review group by planner_id) R
+		where A.agency_id = P.agency_id and P.planner_id = R.planner_id
+		order by cnt desc
+	</select>
+    
 	<!-- 플래너 회원가입, data insert -->
 	<insert id="insert">
 		insert into planner_account
 		values(
-			planner_seq.nextval, #{name}, #{password}, 
-			#{phone}, #{email}, #{agency_id}, #{intro}, #{account_id}
-			)
+		planner_seq.nextval, #{name}, #{password},
+		#{phone}, #{email},
+		#{agency_id}, #{intro}, #{account_id}
+		)
 	</insert>
 
 	<!--플래너정보 수정, 플래너 아이디로 -->
@@ -18,10 +36,12 @@
 		update planner_account
 		set
 		name = #{name},
-		password = #{password},
+		password =
+		#{password},
 		phone = #{phone},
 		email = #{email},
-		agency_id = #{agency_id},
+		agency_id =
+		#{agency_id},
 		intro = #{intro},
 		where planner_id = #{planner_id}
 	</update>
@@ -29,25 +49,34 @@
 	<!--회원정보 삭제 -->
 	<update id="delete">
 		delete from planner_account
-		where planner_id = #{planner_id}
+		where planner_id =
+		#{planner_id}
 	</update>
-	
+
 	<!-- count -->
 	<select id="count">
-		select count(*) 
+		select count(*)
 		from planner_account
 	</select>
-	
+
 	<!-- selectOne -->
-	<select id="selectOne" parameterType="int" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+	<select id="selectOne" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
 		select *
 		from planner_account
-		where id = #{id}
+		where planner_id =
+		#{planner_id}
 	</select>
-	
+
 	<!-- selectAll 전체 출력 -->
-	<select id="selectAll" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
-		select * from planner_account
+	<select id="selectAll"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+		select *
+		from planner_account
 	</select>
+
+
+
+
 
 </mapper>

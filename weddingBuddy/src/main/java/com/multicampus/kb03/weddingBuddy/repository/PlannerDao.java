@@ -1,8 +1,10 @@
 package com.multicampus.kb03.weddingBuddy.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 
 public interface PlannerDao {
 	// insert 회원가입(추가/삽입)
@@ -17,6 +19,8 @@ public interface PlannerDao {
 	public Planner selectOne(int planner_id) throws Exception;
 	// selectAll 회원전체보기 
 	public List<Planner> selectAll() throws Exception;
+	//top3
+	public List<Top3Vo> selectTop3() throws Exception;
 
 
 }

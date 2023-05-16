@@ -1,6 +1,7 @@
 package com.multicampus.kb03.weddingBuddy.dto;
 
 public class Planner {
+	
 	private int planner_id;
 	private String name;
 	private String password;
