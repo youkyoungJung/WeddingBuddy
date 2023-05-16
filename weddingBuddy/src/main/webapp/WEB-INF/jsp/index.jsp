@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -10,8 +10,6 @@
 
 
 <style>
-
-
 
 
 
@@ -52,13 +50,19 @@ img.profile-photo-lg{
 
 
 #header{
-	margin-left:30px;
+   margin-left:30px;
 }
 .chat-icon img {
   width: 60px;
   height: 60px;
 }
 
+#tlkio .message-input {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100%;
+}
 
 </style>
 <jsp:include page="navbar.jsp" />
@@ -68,7 +72,7 @@ img.profile-photo-lg{
 <body>
 
 <div class="container">
-	<h3 id="header"> Best Planner Top 3 </h3>
+   <h3 id="header"> Best Planner Top 3 </h3>
     <div class="row">
         <div class="col-md-8">
             <div class="people-nearby">
@@ -118,8 +122,8 @@ img.profile-photo-lg{
                 </div>
               </div>
             </div>
-    	</div>
-	</div>
+       </div>
+   </div>
 </div>
 
 
@@ -133,17 +137,17 @@ img.profile-photo-lg{
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image">
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="display: none;"></div>
-  </div>
+	<div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:100%;height:600px;"></div>
+	<script async src="https://tlk.io/embed.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	  var tlkio = document.getElementById('tlkio');
+	  var username = "<c:out value="${account_id}" />";
+	  tlkio.setAttribute('data-nickname', username);
+	</script>
+</div>
 
-<script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-    var tlkio = document.getElementById('tlkio');
-    var username = "<c:out value="${account_id}" />";
-    tlkio.setAttribute('data-nickname', username);
-    tlkio.setAttribute('data-disable-twitter', 'true');
-</script>
 
 </body>
 </html>
