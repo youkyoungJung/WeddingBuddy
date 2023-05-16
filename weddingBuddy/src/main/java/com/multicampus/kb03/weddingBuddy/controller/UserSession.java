@@ -25,10 +25,11 @@ public class UserSession implements Serializable {
     /* 현재 로그인한 사용자의 ID가 accountId인지 검사 */
 	public static boolean isLoginUser(String account_id, HttpSession session) {
         String loginMember = getLoginUserId(session);
-        if (loginMember == null) {
+        if (loginMember == null || !loginMember.equals(account_id)) {
             return false;
         }
-        return loginMember.equals(account_id);
+        return true;
+        
 	}
 
 }
