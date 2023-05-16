@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 
 @Mapper
@@ -23,5 +24,7 @@ public interface PlannerMapper {
 	public Planner selectOne(int planner_id);
 
 	public List<Planner> selectAll();
+	
+	public List<Top3Vo> selectTop3();
 
 }
