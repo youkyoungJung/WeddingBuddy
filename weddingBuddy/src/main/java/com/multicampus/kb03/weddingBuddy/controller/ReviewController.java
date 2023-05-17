@@ -26,9 +26,6 @@ import com.multicampus.kb03.weddingBuddy.service.UserService;
 public class ReviewController {
 	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ReviewController.class);
-
-	@Autowired
-	private PlannerService plannerService;
     
 	@GetMapping
 	public String ReviewGet(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
