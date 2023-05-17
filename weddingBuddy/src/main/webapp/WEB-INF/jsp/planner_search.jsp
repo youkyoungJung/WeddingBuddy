@@ -158,7 +158,7 @@ img.profile-photo-lg {
 									<p class="text-muted">소개: ${planner.intro }</p>
 								</div>
 								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >고객후기:
+									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기:
 										${planner.cnt }</button>
 								</div>
 							</div>
