@@ -14,19 +14,10 @@
 body{
     margin-top:20px;
     background:#FAFAFA;    
-=======
-body {
-	margin-top: 20px;
-	background: #FAFAFA;
->>>>>>> branch 'develop' of https://github.com/Kongonii/WeddingBuddy.git
 }
 /*==================================================
   Nearby People CSS
   ==================================================*/
-<<<<<<< HEAD
-  
-  
-  
   
   
  .header-avatar{
@@ -39,14 +30,7 @@ body {
   border: 1px solid #f1f2f2;
   padding: 20px;
   margin-bottom: 20px;
-=======
-.people-nearby .google-maps {
-	background: #f8f8f8;
-	border-radius: 4px;
-	border: 1px solid #f1f2f2;
-	padding: 20px;
-	margin-bottom: 20px;
->>>>>>> branch 'develop' of https://github.com/Kongonii/WeddingBuddy.git
+
 }
 
 .people-nearby .google-maps .map {
