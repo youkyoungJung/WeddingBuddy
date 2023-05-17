@@ -21,12 +21,12 @@
 				<div class="col-md-6">
 					<div class="header-top-menu">
 						<ul class="nav nav-pills navbar-right">
-							<li><a href="<c:url value='#'></c:url>">My Page</a></li>
 							<c:if test="${!isLogin}">
 								<li><a href="<c:url value='/login'/>"><i
 										class="pe-7s-lock"></i>Login/Register</a></li>
 							</c:if>
 							<c:if test="${isLogin}">
+								<li><a href="<c:url value='/mypage'></c:url>">My Page</a></li>
 								<li><a href="<c:url value='/logout'/>"><i
 										class="pe-7s-lock"></i>Logout</a></li>
 							</c:if>
@@ -59,7 +59,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="<c:url value='/'></c:url>">Home</a></li>
+						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
 						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
 						<li><a href="#">드레스</a></li>
 						<li><a href="#">헤어</a></li>
