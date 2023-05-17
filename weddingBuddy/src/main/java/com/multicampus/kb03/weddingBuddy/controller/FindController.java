@@ -34,7 +34,7 @@ public class FindController {
 	public String findPlannerGet(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
     	List<Planner> returnVo1 = plannerService.selectAll();
     	logger.info("Planner selectAll " + returnVo1);
-    	request.setAttribute("plannerTop3", returnVo1);
+    	request.setAttribute("PlannerAll", returnVo1);
         return "planner_search";
     }
     

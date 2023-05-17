@@ -73,13 +73,13 @@ img.profile-photo-lg {
 								</div>
 								<div class="col-md-7 col-sm-7">
 									<h5>
-										이름: <a href="#" class="profile-link">${planner.name }</a>
+										이름:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
 									</h5>
 									<p>소속:${planner.agency_name }</p>
 									<p class="text-muted">소개: ${planner.intro }</p>
 								</div>
 								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right">고객후기:
+									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >고객후기:
 										${planner.cnt }</button>
 								</div>
 							</div>

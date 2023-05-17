@@ -62,5 +62,9 @@ public class UserController {
 		
     	return "redirect:/login";
     }
+    @RequestMapping(value="/mypage")
+    public String myPageGet(Model model) {     
+        return "mypage";
+    }
         
 }
