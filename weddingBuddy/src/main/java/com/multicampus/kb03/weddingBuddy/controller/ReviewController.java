@@ -22,20 +22,20 @@ import com.multicampus.kb03.weddingBuddy.service.UserService;
 
 
 @Controller
-@RequestMapping("/search/planner")
-public class FindController {
+@RequestMapping("/review")
+public class ReviewController {
 	
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(FindController.class);
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
 	@Autowired
 	private PlannerService plannerService;
     
 	@GetMapping
-	public String findPlannerGet(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
-    	List<Planner> returnVo1 = plannerService.selectAll();
-    	logger.info("Planner selectAll " + returnVo1);
-    	request.setAttribute("PlannerAll", returnVo1);
-        return "planner_search";
+	public String ReviewGet(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
+//    	List<Planner> returnVo1 = plannerService.selectAll();
+//    	logger.info("Planner selectAll " + returnVo1);
+//    	request.setAttribute("plannerTop3", returnVo1);
+        return "review";
     }
     
         
