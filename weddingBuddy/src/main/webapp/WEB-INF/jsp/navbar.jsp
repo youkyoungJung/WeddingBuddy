@@ -21,12 +21,12 @@
 				<div class="col-md-6">
 					<div class="header-top-menu">
 						<ul class="nav nav-pills navbar-right">
-							<li><a href="<c:url value='#'></c:url>">My Page</a></li>
 							<c:if test="${!isLogin}">
 								<li><a href="<c:url value='/login'/>"><i
 										class="pe-7s-lock"></i>Login/Register</a></li>
 							</c:if>
 							<c:if test="${isLogin}">
+								<li><a href="<c:url value='/mypage'></c:url>">My Page</a></li>
 								<li><a href="<c:url value='/logout'/>"><i
 										class="pe-7s-lock"></i>Logout</a></li>
 							</c:if>

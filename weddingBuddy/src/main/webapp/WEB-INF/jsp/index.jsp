@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -20,12 +20,19 @@ body{
   Nearby People CSS
   ==================================================*/
 
+  
+ .header-avatar{
+ 	pointer-events: none;
+ } 
+
+
 .people-nearby .google-maps{
   background: #f8f8f8;
   border-radius: 4px;
   border: 1px solid #f1f2f2;
   padding: 20px;
   margin-bottom: 20px;
+
 }
 
 .people-nearby .google-maps .map{
@@ -76,6 +83,7 @@ img.profile-photo-lg{
 
 <body>
 
+
 <div class="container">
 	<h3 id="header"> Best Planner Top 3 </h3>
     <div class="row">
@@ -87,12 +95,12 @@ img.profile-photo-lg{
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
                   </div>
                   <div class="col-md-7 col-sm-7">
-                    <h5>ÀÌ¸§: <a href="#" class="profile-link"> ±èÁØÈ¯ </a></h5>
-                    <p>¼Ò¼Ó: ¿À¿ùÀÇ ¿şµù</p>
-                    <p class="text-muted">¼Ò°³: ¿µ¿øÇÑ Ãß¾ïÀ» ´ã¾Æµå¸®°Ú½À´Ï´Ù.</p>
+                    <h5>ì´ë¦„: <a href="#" class="profile-link"> ê¹€ì¤€í™˜ </a></h5>
+                    <p>ì†Œì†: ì˜¤ì›”ì˜ ì›¨ë”©</p>
+                    <p class="text-muted">ì†Œê°œ: ì˜ì›í•œ ì¶”ì–µì„ ë‹´ì•„ë“œë¦¬ê² ìŠµë‹ˆë‹¤.</p>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">°í°´ÈÄ±â: 999+</button>
+                    <button class="btn btn-primary pull-right">ê³ ê°í›„ê¸°: 999+</button>
                   </div>
                 </div>
               </div>
@@ -128,6 +136,37 @@ img.profile-photo-lg{
               </div>
             </div>
     	</div>
+
+	<div class="container">
+		<h3 id="header">Best Planner Top 3</h3>
+		<c:forEach items="${plannerTop3}" var="planner">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="people-nearby">
+						<div class="nearby-user">
+							<div class="row">
+								<div class="col-md-2 col-sm-2">
+									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+										alt="user" class="profile-photo-lg">
+								</div>
+								<div class="col-md-7 col-sm-7">
+									<h5>
+										ï¿½ëŒ€ï¿½:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
+									</h5>
+									<p>ï¿½ï¿½ï¿½ï¿½:${planner.agency_name }</p>
+									<p class="text-muted">ï¿½ï¿½åª›ï¿½: ${planner.intro }</p>
+								</div>
+								<div class="col-md-3 col-sm-3">
+									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >æ€¨ï¿½åª›ï¿½ï¿½ï¿½æ¹²ï¿½:
+										${planner.cnt }</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+
 	</div>
 </div>
 
@@ -142,7 +181,7 @@ img.profile-photo-lg{
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200%;height:600px;" data-custom-css="https://raw.githubusercontent.com/Kongonii/WeddingBuddy/develop/weddingBuddy/src/main/resources/static/css/chat.css"></div>
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;" data-custom-css="https://raw.githubusercontent.com/Kongonii/WeddingBuddy/develop/weddingBuddy/src/main/resources/static/css/chat.css"></div>
 </div>
 <script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
@@ -158,13 +197,13 @@ img.profile-photo-lg{
 <script type="text/javascript">
     Notification.requestPermission().then(function(permission) {
         if (permission !== 'granted') {
-            console.log('¾Ë¸² Çã¿ëÀÌ °ÅºÎµÇ¾ú½À´Ï´Ù.');
+            console.log('ì•Œë¦¼ í—ˆìš©ì´ ê±°ë¶€ë˜ì—ˆìŠµë‹ˆë‹¤.');
         }
     });
 
     function showNotification(title, options) {
         if (!('Notification' in window)) {
-            console.log('¾Ë¸²À» Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.');
+            console.log('ì•Œë¦¼ì„ ì§€ì›í•˜ì§€ ì•ŠëŠ” ë¸Œë¼ìš°ì €ì…ë‹ˆë‹¤.');
             return;
         }
 
@@ -180,7 +219,7 @@ img.profile-photo-lg{
             body: message,
             icon: "/images/warning.png"
         };
-        showNotification('»õ·Î¿î ¸Ş½ÃÁö', options);
+        showNotification('ìƒˆë¡œìš´ ë©”ì‹œì§€', options);
     });
 </script>
 
