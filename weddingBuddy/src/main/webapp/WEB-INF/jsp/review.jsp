@@ -28,8 +28,9 @@ body {
 	background-color: #ffffff;
 	width: 600px;
 	margin: 0 auto;
-/* 	padding: 20px;
- */}
+	/* 	padding: 20px;
+ */
+}
 
 .file-upload-btn {
 	width: 100%;
@@ -201,18 +202,22 @@ body {
 	<script class="jsbin"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-	<form>
-		
+	<form action="<c:url value="/review" />" method="POST"
+		enctype="multipart/form-data">
+		<input type="hidden" name="planner_id" value="${planner_id }">
 		<!-- Message input -->
 		<div class="form-outline mb-4">
 			<h2>리뷰 작성</h2>
-			<label class="form-label" for="form4Example3">Tell me what you think!</label>
-			<textarea class="form-control" id="form4Example3" rows="10"></textarea>
+			<label class="form-label" for="form4Example3">Tell me what
+				you think!</label>
+			<textarea class="form-control" id="form4Example3" rows="10"
+				name="content"></textarea>
 		</div>
 		<div class="file-upload">
 			<div class="image-upload-wrap">
-				<input class="file-upload-input" type='file'
-					onchange="readURL(this);" accept="<c:url value="/images/*" />" />
+				<input class="file-upload-input" type='file' multiple='multiple'
+					name="image_url" onchange="readURL(this);"
+					accept="<c:url value="/images/*" />" />
 				<div class="drag-text">
 					<h3>Drag and drop a file or select add Image</h3>
 				</div>
@@ -225,6 +230,9 @@ body {
 					</button>
 				</div>
 			</div>
+			<label for="formFileMultiple" class="form-label">Multiple
+				files input example</label> <input class="form-control" type="file"
+				id="formFileMultiple" multiple />
 			<!-- Submit button -->
 			<br>
 			<button type="submit" class="file-upload-btn">등록하기</button>

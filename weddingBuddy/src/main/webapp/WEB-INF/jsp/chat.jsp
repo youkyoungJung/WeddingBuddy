@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -6,28 +7,23 @@
 <meta charset="EUC-KR">
 <title>CHAT LIST</title>
 <style>
-
-
-body{
-    margin-top:20px;
-    background:#FAFAFA;    
+body {
+	margin-top: 20px;
+	background: #FAFAFA;
 }
 /*==================================================
   Nearby People CSS
   ==================================================*/
-  
-  
- .header-avatar{
- 	pointer-events: none;
- } 
+.header-avatar {
+	pointer-events: none;
+}
 
-.people-nearby .google-maps{
-  background: #f8f8f8;
-  border-radius: 4px;
-  border: 1px solid #f1f2f2;
-  padding: 20px;
-  margin-bottom: 20px;
-
+.people-nearby .google-maps {
+	background: #f8f8f8;
+	border-radius: 4px;
+	border: 1px solid #f1f2f2;
+	padding: 20px;
+	margin-bottom: 20px;
 }
 
 .people-nearby .google-maps .map {
@@ -65,8 +61,8 @@ img.profile-photo-lg {
 <body>
 	<div class="container">
 		<h3 id="header">Chat List</h3>
-<%-- 		<c:forEach items="${plannerTop3}" var="planner">
- --%>			<div class="row">
+		<c:forEach items="${chatPlanner}" var="planner">
+			<div class="row">
 				<div class="col-md-8">
 					<div class="people-nearby">
 						<div class="nearby-user">
@@ -76,22 +72,27 @@ img.profile-photo-lg {
 										alt="user" class="profile-photo-lg">
 								</div>
 								<div class="col-md-7 col-sm-7">
+									<input type="hidden" name="user_id"
+										value="${LoginUser.user_id }">
+									<input type="hidden" name="planner_id"
+										value="${planner.planner_id }">
 									<h5>
-										이름:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
+										<br> 이름 : <a
+											href="<c:url value="/search/planner/detail" />"
+											class="profile-link">${planner.name }</a>
 									</h5>
-									<p>소속:</p>
-									<p class="text-muted">소개:</p>
 								</div>
 								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >리뷰 작성
-										</button>
+									<button class="btn btn-primary pull-right"
+										onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' > 리뷰
+										작성</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-<%-- 		</c:forEach> --%>
+		</c:forEach>
 	</div>
 </body>
 

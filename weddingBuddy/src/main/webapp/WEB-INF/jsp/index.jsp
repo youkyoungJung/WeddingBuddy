@@ -63,7 +63,7 @@ img.profile-photo-lg {
 }
 </style>
 
-<jsp:include page="navbar2.jsp" />
+<jsp:include page="navbar.jsp" />
 </head>
 
 <body>
