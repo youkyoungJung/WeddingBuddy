@@ -87,9 +87,9 @@ public class UserController {
 		request.setAttribute("chatPlanner", p_returnVo);
 		//사용자 정보 담음
 		request.setAttribute("LoginUser", returnVo);
-		
-		//return "userChat";
-		return "chat";
+//		
+		return "userChat";
+		//return "chat";
 	}
 
 }
