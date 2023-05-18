@@ -34,14 +34,13 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(User vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// User returnVo = null;
-		logger.info("로그인처리 페이지 진입 loginPOST");
-		logger.info("vo 넘어오는가" + vo);
 		User returnVO = userService.loginUser(vo.getAccount_id(), vo.getPassword());
 
 		logger.info("리턴VO결과(서비스에서 예외처리를 진행했으므로 null이 출력되면 코드에 문제있다는 의미) " + returnVO);
 
 		if (returnVO != null) {
 			// 세션값생성
+			// �꽭�뀡媛믪깮�꽦
 			/* session.setAttribute("member", returnVO.getMember_id()); */
 			HttpSession session = request.getSession();
 			session.setAttribute(UserSession.MEMBER_SESSION_KEY, String.valueOf(returnVO.getAccount_id()));
@@ -49,28 +48,28 @@ public class UserController {
 			return "redirect:/";
 
 		} else {
-			// 해당 정보 없는 경우 : => login페이지로 이동
+			// �빐�떦 �젙蹂� �뾾�뒗 寃쎌슦 : => login�럹�씠吏�濡� �씠�룞
 			request.setAttribute("loginFailde", true);
 			return "redirect:/login";
 		}
 
 	}
 
-	// 로그아웃
+	// 濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logOut(HttpServletRequest request, HttpServletResponse response) {
-		// 세션에 저장된 사용자 이이디를 삭제하고 세션을 무효화 함
+		// �꽭�뀡�뿉 ���옣�맂 �궗�슜�옄 �씠�씠�뵒瑜� �궘�젣�븯怨� �꽭�뀡�쓣 臾댄슚�솕 �븿
 		HttpSession session = request.getSession();
 		session.removeAttribute(UserSession.MEMBER_SESSION_KEY);
 		session.invalidate();
-		logger.info("로그인 세션 끊음");
+		logger.info("濡쒓렇�씤 �꽭�뀡 �걡�쓬");
 
 		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPageGet(HttpServletRequest request) {
-		//로그인 여부 확인
+		//濡쒓렇�씤 �뿬遺� �솗�씤
 		if(!UserSession.hasLogined(request.getSession())) {
 			return "login";
 		}
@@ -81,11 +80,11 @@ public class UserController {
 	public String myChatGet(HttpServletRequest request) throws Exception {
 		String account_id = UserSession.getLoginUserId(request.getSession());
 		User returnVo = userService.selectOne(account_id);
-		logger.info("마이페이지 사용자 " + returnVo);
+		logger.info("현재유저 " + returnVo);
 		
 		List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
 		request.setAttribute("chatPlanner", p_returnVo);
-		//사용자 정보 담음
+		logger.info("현재유저 " + p_returnVo);
 		request.setAttribute("LoginUser", returnVo);
 //		
 		return "userChat";
