@@ -2,6 +2,7 @@ package com.multicampus.kb03.weddingBuddy.service;
 
 import java.util.List;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 
 public interface UserService {
@@ -23,5 +24,9 @@ public interface UserService {
 	//public User loginUser(User vo) throws Exception;
 
 	public User loginUser(String account_id, String password) throws Exception;
+
+	public User selectOne(String user_id) throws Exception;
+
+	public List<Planner> chattingWithSomeone(int user_id);
 
 }

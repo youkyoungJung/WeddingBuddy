@@ -36,5 +36,20 @@
 		delete from user_account
 		where user_id = #{user_id}
 	</update>
+	
+	
+	   <!--회원 찾기(아이디로 찾기)  -->
+   <select id="selectOne" resultType="com.multicampus.kb03.weddingBuddy.dto.User">
+      select *
+      from user_account
+      where account_id =
+      #{account_id}
+   </select>
+	
+	
+	
+	
+	
+	
 
 </mapper>

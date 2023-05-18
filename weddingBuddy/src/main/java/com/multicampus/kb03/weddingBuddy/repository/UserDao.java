@@ -23,7 +23,7 @@ public interface UserDao {
 
 	// 로그인
 	//public User readUserWithIDPW(User vo) throws Exception;
-
+	public User selectOne(String user_id) throws Exception;
 	public User readUserWithIDPW(String account_id, String password) throws Exception;
 
 }

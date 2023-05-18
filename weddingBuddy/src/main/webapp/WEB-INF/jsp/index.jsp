@@ -23,6 +23,7 @@ body{
   
  .header-avatar{
  	pointer-events: none;
+ 	
  } 
 
 
@@ -95,7 +96,7 @@ img.profile-photo-lg{
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
                   </div>
                   <div class="col-md-7 col-sm-7">
-                    <h5>이름: <a href="#" class="profile-link"> 김준환 </a></h5>
+                    <h5>이름: <a href="#" class="profile-link">김준환 </a></h5>
                     <p>소속: 오월의 웨딩</p>
                     <p class="text-muted">소개: 영원한 추억을 담아드리겠습니다.</p>
                   </div>
@@ -137,36 +138,7 @@ img.profile-photo-lg{
             </div>
     	</div>
 
-	<div class="container">
-		<h3 id="header">Best Planner Top 3</h3>
-		<c:forEach items="${plannerTop3}" var="planner">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="people-nearby">
-						<div class="nearby-user">
-							<div class="row">
-								<div class="col-md-2 col-sm-2">
-									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-										alt="user" class="profile-photo-lg">
-								</div>
-								<div class="col-md-7 col-sm-7">
-									<h5>
-										�대�:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
-									</h5>
-									<p>����:${planner.agency_name }</p>
-									<p class="text-muted">��媛�: ${planner.intro }</p>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >怨�媛���湲�:
-										${planner.cnt }</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-
+	
 	</div>
 </div>
 
@@ -177,6 +149,13 @@ img.profile-photo-lg{
 <head>
 <meta charset="UTF-8">
 <title>Chat Room</title>
+<style>
+.header-avatar{
+ 	pointer-events: none;
+ 	
+ } 
+
+</style>
 </head>
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">

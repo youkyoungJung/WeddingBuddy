@@ -22,7 +22,13 @@ public class MyBatisUserDao implements UserDao {
 		// TODO Auto-generated method stub
 		return mapper.insert(user);
 	}
-
+	@Override
+	   public User selectOne(String user_id) throws Exception {
+	      return mapper.selectOne(user_id);
+	   }
+	
+	
+	
 	/*
 	 * @Override public int update(User user) throws Exception { // TODO
 	 * Auto-generated method stub return mapper.update(user); }
