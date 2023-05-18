@@ -34,12 +34,13 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(User vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// User returnVo = null;
+		logger.info("濡쒓렇�씤泥섎━ �럹�씠吏� 吏꾩엯 loginPOST");
+		logger.info("vo �꽆�뼱�삤�뒗媛�" + vo);
 		User returnVO = userService.loginUser(vo.getAccount_id(), vo.getPassword());
 
-		logger.info("리턴VO결과(서비스에서 예외처리를 진행했으므로 null이 출력되면 코드에 문제있다는 의미) " + returnVO);
+		logger.info("由ы꽩VO寃곌낵(�꽌鍮꾩뒪�뿉�꽌 �삁�쇅泥섎━瑜� 吏꾪뻾�뻽�쑝誘�濡� null�씠 異쒕젰�릺硫� 肄붾뱶�뿉 臾몄젣�엳�떎�뒗 �쓽誘�) " + returnVO);
 
 		if (returnVO != null) {
-			// 세션값생성
 			// �꽭�뀡媛믪깮�꽦
 			/* session.setAttribute("member", returnVO.getMember_id()); */
 			HttpSession session = request.getSession();
