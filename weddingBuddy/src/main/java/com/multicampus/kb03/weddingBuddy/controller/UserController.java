@@ -1,5 +1,8 @@
 package com.multicampus.kb03.weddingBuddy.controller;
 
+import java.util.List;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
@@ -68,13 +72,23 @@ public class UserController {
 	public String myPageGet(HttpServletRequest request) {
 		//로그인 여부 확인
 		if(!UserSession.hasLogined(request.getSession())) {
-			//return "mypage";
+			return "login";
 		}
-		return "";
+		return "mypage";
 	}
 
 	@RequestMapping(value = "/mypage/chat")
-	public String myChatGet(Model model) {
+	public String myChatGet(HttpServletRequest request) throws Exception {
+		String account_id = UserSession.getLoginUserId(request.getSession());
+		User returnVo = userService.selectOne(account_id);
+		logger.info("마이페이지 사용자 " + returnVo);
+		
+		List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
+		request.setAttribute("chatPlanner", p_returnVo);
+		//사용자 정보 담음
+		request.setAttribute("LoginUser", returnVo);
+		
+		//return "userChat";
 		return "chat";
 	}
 

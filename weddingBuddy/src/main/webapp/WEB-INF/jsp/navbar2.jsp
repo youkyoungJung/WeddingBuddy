@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -10,6 +10,10 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <style>
+.fixed-top {
+	position: relative;
+}
+
 .navbar-new-top {
 	background: #fff;
 }
@@ -98,10 +102,10 @@
 		<div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
 			<ul class="navbar-nav w-100 justify-content-center px-3">
 				<a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
-				<li class="nav-item"><a class="nav-link">µå·¹½º</a></a></li>
-				<li class="nav-item"><a class="nav-link">Çì¾î</a></li>
-				<li class="nav-item"><a class="nav-link">¸ŞÀÌÅ©¾÷</a></li>
-				<li class="nav-item"><a class="nav-link">¿şµùÈ¦</a></li>
+				<li class="nav-item"><a class="nav-link">ë“œë ˆìŠ¤</a></a></li>
+				<li class="nav-item"><a class="nav-link">í—¤ì–´</a></li>
+				<li class="nav-item"><a class="nav-link">ë©”ì´í¬ì—…</a></li>
+				<li class="nav-item"><a class="nav-link">ì›¨ë”©í™€</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -19,7 +19,14 @@
 		where account_id=#{account_id} and
 		password=#{password}
 	</select>
-
+	
+	<!--회원 찾기(아이디로 찾기)  -->
+	<select id="selectOne" resultType="com.multicampus.kb03.weddingBuddy.dto.User">
+		select *
+		from user_account
+		where account_id =
+		#{account_id}
+	</select>
 	<!--회원정보 수정 -->
 	<update id="update">
 		update user_account
@@ -36,5 +43,15 @@
 		delete from user_account
 		where user_id = #{user_id}
 	</update>
+	
+	<!--마이페이지에서 chatting 누구랑 했는지 sql -->
+	<select id="chattingWithSomeone" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+	select name, planner_id
+	from planner_account
+	where planner_id in
+	(select planner_id
+	from chatting
+	where user_id = 1)
+	</select>
 
 </mapper>
