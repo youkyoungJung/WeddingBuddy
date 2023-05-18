@@ -20,6 +20,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return dao.insert(user);
 	}
+	
+	
+    @Override 
+    public User selectOne(String user_id) throws Exception { 
+       return dao.selectOne(user_id); 
+    }
 
 	/*
 	 * @Override public int update(User user) throws Exception { // TODO
@@ -42,6 +48,13 @@ public class UserServiceImpl implements UserService {
 			returnVO = null; //실행하다 문제가 생겼을때 해당 데이터를 보내지않겠다는 의미 = 예외처리
 		}
 		return returnVO; //null이 반환되면 앞의 코드가 문제가 있다는 것을 바로 알수있다.
+	}
+
+
+	@Override
+	public List<Planner> chattingWithSomeone(int user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*
