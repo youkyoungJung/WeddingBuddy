@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <link rel="stylesheet" href="/css/style.css">
-<!-- ��Ʈ��Ʈ�� -->
+<!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
@@ -60,11 +60,11 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
-						<li><a href="<c:url value='/search/planner'></c:url>">�÷���ã��</a></li>
-						<li><a href="#">�巹��</a></li>
-						<li><a href="#">���</a></li>
-						<li><a href="#">����ũ��</a></li>
-						<li><a href="#">����Ȧ</a></li>
+						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
+						<li><a href="#">드레스</a></li>
+						<li><a href="#">헤어</a></li>
+						<li><a href="#">메이크업</a></li>
+						<li><a href="#">웨딩홀</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

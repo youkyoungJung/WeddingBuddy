@@ -63,7 +63,7 @@ img.profile-photo-lg {
 }
 </style>
 
-<jsp:include page="navbar2.jsp" />
+<jsp:include page="navbar.jsp" />
 </head>
 
 <body>
@@ -115,6 +115,8 @@ img.profile-photo-lg {
 		style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
 		<img src="${pageContext.request.contextPath}/images/chaticon.png"
 			alt="Chat Icon" class="chat-icon-image" style="display: none;"
+			
+			
 			onload="this.style.display = 'block';" onclick="return false;">
 		<div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop;"
 			style="width: 100%; height: 600px;" link rel="stylesheet"
