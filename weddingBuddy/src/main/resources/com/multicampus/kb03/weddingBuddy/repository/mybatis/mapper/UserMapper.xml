@@ -51,7 +51,7 @@
 	where planner_id in
 	(select planner_id
 	from chatting
-	where user_id = 1)
+	where user_id = #{user_id})
 	</select>
 
 </mapper>
