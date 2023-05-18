@@ -23,10 +23,6 @@ public class MyBatisUserDao implements UserDao {
 		// TODO Auto-generated method stub
 		return mapper.insert(user);
 	}
-	@Override
-	   public User selectOne(String user_id) throws Exception {
-	      return mapper.selectOne(user_id);
-	   }
 	
 	
 	

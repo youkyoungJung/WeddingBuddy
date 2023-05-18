@@ -30,6 +30,4 @@ public interface UserMapper {
 	public User selectOne(String user_id);
 	public List<Planner> chattingWithSomeone(int user_id);
 
-	public User selectOne(String user_id);
-
 }
