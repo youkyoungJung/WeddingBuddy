@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 
 @Mapper
@@ -20,12 +21,14 @@ public interface UserMapper {
 	 * 
 	 * public int count();
 	 * 
-	 * public User selectOne(int user_id);
+	 *
 	 * 
 	 * public List<User> selectAll();
 	 */
 	
 	public User readUserWithIDPW(@Param("account_id")String account_id, @Param("password")String password);
+	public User selectOne(String user_id);
+	public List<Planner> chattingWithSomeone(int user_id);
 
 	public User selectOne(String user_id);
 

@@ -20,7 +20,7 @@ import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 @Controller
 public class MainController {
     
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
 	private PlannerService plannerService;
