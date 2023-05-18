@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap CSS 파일 로드 -->
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
- -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <title>내 채팅방</title>
 <style>
 .chatback {
@@ -25,17 +25,7 @@
 }
 </style>
 
-
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<%@ include file="navbar2.jsp" %>
-
+<%@ include file="navbar.jsp"%>
 </head>
 
 <body>
@@ -48,7 +38,7 @@
 					<a href="#"
 						class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">A list item</h5>
+							<h5 class="mb-1"></h5>
 							<small class="text-muted">14</small>
 						</div>
 						<p class="mb-1">Additional content goes here</p> <small
