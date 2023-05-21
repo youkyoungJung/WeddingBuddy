@@ -132,7 +132,7 @@ figcaption .project-creator {
 </style>
 <!-- Core theme CSS (includes Bootstrap)-->
 <link rel="stylesheet" href="/css/style.css">
-<!-- 부트스트랩 -->
+<!-- 遺��몄�ㅽ�몃�� -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
@@ -152,7 +152,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_like.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">♥찜 바로가기 ♥
+						<button class="btn btn-warning bnt-action" type="submit">�μ� 諛�濡�媛�湲� ��
 						</button>
 					</span>
 				</figure>
@@ -164,20 +164,19 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_update.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">♥내 정보수정♥
+						<button class="btn btn-warning bnt-action" type="submit">♥ 내 채팅방  ♥
 						</button>
 					</span>
 				</figure>
 			</div>
 		</div>
 
-
 		<div class="col-ms-10 col-md-4">
 			<div class="project">
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_chat.png' />" > 
 					<span class="actions">
-						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥
+						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">�λ�� 梨���諛⒱��
 						</button>
 					</span>
 				</figure>

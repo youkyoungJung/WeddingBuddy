@@ -88,8 +88,10 @@ public class UserController {
 		logger.info("현재유저 " + p_returnVo);
 		request.setAttribute("LoginUser", returnVo);
 //		
+		
 		return "userChat";
 		//return "chat";
+		//return "chat_list";
 	}
 
 }

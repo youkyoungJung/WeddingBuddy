@@ -47,7 +47,9 @@
 							<p class="mb-1">이름 : ${planner.name }</p> <small
 							class="text-muted">채팅예약 시간 : </small>
 							<div>
-								<button type="button" class="btn btn-primary">채팅 바로가기</button>
+								<button type="button" class="btn btn-primary"
+									onClick=location.href='<c:url value="/chat/${LoginUser.user_id }/${planner.planner_id }"/>'>채팅
+									바로가기</button>
 								<button type="button" class="btn btn-secondary"
 									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
 									쓰기</button>
