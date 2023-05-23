@@ -12,11 +12,15 @@
 	<select id="selectTop3"
 		resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
 		select rownum, P.planner_id as "_id", P.name as "name",
-		R.cnt as "cnt", P.intro as "intro", A.name as "agency_name"
-		from planner_account P, planner_agency A,
-		(select planner_id, count(*) as cnt from planner_review group by planner_id )
+		R.cnt as "cnt",
+		P.intro as "intro", A.name as "agency_name"
+		from planner_account P,
+		planner_agency A,
+		(select planner_id, count(*) as cnt from
+		planner_review group by planner_id )
 		R
-		where A.agency_id = P.agency_id and P.planner_id = R.planner_id
+		where A.agency_id = P.agency_id
+		and P.planner_id = R.planner_id
 		and rownum <![CDATA[<=]]>3
 		order by cnt desc
 	</select>
@@ -83,9 +87,35 @@
 		and P.planner_id = R.planner_id
 		order by cnt desc
 	</select>
+	<!-- 리뷰 작성 -->
+	<insert id="insertReview"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		<selectKey keyProperty="review_id" resultType="int"
+			order="BEFORE">
+			SELECT review_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO planner_review (review_id, planner_id, user_id, reg_date,
+		content)
+		VALUES (#{review_id}, #{planner_id}, #{user_id}, sysdate, #{content})
+	</insert>
 
 
+	<!-- 리뷰 detail 보기 -->
+	<select id="getReviewDetail" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		SELECT *
+		FROM Planner_Review
+		WHERE planner_id = #{plannerId}
+	</select>
 
+	<!-- 리뷰 이미지 등록 -->
+	<insert id="saveReviewImage"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Review_Image">
+		INSERT INTO Review_Image (Review_Image_ID, Review_ID, Image)
+		VALUES (seq_review_image.nextval, #{review_id}, #{image})
+	</insert>
+
+	
 
 
 </mapper>

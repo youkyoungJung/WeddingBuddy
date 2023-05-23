@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Searching Planner</title>
 
 <style>
@@ -109,23 +109,23 @@ img.profile-photo-lg {
 <body>
 
 	<div class="container">
-		<h3 id="header">ÇÃ·¡³Ê Ã£±â</h3>
+		<h3 id="header">í”Œë˜ë„ˆ ì°¾ê¸°</h3>
 
-		<!-- °Ë»öºä ½ÃÀÛ -->
+		<!-- ê²€ìƒ‰ë·° ì‹œì‘ -->
 		<section class="search-section">
 			<div align="center">
 				<form action="<c:url value='/search'/>" accept-charset="utf-8">
 					<label class="box-radio-input"><input type="radio"
-						name="type" value="area" checked="checked"><span>Áö¿ª</span></label>
+						name="type" value="area" checked="checked"><span>ì§€ì—­</span></label>
 					<label class="box-radio-input"><input type="radio"
-						name="type" value="name"><span>ÀÌ¸§</span></label> <label
+						name="type" value="name"><span>ì´ë¦„</span></label> <label
 						class="box-radio-input"><input type="radio" name="type"
-						value="group"><span>¼Ò¼Ó</span></label> 
+						value="group"><span>ì†Œì†</span></label> 
 
 					<div id="custom-search-input">
 						<div class="input-group col-md-12">
 							<input type="text" class="form-control input-lg"
-								placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä." name="search" /> <span
+								placeholder="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”." name="search" /> <span
 								class="input-group-btn">
 								<button class="btn btn-info btn-lg" type="submit">
 									<i class="glyphicon glyphicon-search"></i>
@@ -137,9 +137,9 @@ img.profile-photo-lg {
 				</form>
 			</div>
 		</section>
-		<!-- °Ë»ö ³¡ -->
+		<!-- ê²€ìƒ‰ ë -->
 		<br>
-<!-- ¸ğµçÇÃ·¡³Ê -->
+<!-- ëª¨ë“ í”Œë˜ë„ˆ -->
 		<c:forEach items="${PlannerAll}" var="planner">
 			<div class="row">
 				<div class="col-md-8">
@@ -152,13 +152,13 @@ img.profile-photo-lg {
 								</div>
 								<div class="col-md-7 col-sm-7">
 									<h5>
-										ÀÌ¸§:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
+										ì´ë¦„:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
 									</h5>
-									<p>¼Ò¼Ó:${planner.agency_name }</p>
-									<p class="text-muted">¼Ò°³: ${planner.intro }</p>
+									<p>ì†Œì†:${planner.agency_name }</p>
+									<p class="text-muted">ì†Œê°œ: ${planner.intro }</p>
 								</div>
 								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >°í°´ÈÄ±â:
+									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >ê³ ê°í›„ê¸°:
 										${planner.cnt }</button>
 								</div>
 							</div>

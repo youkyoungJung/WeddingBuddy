@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>플래너 상세보기</title>
 
 <jsp:include page="navbar.jsp" />
