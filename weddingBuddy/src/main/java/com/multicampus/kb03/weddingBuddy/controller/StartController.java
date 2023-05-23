@@ -18,19 +18,13 @@ import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 
 @Controller
-public class MainController {
+public class StartController {
     
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MainController.class);
-
-	@Autowired
-	private PlannerService plannerService;
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(StartController.class);
 	
-    @RequestMapping(value="/", method=RequestMethod.GET)
+    @RequestMapping(value="/start", method=RequestMethod.GET)
     public String main(Model model, HttpServletRequest request, HttpServletResponse response ) throws Exception {
-    	List<Top3Vo> returnVo = plannerService.selectTop3();
-    	logger.info("List size " + returnVo.size());
-    	request.setAttribute("plannerTop3", returnVo);
-    	return "index";
+    	return "start";
     }
         
 }

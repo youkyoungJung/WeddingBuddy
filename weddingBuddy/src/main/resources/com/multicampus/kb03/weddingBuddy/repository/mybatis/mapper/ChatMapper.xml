@@ -5,8 +5,8 @@
 	<cache />
 
  	<insert id="messagesend">
-		insert into message(message_id, chatting_id, to_id, from_id, chat_content, timestamp)
-		values(message_seq.nextval, #{chatting_id}, #{to_id}, #{from_id}, #{chat_content}, sysdate)
+		insert into message(message_id, chatting_id, to_id, from_id, chat_content, timestamp, CHAT_READ_CHECK)
+		values(message_seq.nextval, #{chatting_id}, #{to_id}, #{from_id}, #{chat_content}, sysdate, 'N')
 	</insert>
 
 	<select id="chatList" resultType="com.multicampus.kb03.weddingBuddy.dto.Message">

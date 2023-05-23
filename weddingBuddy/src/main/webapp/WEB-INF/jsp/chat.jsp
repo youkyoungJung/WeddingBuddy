@@ -5,11 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
    rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="/css/message.css">
+<link rel="stylesheet" href="<c:url value = "/css/message.css" />">
 
 <script
    src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -18,7 +19,6 @@
    
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 
-<meta charset="UTF-8">
 <style>
 @font-face {
 	font-family: 'Cafe24Simplehae';
@@ -38,8 +38,6 @@ body {
 	var to_id = "<c:out value="${to_id}" />";
 	var from_id = "<c:out value="${from_id}" />";
 	var url = "/chat/" + to_id + "/" + from_id;
-	
-	console.log(chatting_id);
 
 	var size = "<c:out value="${fn:length(list)}" />"; //들어올 때 message_size(처음)
 	var list_size = "<c:out value="${fn:length(list)}" />"; //계속 받아오는 size
@@ -57,12 +55,13 @@ body {
 			"to_id" : to_id,
 			"from_id" : from_id,
 			"chat_content" : chat_content
+			
 		};
 
 		$.ajax({
 			type : "POST",
 			data : param,
-			url : "/chat/send",
+			url : "/weddingBuddy/chat/send",
 			dataType : "json",
 			async : true
 		});
@@ -79,7 +78,7 @@ body {
 	function readMessage() {
 		$.ajax({
 					type : "GET",
-					url : "/chat/" + to_id + "/" + from_id + "/list.json",
+					url : "/weddingBuddy/chat/" + to_id + "/" + from_id + "/list.json",
 					contentType : "application/json",
 					success : function(data) {
 						list_size = Object.keys(data).length; //size 계속 불러옴
@@ -170,6 +169,7 @@ body {
 									<div class="received_withd_msg">
 										<p>${list.chat_content}</p>
 										<span class="time_date">${list.timestamp}</span>
+										
 									</div>
 								</div>
 							</div>

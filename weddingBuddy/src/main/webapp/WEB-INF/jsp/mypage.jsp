@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -152,7 +152,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_like.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">�μ� 諛�濡�媛�湲� ��
+						<button class="btn btn-warning bnt-action" type="submit">♥ 찜보로가기 ♥
 						</button>
 					</span>
 				</figure>
@@ -164,7 +164,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_update.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">♥ 내 채팅방  ♥
+						<button class="btn btn-warning bnt-action" type="submit">♥ 수정하기  ♥
 						</button>
 					</span>
 				</figure>
@@ -176,7 +176,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_chat.png' />" > 
 					<span class="actions">
-						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">�λ�� 梨���諛⒱��
+						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">♥ 내채팅방  ♥
 						</button>
 					</span>
 				</figure>

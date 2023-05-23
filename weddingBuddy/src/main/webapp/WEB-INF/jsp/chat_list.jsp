@@ -67,30 +67,20 @@ body {
 			<div class="inbox_people">
 				<c:set var="id" value="${sessionScope.user_id}" />
 				<div class="inbox_chat scroll">
-
-
-
 					<c:forEach var="box" items="${chatPlanner}">
-
 						<c:if test="${box.planner_id eq planner_id}">
 							<c:set var="caller" value="${box.user_id}" />
 							<c:set var="receiver" value="${box.planner_id}" />
 						</c:if>
-
 						<c:if test="${box.planner_id ne planner_id}">
 							<c:set var="caller" value="${box.user_id}" />
 							<c:set var="receiver" value="${box.planner_id}" />
-
 						</c:if>
-
-
 						<div class="chat_list"
 							onclick="toMessage('${user_id}', '${planner_id}'); false;">
-
 							<div class="chat_people">
 								<div class="chat_img">
 									<img src="/images/logo.png" width="50" height="50" alt="sunil">
-
 								</div>
 								<div class="chat_ib">
 									<h5>

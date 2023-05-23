@@ -20,7 +20,7 @@ public class Message implements Serializable{
 	public int getChatting_id() {
 		return chatting_id;
 	}
-	public void setChatting_no(int chatting_id) {
+	public void setChatting_id(int chatting_id) {
 		this.chatting_id = chatting_id;
 	}
 	public int getFrom_id() {

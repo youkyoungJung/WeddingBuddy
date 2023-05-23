@@ -48,7 +48,7 @@ public class MessageController {
 
 	// 개인당 메시지 주고받음
 	@RequestMapping("/chat/{to_id}/{from_id}")
-	public ModelAndView messageList(@PathVariable int to_id, @PathVariable int from_id, Message msg) throws Exception {
+	public ModelAndView messageList(@PathVariable int to_id, @PathVariable int from_id, Message msg, HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -60,7 +60,11 @@ public class MessageController {
 		logger.info("chatlist 크기 " + chatlist.size());
 		logger.info("chatting " + chatlist);
 		
-
+		HttpSession session = request.getSession();
+		if(chatlist.size() != 0) {
+			int chatting_id = chatlist.get(0).getChatting_id();
+			session.setAttribute("chatting_id", chatting_id);
+		}
 		mav.setViewName("chat");
 		mav.addObject("list", chatlist);
 		mav.addObject("to_id", to_id);
@@ -73,16 +77,20 @@ public class MessageController {
 	@RequestMapping(value = "/chat/send", method = RequestMethod.POST)
 	public ModelAndView messagesend(@ModelAttribute Message m, HttpServletRequest request,  HttpSession session) throws Exception {
 
-		logger.info("send caller" + m.getTo_id());
-		logger.info("send reciever" + m.getFrom_id());
+		//logger.info("To_id" + m.getTo_id());
+		logger.info("From_id" + m.getFrom_id());
 		logger.info("Message content" + m.getChat_content());
+		logger.info("chatting_id" + m.getChatting_id());
+		logger.info("Message" + m);
 
+		
 		String account_id = UserSession.getLoginUserId(request.getSession());
 		User returnVo = userService.selectOne(account_id);
 
 		int to_id = returnVo.getUser_id();
-
+		int chatting_id = (int) session.getAttribute("chatting_id");
 		m.setTo_id(to_id);
+		m.setChatting_id(chatting_id);
 //		m.setTo_id(m.getTo_id)
 		service.messagesend(m);
 
@@ -100,7 +108,7 @@ public class MessageController {
 	public List<Message> getMessage(@PathVariable int to_id, @PathVariable int from_id, Message m)
 			throws Exception {
 
-		logger.info("요기까진 왔니");
+		//logger.info("요기까진 왔니");
 		m.setTo_id(to_id);
 		m.setFrom_id(from_id);
 
