@@ -100,7 +100,7 @@ img.profile-photo-lg{
                         </div>
                         <div class="col-md-7 col-sm-7">
                            <h5>
-                              이름:<a href="<c:url value="/search/planner/detail" />"
+                              이름:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
                                  class="profile-link">${planner.name }</a>
                            </h5>
                            <p>소속:${planner.agency_name }</p>
