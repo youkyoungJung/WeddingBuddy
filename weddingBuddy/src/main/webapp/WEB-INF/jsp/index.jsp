@@ -86,62 +86,38 @@ img.profile-photo-lg{
 
 
 <div class="container">
-	<h3 id="header"> Best Planner Top 3 </h3>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="people-nearby">
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5>이름: <a href="#" class="profile-link">김준환 </a></h5>
-                    <p>소속: 오월의 웨딩</p>
-                    <p class="text-muted">소개: 영원한 추억을 담아드리겠습니다.</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">고객후기: 999+</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Emma Johnson</a></h5>
-                    <p>Model at Fashion</p>
-                   <p class="text-muted">800m away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Nora Wilson</a></h5>
-                    <p>Writer at Newspaper</p>
-                    <p class="text-muted">2.5km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-    	</div>
 
-	
+		<h3 id="header">Best Planner Top 3</h3>
+		<c:forEach items="${plannerTop3}" var="planner">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="people-nearby">
+						<div class="nearby-user">
+							<div class="row">
+								<div class="col-md-2 col-sm-2">
+									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+										alt="user" class="profile-photo-lg">
+								</div>
+								<div class="col-md-7 col-sm-7">
+									<h5>
+										이름:<a href="<c:url value="/search/planner/detail" />"
+											class="profile-link">${planner.name }</a>
+									</h5>
+									<p>소속:${planner.agency_name }</p>
+									<p class="text-muted">소개: ${planner.intro }</p>
+								</div>
+								<div class="col-md-3 col-sm-3">
+									<button class="btn btn-primary pull-right"
+										onClick=location.href='<c:url value="#"/>' >고객후기:
+										${planner.cnt }</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
-</div>
-
 
 <c:if test="${isLogin}">
 <!DOCTYPE html>
@@ -160,7 +136,7 @@ img.profile-photo-lg{
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;" data-custom-css="https://raw.githubusercontent.com/Kongonii/WeddingBuddy/develop/weddingBuddy/src/main/resources/static/css/chat.css"></div>
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;"></div>
 </div>
 <script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
@@ -173,34 +149,6 @@ img.profile-photo-lg{
 
 
 
-<script type="text/javascript">
-    Notification.requestPermission().then(function(permission) {
-        if (permission !== 'granted') {
-            console.log('알림 허용이 거부되었습니다.');
-        }
-    });
-
-    function showNotification(title, options) {
-        if (!('Notification' in window)) {
-            console.log('알림을 지원하지 않는 브라우저입니다.');
-            return;
-        }
-
-        if (Notification.permission === 'granted') {
-            var notification = new Notification(title, options);
-        }
-    }
-
-    var chatRoom = document.getElementById('tlkio');
-    chatRoom.addEventListener('tlkio.chatMessage', function(event) {
-        var message = event.detail.message;
-        var options = {
-            body: message,
-            icon: "/images/warning.png"
-        };
-        showNotification('새로운 메시지', options);
-    });
-</script>
 
 </body>
 </html>

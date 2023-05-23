@@ -11,6 +11,8 @@ public class Planner {
 	private String intro;
 	private String region;
 	
+	
+
 	public int getPlanner_id() {
 		return planner_id;
 	}
@@ -62,11 +64,11 @@ public class Planner {
 	@Override
 	public String toString() {
 		return "Planner [planner_id=" + planner_id + ", name=" + name + ", password=" + password + ", phone=" + phone
-				+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region + "]";
+				+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region;
 	}
 	
 	
-	
+
 	
 	
 }

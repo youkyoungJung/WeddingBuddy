@@ -11,7 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
+import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
+import com.multicampus.kb03.weddingBuddy.dto.User;
+
 import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 
 
@@ -20,17 +31,21 @@ import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 public class ReviewController {
 	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ReviewController.class);
-
-	@Autowired
-	private PlannerService plannerService;
     
 	@GetMapping
-	public String ReviewGet(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
-//    	List<Planner> returnVo1 = plannerService.selectAll();
-//    	logger.info("Planner selectAll " + returnVo1);
-//    	request.setAttribute("plannerTop3", returnVo1);
+	public String ReviewGet(
+			HttpServletRequest request, 
+			HttpServletResponse response, @RequestParam("planner_id") String planner_id) throws Exception { 
+		logger.info("parameter에 있는 planner_id: "+ planner_id);
+		request.setAttribute("planner_id",planner_id);
         return "review";
     }
+	@PostMapping
+	public String ReviewPost(Planner_Review review, Review_Image image) {
+		logger.info("planner id 넘어오는가: " + review.getPlanner_id());
+		logger.info("content msg: " + review.getContent());
+		return "review";
+	}
     
         
 }

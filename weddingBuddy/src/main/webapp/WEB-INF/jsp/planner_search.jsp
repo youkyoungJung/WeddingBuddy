@@ -112,62 +112,124 @@ img.profile-photo-lg {
 		<h3 id="header">플래너 찾기</h3>
 
 		<!-- 검색뷰 시작 -->
-		<section class="search-section">
-			<div align="center">
-				<form action="<c:url value='/search'/>" accept-charset="utf-8">
-					<label class="box-radio-input"><input type="radio"
-						name="type" value="area" checked="checked"><span>지역</span></label>
-					<label class="box-radio-input"><input type="radio"
-						name="type" value="name"><span>이름</span></label> <label
-						class="box-radio-input"><input type="radio" name="type"
-						value="group"><span>소속</span></label> 
+<section class="search-section">
+	<div align="center">
+<form method="post" action="<c:url value='/search/planner' />" accept-charset="utf-8">
+    <label class="box-radio-input">
+        <input type="radio" name="type" value="area" <c:if test="${type eq 'area'}">checked="checked"</c:if>>
+        <span>지역</span>
+    </label>
+    <label class="box-radio-input">
+        <input type="radio" name="type" value="name" <c:if test="${type eq 'name'}">checked="checked"</c:if>>
+        <span>이름</span>
+    </label>
+    <label class="box-radio-input">
+        <input type="radio" name="type" value="group" <c:if test="${type eq 'group'}">checked="checked"</c:if>>
+        <span>소속</span>
+    </label>
 
-					<div id="custom-search-input">
-						<div class="input-group col-md-12">
-							<input type="text" class="form-control input-lg"
-								placeholder="검색어를 입력하세요." name="search" /> <span
-								class="input-group-btn">
-								<button class="btn btn-info btn-lg" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-					
-				</form>
+
+
+
+			<div id="custom-search-input">
+				<div class="input-group col-md-12">
+					<input type="text" class="form-control input-lg" placeholder="검색어를 입력하세요." name="search"  value = "${searchKeyword }"/>
+					<span class="input-group-btn">
+						<button class="searchbtn" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
 			</div>
-		</section>
-		<!-- 검색 끝 -->
+		</form>
+	</div>
+</section>
+<!-- 검색 끝 -->
+
+
 		<br>
-<!-- 모든플래너 -->
+<div class="row justify-content-center"> <!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
 		<c:forEach items="${PlannerAll}" var="planner">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="people-nearby">
-						<div class="nearby-user">
-							<div class="row">
-								<div class="col-md-2 col-sm-2">
-									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-										alt="user" class="profile-photo-lg">
-								</div>
-								<div class="col-md-7 col-sm-7">
-									<h5>
-										이름:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
-									</h5>
-									<p>소속:${planner.agency_name }</p>
-									<p class="text-muted">소개: ${planner.intro }</p>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review"/>' >고객후기:
-										${planner.cnt }</button>
-								</div>
+			<div class="col-md-8">
+				<div class="people-nearby">
+					<div class="nearby-user">
+						<div class="row">
+							<div class="col-md-2 col-sm-2">
+								<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+									alt="user" class="profile-photo-lg">
 							</div>
+							<div class="col-md-7 col-sm-7">
+								<h5>
+									이름:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
+								</h5>
+								<p>소속:${planner.agency_name }</p>
+								<p class="text-muted">소개: ${planner.intro }</p>
+							</div>
+							<div class="col-md-3 col-sm-3">
+    <button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기: ${planner.cnt }</button>
+
+    <div style="text-align: center; margin-top: 10px;">
+    <a href="#" class="image-button">
+        <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
+    </a>
+    
+     <script>
+    var imageButton = document.querySelector('.image-button');
+    var heartImage = document.getElementById('heartImage');
+    var clickCount = 0;
+
+    imageButton.addEventListener('click', function() {
+        clickCount++;
+
+        if (clickCount % 2 === 0) {
+            heartImage.src = '${pageContext.request.contextPath}/images/prev_heart.png'; // 짝수번 클릭 시 prev_heart.png 이미지로 변경
+        } else {
+            heartImage.src = '${pageContext.request.contextPath}/images/next_heart.png'; // 홀수번 클릭 시 next_heart.png 이미지로 변경
+        }
+    });
+</script>
+    
+   
+</div>
+
+
+</div>
+
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
+	
+	
+	<!-- 페이지네이션 -->
+<div class="pagination-container text-center">
+    <ul class="pagination">
+        <c:if test="${currentPage > 1}">
+            <li><a href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>">&laquo;</a></li>
+        </c:if>
+        <c:forEach begin="1" end="${totalPages}" varStatus="page">
+            <c:choose>
+                <c:when test="${page.index == currentPage}">
+                    <li class="active"><a href="#"><c:out value="${page.index}"/></a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="<c:url value='/search/planner?page=${page.index}&type=${type}&search=${searchKeyword}'/>"><c:out value="${page.index}"/></a></li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${currentPage < totalPages}">
+            <li><a href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>">&raquo;</a></li>
+        </c:if>
+    </ul>
+</div>
+
+
+
+
+	
 </body>
 
 

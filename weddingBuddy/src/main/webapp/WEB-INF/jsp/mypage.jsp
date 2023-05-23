@@ -152,7 +152,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_like.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">♥찜 바로가기 ♥
+						<button onClick="location.href='<c:url value="/mypage/like" />'" class="btn btn-warning bnt-action" type="submit">♥찜 바로가기 ♥
 						</button>
 					</span>
 				</figure>
@@ -172,18 +172,18 @@ figcaption .project-creator {
 		</div>
 
 
-		<div class="col-ms-10 col-md-4">
-    <div class="project">
-        <figure class="img-responsive">
-            <a href="<c:url value='/userChat' />">
-                <img src="<c:url value='/images/mypage_chat.png' />">
-                <span class="actions">
-                    <button class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥</button>
-                </span>
-            </a>
-        </figure>
-    </div>
-</div>
+
+			<div class="project">
+				<figure class="img-responsive">
+					<img src="<c:url value='/images/mypage_chat.png' />" > 
+					<span class="actions">
+						<button onClick="location.href='<c:url value="/mypage/userChat" />'" class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥
+						</button>
+					</span>
+				</figure>
+			</div>
+		</div>
+	</div>
 
 </body>
 <jsp:include page="footer.jsp" />

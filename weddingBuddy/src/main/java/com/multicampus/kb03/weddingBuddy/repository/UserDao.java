@@ -2,6 +2,7 @@ package com.multicampus.kb03.weddingBuddy.repository;
 
 import java.util.List;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 
 public interface UserDao {
@@ -23,7 +24,11 @@ public interface UserDao {
 
 	// 로그인
 	//public User readUserWithIDPW(User vo) throws Exception;
-	public User selectOne(String user_id) throws Exception;
+
 	public User readUserWithIDPW(String account_id, String password) throws Exception;
+	 // selectOne 회원찾기 
+	public User selectOne(String user_id) throws Exception;
+	// 누구랑 채팅했는지
+	public List<Planner> chattingWithSomeone(int user_id) throws Exception;
 
 }

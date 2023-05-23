@@ -22,10 +22,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	
-    @Override 
-    public User selectOne(String user_id) throws Exception { 
-       return dao.selectOne(user_id); 
-    }
+  
 
 	/*
 	 * @Override public int update(User user) throws Exception { // TODO
@@ -51,21 +48,25 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
-	public List<Planner> chattingWithSomeone(int user_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	/*
 	 * @Override public int count() throws Exception { // TODO Auto-generated method
 	 * stub return dao.count(); }
 	 * 
-	 * @Override public User selectOne(int user_id) throws Exception { // TODO
-	 * Auto-generated method stub return dao.selectOne(user_id); }
+	 *
 	 * 
 	 * @Override public List<User> selectAll() throws Exception { // TODO
 	 * Auto-generated method stub return dao.selectAll(); }
 	 */
+	 @Override 
+	 public User selectOne(String user_id) throws Exception { 
+		 return dao.selectOne(user_id); 
+	 }
+
+	@Override
+	public List<Planner> chattingWithSomeone(int user_id) throws Exception {
+		return dao.chattingWithSomeone(user_id);
+	}
 
 }
