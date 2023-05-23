@@ -34,11 +34,14 @@ body, html {
 	var iframe1 = document.getElementById('contentFrame');
 	var iframe2 = document.getElementById('chatFrame');
 
-	var iframe2Url = iframe2.src;
-	console.log('iframe2 URL: ', iframe2Url);
-	function goBack() {
+/* 	function goBack() {
 		window.history.back();
-	}
+	} */
+	
+	function changeIframe(url) {
+        // iframe1의 src 속성 변경
+        document.getElementById("contentFrame").src = url;
+    }
 </script>
 </head>
 <body>
@@ -46,35 +49,10 @@ body, html {
 		<iframe src="<c:url value="/" />" name="contentrame" id="contentFrame"></iframe>
 	</div>
 	<div class="iframe-container">
-		<button onclick="goBack()">뒤로 가기</button>
+		<!-- <button onclick="goBack()">뒤로 가기</button> -->
 		<iframe src="<c:url value="/mypage/chat"/>" name="chatFrame"
 			id="chatFrame"></iframe>
 	</div>
-
-	<!-- 	<script>
-		// 드래그 앤 드롭 기능 구현을 위한 JavaScript 코드
-		var element = document.getElementById("element");
-		var isDragging = false;
-		var offsetX = 0;
-		var offsetY = 0;
-
-		element.addEventListener("mousedown", function(event) {
-			isDragging = true;
-			offsetX = event.clientX - element.offsetLeft;
-			offsetY = event.clientY - element.offsetTop;
-		});
-
-		document.addEventListener("mousemove", function(event) {
-			if (isDragging) {
-				element.style.left = (event.clientX - offsetX) + "px";
-				element.style.top = (event.clientY - offsetY) + "px";
-			}
-		});
-
-		document.addEventListener("mouseup", function() {
-			isDragging = false;
-		});
-	</script> -->
 </body>
 
 </html>
