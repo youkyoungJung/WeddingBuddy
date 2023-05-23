@@ -35,45 +35,26 @@
 
 		<div class="row">
 			<div class="col-lg-10 col-md-10 col-sm-12">
-				<div class="list-group">
-					<a href="#"
-						class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1"></h5>
-							<small class="text-muted">14</small>
-						</div>
-						<p class="mb-1">Additional content goes here</p> <small
-						class="text-muted">More info</small>
-						<div>
-							<button type="button" class="btn btn-primary">채팅 바로가기</button>
-							<button type="button" class="btn btn-secondary">리뷰 쓰기</button>
-						</div>
-					</a> <a href="#"
-						class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">A second list item</h5>
-							<small class="text-muted">2</small>
-						</div>
-						<p class="mb-1">Additional content goes here</p> <small
-						class="text-muted">More info</small>
-						<div>
-							<button type="button" class="btn btn-primary">채팅 바로가기</button>
-							<button type="button" class="btn btn-secondary">리뷰 쓰기</button>
-						</div>
-					</a> <a href="#"
-						class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">A third list item</h5>
-							<small class="text-muted">1</small>
-						</div>
-						<p class="mb-1">Additional content goes here</p> <small
-						class="text-muted">More info</small>
-						<div>
-							<button type="button" class="btn btn-primary">채팅 바로가기</button>
-							<button type="button" class="btn btn-secondary">리뷰 쓰기</button>
-						</div>
-					</a>
-				</div>
+				<c:forEach items="${chatPlanner}" var="planner">
+					<div class="list-group">
+						<input type="hidden" name="user_id" value="${LoginUser.user_id }">
+						<input type="hidden" name="planner_id"
+							value="${planner.planner_id }"> <a href="#"
+							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1"></h5>
+							</div>
+							<p class="mb-1">이름 : ${planner.name }</p> <small
+							class="text-muted">채팅예약 시간 : </small>
+							<div>
+								<button type="button" class="btn btn-primary">채팅 바로가기</button>
+								<button type="button" class="btn btn-secondary"
+									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
+									쓰기</button>
+							</div>
+						</a>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
