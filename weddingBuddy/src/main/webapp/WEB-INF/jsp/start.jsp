@@ -50,7 +50,7 @@ body, html {
 	</div>
 	<div class="iframe-container">
 		<!-- <button onclick="goBack()">뒤로 가기</button> -->
-		<iframe src="<c:url value="/mypage/chat"/>" name="chatFrame"
+		<iframe src="<c:url value="/chat/${to_id }/${from_id }"/>" name="chatFrame"
 			id="chatFrame"></iframe>
 	</div>
 </body>

@@ -48,7 +48,7 @@
 							class="text-muted">채팅예약 시간 : </small>
 							<div>
 								<button type="button" class="btn btn-primary"
-									onClick=location.href='<c:url value="/chat/${LoginUser.user_id }/${planner.planner_id }"/>'>채팅
+									onClick=location.href='<c:url value="/start"/>?user_id=${LoginUser.user_id }&planner_id=${planner.planner_id }'>실시간채팅
 									바로가기</button>
 								<button type="button" class="btn btn-secondary"
 									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
