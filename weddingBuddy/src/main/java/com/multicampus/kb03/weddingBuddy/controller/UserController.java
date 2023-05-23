@@ -70,7 +70,6 @@ public class UserController {
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPageGet(HttpServletRequest request) {
-		//濡쒓렇�씤 �뿬遺� �솗�씤
 		if(!UserSession.hasLogined(request.getSession())) {
 			return "login";
 		}
@@ -90,6 +89,7 @@ public class UserController {
 //		
 		return "userChat";
 		//return "chat";
+		//return "chat_list";
 	}
 
 }

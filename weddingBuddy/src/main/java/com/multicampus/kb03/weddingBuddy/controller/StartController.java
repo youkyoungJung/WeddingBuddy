@@ -12,25 +12,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
+import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 
 @Controller
-public class MainController {
+public class StartController {
     
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MainController.class);
-
-	@Autowired
-	private PlannerService plannerService;
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(StartController.class);
 	
-    @RequestMapping(value="/", method=RequestMethod.GET)
-    public String main(Model model, HttpServletRequest request, HttpServletResponse response ) throws Exception {
-    	List<Top3Vo> returnVo = plannerService.selectTop3();
-    	logger.info("List size " + returnVo.size());
-    	request.setAttribute("plannerTop3", returnVo);
-    	return "index";
+    @RequestMapping(value="/start", method=RequestMethod.GET)
+    public String main(@RequestParam("user_id") String user_id, @RequestParam("planner_id") String planner_id, Model model) throws Exception {
+    	logger.info("planner_id"+planner_id);
+    	model.addAttribute("to_id", user_id);
+    	model.addAttribute("from_id", planner_id);
+    	
+    	return "start";
     }
         
 }
