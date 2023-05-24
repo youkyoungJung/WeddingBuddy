@@ -29,6 +29,10 @@ public interface PlannerDao {
 	public int saveReviewImage(Review_Image image);
 	
 	public List<Planner_Review> getReviewDetail(int plannerId);
+	
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception;
+	
+	public String getUserAccountName(int user_id);
 
 
 }

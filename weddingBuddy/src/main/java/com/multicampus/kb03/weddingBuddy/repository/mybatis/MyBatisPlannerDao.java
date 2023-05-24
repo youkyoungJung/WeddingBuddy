@@ -73,6 +73,16 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return mapper.getReviewDetail(plannerId);
 	}
 
+	@Override
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception {
+		return mapper.getReviewImages(reviewId);
+	}
+
+	@Override
+	public String getUserAccountName(int user_id) {
+		return mapper.getUserAccountName(user_id);
+	}
+
 	 
 
 }

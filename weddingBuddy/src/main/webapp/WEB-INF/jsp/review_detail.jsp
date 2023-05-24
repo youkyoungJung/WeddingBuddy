@@ -21,6 +21,11 @@
 .review-item .content {
 	margin-bottom: 10px;
 }
+.review-item img {
+	max-width: 100%;
+	height: auto;
+}
+
 </style>
 <jsp:include page="navbar.jsp" />
 </head>
@@ -50,8 +55,8 @@
 		<c:forEach var="review" items="${reviewList}">
 			<div class="review-item">
 				<div>
-					<label>아이디 :</label>
-					<p>${review.user_id}</p>
+					<label>이름 :</label>
+					<p><c:out value="${userAccountMap[review.user_id]}"/></p> <!-- user_id에 해당하는 name 값을 가져와서 표시 -->
 				</div>
 				<div class="content">
 					<label>고객 후기:</label>
@@ -61,7 +66,14 @@
 					<label>등록 날짜:</label>
 					<p>${review.reg_date}</p>
 				</div>
-				<!-- 리뷰 이미지 가져오기 필요  -->
+				<!-- reviewImagesList에서 해당 review_id에 맞는 이미지만 표시 -->
+				<c:forEach var="reviewImage" items="${reviewImagesList}">
+					<c:if test="${reviewImage.review_id == review.review_id}">
+						<img src="<c:url value='${reviewImage.image}' />" alt="Review Image" />
+					</c:if>
+				</c:forEach>
+
+
 			</div>
 		</c:forEach>
 	</c:if>

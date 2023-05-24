@@ -80,7 +80,16 @@ public class PlannerServiceImpl implements PlannerService {
 		return dao.getReviewDetail(plannerId);
 	}
 
-	
+	@Override
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception {
+	    return dao.getReviewImages(reviewId);
+	}
+
+	@Override
+	public String getUserAccountName(int user_id) {
+		return dao.getUserAccountName(user_id);
+	}
+
 
 	
 
