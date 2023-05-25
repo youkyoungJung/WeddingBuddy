@@ -20,4 +20,6 @@ public interface ChatMapper {
 
 	public void insertNewChat(@Param("user_id") int user_id, @Param("planner_id")int planner_id);
 
+	public int selectChattingId(@Param("user_id") int user_id, @Param("planner_id") int planner_id);
+
 }

@@ -10,4 +10,7 @@ public interface ChatReservationMapper {
 
 	public int reservationExist(@Param("planner_id") int planner_id, @Param("reservation_date") String reservation_date);
 
+	public void insertReservation(@Param("chatting_id") int chatting_id, @Param("reservation_date") String reservation_date);
+
+	
 }

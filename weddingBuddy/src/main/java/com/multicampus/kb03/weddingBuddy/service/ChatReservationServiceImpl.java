@@ -20,4 +20,9 @@ public class ChatReservationServiceImpl implements ChatReservationService {
 		return false;
 	}
 
+	@Override
+	public void insertReservation(int chatting_id, String reservation_date) {
+		dao.insertReservation(chatting_id, reservation_date);
+	}
+
 }

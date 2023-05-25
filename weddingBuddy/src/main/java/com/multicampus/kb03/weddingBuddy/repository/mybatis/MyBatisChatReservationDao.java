@@ -17,4 +17,9 @@ class MyBatisChatReservationDao implements ChatReservationDao {
 		return chatReservationMapper.reservationExist(planner_id, reservation_date);
 	}
 
+	@Override
+	public void insertReservation(int chatting_id, String reservation_date) {
+		chatReservationMapper.insertReservation(chatting_id, reservation_date);
+	}
+
 }
