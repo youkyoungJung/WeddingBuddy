@@ -159,6 +159,7 @@ img.profile-photo-lg {
 								</div>
 								<div class="col-md-3 col-sm-3">
 									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기:
+<%-- 									<button class="btn btn-primary pull-right" onClick=location.href='<c:url value="/review?planner_id=${planner._id}&user_id=${sessionScope.user_id}"/>' >고객후기: --%>
 										${planner.cnt }</button>
 								</div>
 							</div>
