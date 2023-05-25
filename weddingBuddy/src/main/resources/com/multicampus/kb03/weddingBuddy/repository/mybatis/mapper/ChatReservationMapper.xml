@@ -13,5 +13,14 @@
 		where planner_id = #{planner_id}
 		and reservation_date = to_date(#{reservation_date}, 'YYYY-MM-DD HH24:MI')
 	</select>
+	
+	<select id="insertReservation">
+		insert into chat_reservation
+		values(chat_reservation_seq.nextval,
+			 to_date(#{reservation_date}, 'YYYY-MM-DD HH24:MI'),
+			  #{chatting_id})
+	</select>
+	
+	
 
 </mapper>

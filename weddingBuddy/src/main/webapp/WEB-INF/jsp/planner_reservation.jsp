@@ -35,6 +35,11 @@
 
 	<h3>예약 완료</h3>	
 	
+	
+	<a href="${pageContext.request.contextPath}/">홈으로</a>
+	<a href="${pageContext.request.contextPath}/mypage">마이페이지</a>
+	
+	
 
 
 

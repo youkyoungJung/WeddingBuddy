@@ -35,4 +35,9 @@ public class ChatServiceImpl implements ChatService {
 		dao.insertNewChat(user_id, planner_id);
 	}
 
+	@Override
+	public int selectChattingId(int user_id, int planner_id) {
+		return dao.selectChattingId(user_id, planner_id);
+	}
+
 }

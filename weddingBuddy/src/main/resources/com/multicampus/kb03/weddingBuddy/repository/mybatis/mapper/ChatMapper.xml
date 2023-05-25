@@ -38,5 +38,12 @@
 		insert into chatting
 		values(#{planner_id}, chatting_seq.nextval, #{user_id})
 	</select>
+	
+	<select id="selectChattingId"
+		resultType="int">
+		select chatting_id from chatting
+		where user_id = #{user_id}
+		and planner_id = #{planner_id}
+	</select>
 
 </mapper>
