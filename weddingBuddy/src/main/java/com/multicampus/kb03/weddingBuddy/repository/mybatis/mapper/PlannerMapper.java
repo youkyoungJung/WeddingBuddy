@@ -38,6 +38,10 @@ public interface PlannerMapper {
 
 
 	public List<Planner> searchByGroup(String agency);
+
+	public Planner updateFavorite(int planner_id, boolean isFavorite);
+
+	public void insertPlannerLike(Map<String, Object> parameters);
 	
 	
 }

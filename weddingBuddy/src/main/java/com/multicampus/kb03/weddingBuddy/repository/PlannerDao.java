@@ -35,6 +35,8 @@ public interface PlannerDao {
 	
 	public Page<Planner> findAll(Pageable pageable);
 	
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
+	
 	
 	
 	

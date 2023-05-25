@@ -58,7 +58,10 @@
       #{account_id}
    </select>
 	
-	
+	<select id="selectUserIdByAccountId" resultType="int">
+		select user_id from user_account
+		where account_id = #{accountId}
+	</select>	
 	
 
 

@@ -85,6 +85,11 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return null;
 	}
 
+	@Override
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
+		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
+	}
+
 
 	 
 

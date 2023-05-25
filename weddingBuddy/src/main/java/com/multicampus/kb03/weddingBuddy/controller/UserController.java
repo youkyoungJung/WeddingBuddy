@@ -93,10 +93,14 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value = "mypage/like")
-	public String myLikeGet(HttpServletRequest request) throws Exception{
-		String account_id = UserSession.getLoginUserId(request.getSession());
-		return "like";
-	}
+	
+	/*
+	 * @RequestMapping(value = "mypage/like") public String
+	 * myLikeGet(HttpServletRequest request) throws Exception{ String account_id =
+	 * UserSession.getLoginUserId(request.getSession());
+	 * 
+	 * return "like"; }
+	 */
+	 
 
 }

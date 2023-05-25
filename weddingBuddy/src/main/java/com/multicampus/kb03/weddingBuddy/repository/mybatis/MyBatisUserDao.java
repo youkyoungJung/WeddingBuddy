@@ -67,4 +67,11 @@ public class MyBatisUserDao implements UserDao {
 		return mapper.chattingWithSomeone(user_id);
 	}
 
+
+
+	@Override
+	public int selectUserIdByAccountId(String accountId) {
+		return mapper.selectUserIdByAccountId(accountId);
+	}
+
 }

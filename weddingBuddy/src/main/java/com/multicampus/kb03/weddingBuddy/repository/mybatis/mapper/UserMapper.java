@@ -29,5 +29,6 @@ public interface UserMapper {
 	public User readUserWithIDPW(@Param("account_id")String account_id, @Param("password")String password);
 	public User selectOne(String user_id);
 	public List<Planner> chattingWithSomeone(int user_id);
+	public int selectUserIdByAccountId(String accountId);
 
 }

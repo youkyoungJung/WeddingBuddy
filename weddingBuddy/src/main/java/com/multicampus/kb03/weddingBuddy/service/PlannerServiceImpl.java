@@ -81,5 +81,23 @@ public class PlannerServiceImpl implements PlannerService {
 	public Page<Planner> getPlanners(Pageable pageable){
 		return dao.findAll(pageable);
 	}
+
+	@Override
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertPlannerLike(Map<String, Object> parameters) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+
+	
 	
 }

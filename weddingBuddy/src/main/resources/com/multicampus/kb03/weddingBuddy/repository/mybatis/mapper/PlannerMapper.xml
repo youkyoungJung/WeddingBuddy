@@ -106,6 +106,15 @@
     WHERE A.name LIKE '%' || #{agency} || '%'
     </select>
     
+<!-- planner_like 테이블에 데이터 추가 -->
+<insert id="insertPlannerLike" parameterType="map">
+  INSERT INTO planner_like (user_id, planner_like_id, planner_id, isFavorite)
+  VALUES (#{user_id}, planner_like_seq.nextval, #{plannerId}, #{isFavorite})
+</insert>
+    
+    
+
+    
     
 
     

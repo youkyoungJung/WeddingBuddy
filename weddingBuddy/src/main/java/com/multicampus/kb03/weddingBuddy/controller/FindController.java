@@ -81,4 +81,7 @@ public class FindController {
                                   Model model) throws Exception {
         return findPlannerGet(page, searchType, searchKeyword, model);
     }
+    
+   
+    
 }

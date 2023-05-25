@@ -36,6 +36,11 @@ public interface PlannerService {
 	public List<Planner> searchByGroup(String agency) throws Exception;
 
 	Page<Planner> getPlanners(Pageable pageable);
+
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
+
+	public void insertPlannerLike(Map<String, Object> parameters);
+
 	
 	
 

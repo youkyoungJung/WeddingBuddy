@@ -31,5 +31,7 @@ public interface UserService {
 
 	public User selectOne(String user_id) throws Exception;
 
+	public int selectUserIdByAccountId(String accountId);
+
 
 }

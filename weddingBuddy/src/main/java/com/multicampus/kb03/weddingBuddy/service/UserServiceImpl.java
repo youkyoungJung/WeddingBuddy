@@ -69,4 +69,12 @@ public class UserServiceImpl implements UserService {
 		return dao.chattingWithSomeone(user_id);
 	}
 
+
+
+
+	@Override
+	public int selectUserIdByAccountId(String accountId) {
+		return dao.selectUserIdByAccountId(accountId);
+	}
+
 }

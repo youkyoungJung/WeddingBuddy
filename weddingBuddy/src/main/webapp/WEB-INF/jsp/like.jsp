@@ -1,26 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%-- 
+<c:set var="plannerId" value="${param.planner_id}" />
+<c:set var="isFavorite" value="${param.isFavorite}" /> --%>
+
+<!-- ¿©±â¿¡¼­ plannerId¿Í isFavorite °ªÀ» È°¿ëÇÏ¿© ¿øÇÏ´Â ÀÛ¾÷À» ¼öÇàÇÕ´Ï´Ù. -->
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ì°œ</title>
+    <title>Like</title>
 </head>
 <body>
-<!-- Example split danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
-  </div>
-</div>
+    <h1>Like Page</h1>
+    
+    <form action="/addLikedPlanner" method="POST">
+        <input type="hidden" name="plannerId" value="${plannerId}">
+        <input type="submit" value="Add to Liked List">
+    </form>
+    
+    <p>Planner ID: ${plannerId}</p>
+    <p>Is Favorite: ${isFavorite}</p>
+    
+    <a href="/likedPlanners">View Liked Planners</a>
 </body>
 </html>

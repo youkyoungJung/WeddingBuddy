@@ -169,24 +169,42 @@ img.profile-photo-lg {
     <button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기: ${planner.cnt }</button>
 
     <div style="text-align: center; margin-top: 10px;">
-    <a href="#" class="image-button">
-        <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
+    <a href="#" class="image-button" onclick = "handleFavoriteClick(${planner._id})">
+        <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;" data-planner-id = "${planner._id}">
     </a>
     
-     <script>
-    var imageButton = document.querySelector('.image-button');
-    var heartImage = document.getElementById('heartImage');
-    var clickCount = 0;
+    <script>
+function handleFavoriteClick(plannerId) {
+	console.log('aaa')
+  // 서버로 AJAX 요청을 보내 찜하기 상태를 업데이트
+  var heartImage = document.getElementById('heartImage');
+  var isFavorite = heartImage.getAttribute('src') == '${pageContext.request.contextPath}/images/prev_heart.png';
+  console.log("isFavorite", heartImage.getAttribute('src'))
 
-    imageButton.addEventListener('click', function() {
-        clickCount++;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+	  if (this.readyState === 4 && this.status === 200) {
+	    // 응답을 받았을 때 처리할 내용
+	    if (isFavorite) {
+	      heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/next_heart.png');
+	    } else {
+	      heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/prev_heart.png');
+	    }
 
-        if (clickCount % 2 === 0) {
-            heartImage.src = '${pageContext.request.contextPath}/images/prev_heart.png'; // 짝수번 클릭 시 prev_heart.png 이미지로 변경
-        } else {
-            heartImage.src = '${pageContext.request.contextPath}/images/next_heart.png'; // 홀수번 클릭 시 next_heart.png 이미지로 변경
-        }
-    });
+	    // 플래너 정보 업데이트
+/* 	    var plannerName = document.getElementById('plannerName');
+	    plannerName.textContent = '${planner.name}';  */// 업데이트할 플래너 정보를 서버에서 받아와서 설정
+	  }
+	};
+
+
+  xhttp.open('POST', '${pageContext.request.contextPath}/updateFavorite', true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + isFavorite);
+  
+  console.log("planner_id" ,plannerId);
+  
+}
 </script>
     
    
