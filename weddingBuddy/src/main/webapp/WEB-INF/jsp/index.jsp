@@ -84,7 +84,6 @@ img.profile-photo-lg{
 
 <body>
 
-
 <div class="container">
 
       <h3 id="header">Best Planner Top 3</h3>
@@ -136,7 +135,7 @@ img.profile-photo-lg{
 <body>
 <div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;" data-custom-css="https://raw.githubusercontent.com/Kongonii/WeddingBuddy/develop/weddingBuddy/src/main/resources/static/css/chat.css"></div>
+    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;"></div>
 </div>
 <script async src="https://tlk.io/embed.js" type="text/javascript"></script>
 
@@ -149,50 +148,9 @@ img.profile-photo-lg{
 
 
 
-<script type="text/javascript">
-    Notification.requestPermission().then(function(permission) {
-        if (permission !== 'granted') {
-            console.log('알림 허용이 거부되었습니다.');
-        }
-    });
-
-    function showNotification(title, options) {
-        if (!('Notification' in window)) {
-            console.log('알림을 지원하지 않는 브라우저입니다.');
-            return;
-        }
-
-        if (Notification.permission === 'granted') {
-            var notification = new Notification(title, options);
-        }
-    }
-
-    var chatRoom = document.getElementById('tlkio');
-    chatRoom.addEventListener('tlkio.chatMessage', function(event) {
-        var message = event.detail.message;
-        var options = {
-            body: message,
-            icon: "/images/warning.png"
-        };
-        showNotification('새로운 메시지', options);
-    });
-</script>
 
 </body>
 </html>
-
-
-</c:if>
-<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-      $('.chat-icon').click(function() {
-        $('#tlkio').toggle();
-      });
-    });
-</script>
-
-</body>
 
 <jsp:include page="footer.jsp" />
 </html>

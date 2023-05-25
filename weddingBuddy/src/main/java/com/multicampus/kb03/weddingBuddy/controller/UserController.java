@@ -76,7 +76,7 @@ public class UserController {
 		return "mypage";
 	}
 
-	@RequestMapping(value = "/mypage/chat")
+	@RequestMapping(value = "mypage/userChat")
 	public String myChatGet(HttpServletRequest request) throws Exception {
 		String account_id = UserSession.getLoginUserId(request.getSession());
 		User returnVo = userService.selectOne(account_id);
@@ -86,10 +86,22 @@ public class UserController {
 		request.setAttribute("chatPlanner", p_returnVo);
 		logger.info("현재유저 " + p_returnVo);
 		request.setAttribute("LoginUser", returnVo);
-//		
+
+		
+		
 		return "userChat";
-		//return "chat";
-		//return "chat_list";
+
 	}
+	
+	
+	
+	/*
+	 * @RequestMapping(value = "mypage/like") public String
+	 * myLikeGet(HttpServletRequest request) throws Exception{ String account_id =
+	 * UserSession.getLoginUserId(request.getSession());
+	 * 
+	 * return "like"; }
+	 */
+	 
 
 }

@@ -68,23 +68,68 @@
 		#{planner_id}
 	</select>
 
-	<!-- selectAll 전체 출력 -->
-	<select id="selectAll"
-		resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
-		select P.planner_id as "_id", P.name as "name", R.cnt as
-		"cnt", P.intro as
-		"intro", A.name as "agency_name"
-		from planner_account
-		P, planner_agency A,
-		(select planner_id, count(*) as cnt from
-		planner_review group by planner_id)
-		R
-		where A.agency_id = P.agency_id
-		and P.planner_id = R.planner_id
-		order by cnt desc
-	</select>
+<!-- selectAll 전체 출력 -->
+<select id="selectAll" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+  SELECT P.planner_id as "_id", P.name as "name", COALESCE(R.cnt, 0) as "cnt", P.intro as "intro", A.name as "agency_name"
+  FROM planner_account P
+  INNER JOIN planner_agency A ON P.agency_id = A.agency_id
+  LEFT JOIN (SELECT planner_id, COUNT(*) as cnt FROM planner_review GROUP BY planner_id) R ON P.planner_id = R.planner_id
+  ORDER BY cnt DESC
+</select>
+
+	
+	
+	<!-- searchByAd -->
+<select id="searchByAd"  resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    FROM planner_account P
+    INNER JOIN planner_agency A 
+    ON P.agency_id = A.agency_id
+    WHERE A.address LIKE '%' || #{address} || '%'
+</select>
+
+<!-- searchByName -->
+<select id="searchByName" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    FROM planner_account P
+    INNER JOIN planner_agency A 
+    ON P.agency_id = A.agency_id
+    WHERE P.name LIKE '%' || #{name} || '%'
+    </select>
+    
+<!-- searchByGroup -->
+<select id="searchByGroup" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    FROM planner_account P
+    INNER JOIN planner_agency A 
+    ON P.agency_id = A.agency_id
+    WHERE A.name LIKE '%' || #{agency} || '%'
+    </select>
+    
+<!-- planner_like 테이블에 데이터 추가 -->
+<insert id="insertPlannerLike" parameterType="map">
+  INSERT INTO planner_like (user_id, planner_like_id, planner_id, isFavorite)
+  VALUES (#{user_id}, planner_like_seq.nextval, #{plannerId}, #{isFavorite})
+</insert>
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
 
 
+
+
+	
+	
+	
 
 
 
