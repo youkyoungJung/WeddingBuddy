@@ -33,5 +33,10 @@
 		#{from_id}
 		GROUP BY to_id, from_id)
 	</select>
+	
+	<select id="insertNewChat">
+		insert into chatting
+		values(#{planner_id}, chatting_seq.nextval, #{user_id})
+	</select>
 
 </mapper>

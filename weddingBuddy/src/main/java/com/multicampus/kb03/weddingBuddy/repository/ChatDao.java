@@ -13,4 +13,8 @@ public interface ChatDao {
 
 		//�޽���������
 		public void messagesend(Message m)throws Exception;
+
+		public void insertNewChat(int user_id, int planner_id);
+		
+		
 }

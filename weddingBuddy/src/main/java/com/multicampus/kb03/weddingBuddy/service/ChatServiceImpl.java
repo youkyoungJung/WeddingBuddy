@@ -30,4 +30,9 @@ public class ChatServiceImpl implements ChatService {
 		dao.messagesend(m);
 	}
 
+	@Override
+	public void insertNewChat(int user_id, int planner_id) {
+		dao.insertNewChat(user_id, planner_id);
+	}
+
 }

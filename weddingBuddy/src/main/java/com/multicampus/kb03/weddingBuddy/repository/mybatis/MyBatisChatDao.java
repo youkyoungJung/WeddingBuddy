@@ -61,4 +61,9 @@ class MyBatisChatDao implements ChatDao {
 		chatMapper.messagesend(m);
 	}
 
+	@Override
+	public void insertNewChat(int user_id, int planner_id) {
+		chatMapper.insertNewChat(user_id, planner_id);
+	}
+
 }

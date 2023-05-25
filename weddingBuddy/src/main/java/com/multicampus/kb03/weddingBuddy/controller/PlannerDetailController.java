@@ -73,8 +73,10 @@ public class PlannerDetailController {
 		}
 		User user = userService.selectOne(UserSession.getLoginUserId(session));
 		
+		int user_id = user.getUser_id();
 		
 		// 예약과 동시에 채팅을 생성한다.
+		chatService.insertNewChat(user_id, planner_id);
 //		chatReservationService.insertReservation(planner_id, user.getUser_id(), reservation_date);
 		return "planner_reservation";
 		
