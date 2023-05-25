@@ -21,9 +21,6 @@ public class UserServiceImpl implements UserService {
 		return dao.insert(user);
 	}
 	
-	
-  
-
 	/*
 	 * @Override public int update(User user) throws Exception { // TODO
 	 * Auto-generated method stub return dao.update(user); }
@@ -46,8 +43,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return returnVO; //null이 반환되면 앞의 코드가 문제가 있다는 것을 바로 알수있다.
 	}
-
-
 
 
 	/*

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -20,9 +20,10 @@ body{
   Nearby People CSS
   ==================================================*/
 
+  
  .header-avatar{
- 	pointer-events: none;
- 	
+    pointer-events: none;
+    
  } 
 
 
@@ -56,7 +57,7 @@ img.profile-photo-lg{
 
 
 #header{
-	margin-left:30px;
+   margin-left:30px;
 }
 .chat-icon img {
   width: 60px;
@@ -71,44 +72,51 @@ img.profile-photo-lg{
 
 </style>
 
+
+
+
+
+
+
 <jsp:include page="navbar.jsp" />
 
 </head>
 
 <body>
-	<div class="container">
 
-		<h3 id="header">Best Planner Top 3</h3>
-		<c:forEach items="${plannerTop3}" var="planner">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="people-nearby">
-						<div class="nearby-user">
-							<div class="row">
-								<div class="col-md-2 col-sm-2">
-									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-										alt="user" class="profile-photo-lg">
-								</div>
-								<div class="col-md-7 col-sm-7">
-									<h5>
-										이름:<a href="<c:url value="/search/planner/detail" />"
-											class="profile-link">${planner.name }</a>
-									</h5>
-									<p>소속:${planner.agency_name }</p>
-									<p class="text-muted">소개: ${planner.intro }</p>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right"
-										onClick=location.href='<c:url value="#"/>' >고객후기:
-										${planner.cnt }</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
+<div class="container">
+
+      <h3 id="header">Best Planner Top 3</h3>
+      <c:forEach items="${plannerTop3}" var="planner">
+         <div class="row">
+            <div class="col-md-8">
+               <div class="people-nearby">
+                  <div class="nearby-user">
+                     <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                           <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                              alt="user" class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                           <h5>
+                              이름:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
+                                 class="profile-link">${planner.name }</a>
+                           </h5>
+                           <p>소속:${planner.agency_name }</p>
+                           <p class="text-muted">소개: ${planner.intro }</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                           <button class="btn btn-primary pull-right"
+                              onClick=location.href='<c:url value="#"/>' >고객후기:
+                              ${planner.cnt }</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </c:forEach>
+   </div>
 
 <c:if test="${isLogin}">
 <!DOCTYPE html>
@@ -118,8 +126,8 @@ img.profile-photo-lg{
 <title>Chat Room</title>
 <style>
 .header-avatar{
- 	pointer-events: none;
- 	
+    pointer-events: none;
+    
  } 
 
 </style>
@@ -142,19 +150,7 @@ img.profile-photo-lg{
 
 
 </body>
-		</html>
-
-	</c:if>
-	<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.chat-icon').click(function() {
-				$('#tlkio').toggle();
-			});
-		});
-	</script>
-
-</body>
+</html>
 
 <jsp:include page="footer.jsp" />
 </html>

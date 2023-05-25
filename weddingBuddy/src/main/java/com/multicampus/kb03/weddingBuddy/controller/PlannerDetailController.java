@@ -14,35 +14,77 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.multicampus.kb03.weddingBuddy.dto.Agency;
+import com.multicampus.kb03.weddingBuddy.dto.ChatReservation;
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
+import com.multicampus.kb03.weddingBuddy.service.AgencyService;
+import com.multicampus.kb03.weddingBuddy.service.ChatReservationService;
+import com.multicampus.kb03.weddingBuddy.service.ChatService;
+import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
-
 @Controller
-@RequestMapping("/search/planner/detail")
+
 public class PlannerDetailController {
-	
+
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(PlannerDetailController.class);
 
 	@Autowired
 	private UserService userService;
-    
-	@GetMapping
-	public String searchPlannerDetailGet(Model model) {     
+
+	@Autowired
+	private PlannerService plannerService;
+	
+	@Autowired
+	private AgencyService agencyService;
+	
+	@Autowired
+	private ChatService chatService;
+	
+	@Autowired
+	private ChatReservationService chatReservationService;
+
+
+	@RequestMapping(value="/search/planner/detail", method = RequestMethod.GET)
+	public String searchPlannerDetailGet(Model model, @RequestParam("planner_id") int planner_id, HttpSession session) throws Exception {
+
+		Planner returnVo = plannerService.selectOne(planner_id);
+		int agency_id = returnVo.getAgency_id();
+		Agency agency = agencyService.selectOne(agency_id);
+
+		session.setAttribute("agency", agency);
+		session.setAttribute("planner", returnVo);
+		return "planner_detail";
+	}
+	
+	@RequestMapping(value="/search/planner/detail", method=RequestMethod.POST)
+	public String searchPlannerDetailPost(Model model, @RequestParam("planner_id") int planner_id, 
+			@RequestParam("date") String date, @RequestParam("hour") String hour, 
+			HttpSession session) throws Exception {
+		String reservation_date = date+" "+hour+":00";
+		logger.info(reservation_date);
+
+		if (chatReservationService.reservationExist(planner_id, reservation_date)) {
+			model.addAttribute("reservation_message", "이미 예약된 시간입니다.");
+			return "planner_detail";
+		}
+		User user = userService.selectOne(UserSession.getLoginUserId(session));
 		
-		 // 이미지 URL 리스트를 모델에 추가
-        List<String> images = Arrays.asList(
-            "/images/logo.jpg",
-            "/images/logo.jpg",
-            "/images/logo.jpg"
-        );
-        model.addAttribute("images", images);
-       // return "index";
-        
-        
-        return "planner_detail";
-    }
-    
-        
+		int user_id = user.getUser_id();
+		
+		// 예약과 동시에 채팅을 생성한다.
+		chatService.insertNewChat(user_id, planner_id);
+		int chatting_id = chatService.selectChattingId(user_id, planner_id);
+		logger.info("chatid: "+chatting_id);
+		logger.info("reserdate:"+reservation_date);
+		chatReservationService.insertReservation(chatting_id, reservation_date);
+		return "planner_reservation";
+		
+	}
+	
+	
+
 }

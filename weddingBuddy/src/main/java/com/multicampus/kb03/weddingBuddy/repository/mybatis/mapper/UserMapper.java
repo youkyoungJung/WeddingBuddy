@@ -31,4 +31,5 @@ public interface UserMapper {
 	public List<Planner> chattingWithSomeone(int user_id);
 	public int selectUserIdByAccountId(String accountId);
 
+
 }
