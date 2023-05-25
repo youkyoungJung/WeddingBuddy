@@ -20,7 +20,6 @@ body{
   Nearby People CSS
   ==================================================*/
 
-  
  .header-avatar{
  	pointer-events: none;
  	
@@ -72,20 +71,12 @@ img.profile-photo-lg{
 
 </style>
 
-
-
-
-
-
-
 <jsp:include page="navbar.jsp" />
 
 </head>
 
 <body>
-
-
-<div class="container">
+	<div class="container">
 
 		<h3 id="header">Best Planner Top 3</h3>
 		<c:forEach items="${plannerTop3}" var="planner">
@@ -151,18 +142,17 @@ img.profile-photo-lg{
 
 
 </body>
-</html>
+		</html>
 
-
-</c:if>
-<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-      $('.chat-icon').click(function() {
-        $('#tlkio').toggle();
-      });
-    });
-</script>
+	</c:if>
+	<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.chat-icon').click(function() {
+				$('#tlkio').toggle();
+			});
+		});
+	</script>
 
 </body>
 

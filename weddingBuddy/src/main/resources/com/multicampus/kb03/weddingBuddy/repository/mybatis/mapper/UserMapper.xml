@@ -42,13 +42,11 @@
    where user_id = #{user_id})
    </select>
 	
-
 	<!--회원정보 삭제 -->
 	<update id="delete">
 		delete from user_account
 		where user_id = #{user_id}
 	</update>
-
 	
 	   <!--회원 찾기(아이디로 찾기)  -->
    <select id="selectOne" resultType="com.multicampus.kb03.weddingBuddy.dto.User">
@@ -62,6 +60,7 @@
 		select user_id from user_account
 		where account_id = #{accountId}
 	</select>	
+	
 	
 
 
