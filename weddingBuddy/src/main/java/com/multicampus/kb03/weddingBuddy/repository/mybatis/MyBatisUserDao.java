@@ -23,7 +23,9 @@ public class MyBatisUserDao implements UserDao {
 		// TODO Auto-generated method stub
 		return mapper.insert(user);
 	}
-
+	
+	
+	
 	/*
 	 * @Override public int update(User user) throws Exception { // TODO
 	 * Auto-generated method stub return mapper.update(user); }

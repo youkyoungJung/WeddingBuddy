@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -132,7 +132,7 @@ figcaption .project-creator {
 </style>
 <!-- Core theme CSS (includes Bootstrap)-->
 <link rel="stylesheet" href="/css/style.css">
-<!-- ºÎÆ®½ºÆ®·¦ -->
+<!-- éºï¿½ï¿½ëª„ï¿½ã…½ï¿½ëªƒï¿½ï¿½ -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
@@ -152,7 +152,7 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_like.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">¢¾Âò ¹Ù·Î°¡±â ¢¾
+						<button class="btn btn-warning bnt-action" type="submit">â™¥ ì°œë³´ë¡œê°€ê¸° â™¥
 						</button>
 					</span>
 				</figure>
@@ -164,20 +164,19 @@ figcaption .project-creator {
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_update.png' />" > 
 					<span class="actions">
-						<button class="btn btn-warning bnt-action" type="submit">¢¾³» Á¤º¸¼öÁ¤¢¾
+						<button class="btn btn-warning bnt-action" type="submit">â™¥ ìˆ˜ì •í•˜ê¸°  â™¥
 						</button>
 					</span>
 				</figure>
 			</div>
 		</div>
 
-
 		<div class="col-ms-10 col-md-4">
 			<div class="project">
 				<figure class="img-responsive">
 					<img src="<c:url value='/images/mypage_chat.png' />" > 
 					<span class="actions">
-						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">¢¾³» Ã¤ÆÃ¹æ¢¾
+						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">â™¥ ë‚´ì±„íŒ…ë°©  â™¥
 						</button>
 					</span>
 				</figure>

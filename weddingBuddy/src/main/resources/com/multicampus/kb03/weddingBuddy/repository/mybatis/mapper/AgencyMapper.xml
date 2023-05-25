@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.AgencyMapper">
+
+	<!-- <resultMap id="top3ResultMap" type="hashmap"> <result column="agency_name" 
+		property="agency_name" /> <result column="intro" property="intro" /> <result 
+		column="cnt" property="cnt" /> <result column="name" property="name" /> 필요한 
+		필드들 추가 </resultMap> -->
+
+	<!-- 플래너 회원가입, data insert -->
+	<insert id="insert">
+		insert into planner_agency
+		values(
+		planner_agency_seq.nextval, #{name}, #{address},
+		#{phone},
+		#{associate_id}
+		)
+	</insert>
+
+	<!--플래너정보 수정, 플래너 아이디로 -->
+	<update id="update">
+		update planner_agency
+		set
+		name = #{name},
+		address =
+		#{address},
+		phone = #{phone},
+		associate_id = #{associate_id}
+		where
+		agency_id = #{agency_id}
+	</update>
+
+	<!--회원정보 삭제 -->
+	<update id="delete">
+		delete from planner_agency
+		where agency_id =
+		#{agency_id}
+	</update>
+
+	<!-- count -->
+	<select id="count">
+		select count(*)
+		from planner_agency
+	</select>
+
+	<!-- selectOne -->
+	<select id="selectOne" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Agency">
+		select *
+		from planner_agency
+		where agency_id =
+		#{agency_id}
+	</select>
+
+
+
+
+
+
+</mapper>
