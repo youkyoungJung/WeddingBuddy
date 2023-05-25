@@ -88,16 +88,48 @@
 				alt="user" class="profile-photo-lg">
 		</div>
 		<div class="planner-name">
-			<h1>이름 :${ planner.name }</h1>
+			<div>이름 :${ planner.name }</div>
 		</div>
 		<div class="planner-agency">
-			<h1>소속 :${ agency.name }</h1>
+			<div>소속 :${ agency.name }</div>
 		</div>
 		<div class="planner-intro">
-			<h1>소개 :${ planner.intro }</h1>
+			<div>소개 :${ planner.intro }</div>
 		</div>
 	</div>
+	<%-- <form
+		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=3"
+		method="post">
+		<label for="datetime">날짜 및 시간:</label> <input type="datetime-local"
+			id="datetime" name="date" required min="2023-01-01T00:00"
+			max="2023-12-31T23:59" step="3600"> <input type="submit"
+			value="Submit"> <br>
+		<div>${reservation_message}</div>
+	</form> --%>
 
+	<form
+		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=${planner.planner_id}"
+		method="post">
+		<label for="date">날짜:</label> <input type="date" id="date" name="date">
+
+		<label for="hour">시간:</label> <select id="hour" name="hour">
+			<c:forEach var="hour" begin="0" end="23">
+				<option value="${hour}">${hour}시</option>
+			</c:forEach>
+		</select> <input type="submit" value="date"> <br>
+		<div>${reservation_message }</div>
+	</form>
+
+	<br>
+	<br>
+
+	<div>
+		<h1>리뷰</h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
 	<script
