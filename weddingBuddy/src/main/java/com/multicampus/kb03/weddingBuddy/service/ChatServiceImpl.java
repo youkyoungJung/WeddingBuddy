@@ -19,7 +19,7 @@ public class ChatServiceImpl implements ChatService {
 		return dao.chatList(msg);
 	}
 
-	//¸Þ¼¼ÁöÇÔ
+	//ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public List<Message> messagebox(int to_id) throws Exception {
 		return dao.messagebox(to_id);
@@ -28,6 +28,11 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public void messagesend(Message m) throws Exception {
 		dao.messagesend(m);
+	}
+
+	@Override
+	public void insertNewChat(int user_id, int planner_id) {
+		dao.insertNewChat(user_id, planner_id);
 	}
 
 }

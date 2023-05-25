@@ -5,12 +5,16 @@ import java.util.List;
 import com.multicampus.kb03.weddingBuddy.dto.Message;
 
 public interface ChatDao {
-	//Ã¤ÆÃ 
+	//Ã¤ï¿½ï¿½ 
 		public List<Message> chatList(Message m)throws Exception;
 
-		//¸Þ½ÃÁöÇÔ
+		//ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public List<Message> messagebox(int to_id)throws Exception;
 
-		//¸Þ½ÃÁöº¸³»±â
+		//ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public void messagesend(Message m)throws Exception;
+
+		public void insertNewChat(int user_id, int planner_id);
+		
+		
 }
