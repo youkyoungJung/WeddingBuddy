@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
+import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
@@ -57,6 +59,35 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 	
 
+	@Override
+    public int saveReview(Planner_Review review) throws Exception {
+        // 리뷰 정보를 데이터베이스에 저장하는 로직 구현
+        // 예시로 dao.insertReview(review)를 호출한다고 가정
+        return dao.insertReview(review);
+    }
+
+    @Override
+    public int saveReviewImage(Review_Image image) throws Exception {
+        // 이미지 정보를 데이터베이스에 저장하는 로직 구현
+        // 예시로 dao.insertReviewImage(image)를 호출한다고 가정
+        return dao.saveReviewImage(image);
+    }
+
+	@Override
+	public List<Planner_Review> getReviewDetail(int plannerId) {
+		return dao.getReviewDetail(plannerId);
+	}
+
+	@Override
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception {
+	    return dao.getReviewImages(reviewId);
+	}
+
+	@Override
+	public String getUserAccountName(int user_id) {
+		return dao.getUserAccountName(user_id);
+	}
+
 
 	
 
@@ -93,6 +124,7 @@ public class PlannerServiceImpl implements PlannerService {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	
 	

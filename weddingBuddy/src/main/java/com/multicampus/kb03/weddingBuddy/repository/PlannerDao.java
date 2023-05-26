@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
+import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 
 public interface PlannerDao {
@@ -25,6 +27,18 @@ public interface PlannerDao {
 	public List<Planner> selectAll() throws Exception;
 	//top3
 	public List<Top3Vo> selectTop3() throws Exception;
+	
+
+	public int insertReview(Planner_Review review);
+	
+	public int saveReviewImage(Review_Image image);
+	
+	public List<Planner_Review> getReviewDetail(int plannerId);
+	
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception;
+	
+	public String getUserAccountName(int user_id);
+
 	
 
 	public List<Planner> searchByAd(String address) throws Exception;

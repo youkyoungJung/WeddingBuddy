@@ -12,6 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
+import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
@@ -62,10 +65,36 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
+
+	public int insertReview(Planner_Review review) {
+		return mapper.insertReview(review);
+	}
+
+	@Override
+	public int saveReviewImage(Review_Image image) {
+		return mapper.saveReviewImage(image);
+	}
+
+	@Override
+	public List<Planner_Review> getReviewDetail(int plannerId) {
+		return mapper.getReviewDetail(plannerId);
+	}
+
+	@Override
+	public List<Review_Image> getReviewImages(int reviewId) throws Exception {
+		return mapper.getReviewImages(reviewId);
+	}
+
+	@Override
+	public String getUserAccountName(int user_id) {
+		return mapper.getUserAccountName(user_id);
+	}
+
+	@Override
 	public List<Planner> searchByAd(String address) throws Exception {
-		// TODO Auto-generated method stub
 		return mapper.searchByAd(address);
 	}
+	
 
 	@Override
 	public List<Planner> searchByName(String name) throws Exception {
@@ -89,7 +118,6 @@ public class MyBatisPlannerDao implements PlannerDao {
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
 		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
 	}
-
 
 	 
 

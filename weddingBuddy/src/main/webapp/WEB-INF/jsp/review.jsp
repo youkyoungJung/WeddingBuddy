@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Review</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 body {
 	font-family: sans-serif;
@@ -204,7 +206,9 @@ body {
 
 	<form action="<c:url value="/review" />" method="POST"
 		enctype="multipart/form-data">
-		<input type="hidden" name="planner_id" value="${planner_id }">
+		<input type="hidden" name="planner_id" value="${planner_id}">
+		<input type="hidden" name="user_id" value="${user_id}">
+
 		<!-- Message input -->
 		<div class="form-outline mb-4">
 			<h2>리뷰 작성</h2>
@@ -213,6 +217,41 @@ body {
 			<textarea class="form-control" id="form4Example3" rows="10"
 				name="content"></textarea>
 		</div>
+
+		<!-- 파일 업로드 부분 -->
+		<div class="file-upload">
+			<div class="image-upload-wrap">
+				<!-- 파일 선택을 위한 input 필드 -->
+				<input class="file-upload-input" type="file" name="formFileMultiple"
+					multiple onchange="readURL(this);" accept="image/*" />
+
+				<div class="drag-text">
+					<h3>Drag and drop a file or select add Image</h3>
+				</div>
+			</div>
+
+			<div class="file-upload-content">
+				<img class="file-upload-image" src="#" alt="your image" />
+				<!-- 이미지를 미리보기할 영역 -->
+				<div class="image-title-wrap">
+					<button type="button" onclick="removeUpload()" class="remove-image">
+						Remove <span class="image-title">Uploaded Image</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<!-- Submit button -->
+		<button type="submit" class="file-upload-btn">등록하기</button>
+	</form>
+
+
+	<jsp:include page="footer.jsp" />
+</body>
+</html>
+<!-- 
+		사진 하나만 업로드 가능 
 		<div class="file-upload">
 			<div class="image-upload-wrap">
 				<input class="file-upload-input" type='file' multiple='multiple'
@@ -220,27 +259,6 @@ body {
 					accept="<c:url value="/images/*" />" />
 				<div class="drag-text">
 					<h3>Drag and drop a file or select add Image</h3>
-				</div>
-			</div>
-			<div class="file-upload-content">
-				<img class="file-upload-image" src="#" alt="your image" />
-				<div class="image-title-wrap">
-					<button type="button" onclick="removeUpload()" class="remove-image">
-						Remove <span class="image-title">Uploaded Image</span>
-					</button>
-				</div>
-			</div>
-			<label for="formFileMultiple" class="form-label">Multiple
-				files input example</label> <input class="form-control" type="file"
-				id="formFileMultiple" multiple />
-			<!-- Submit button -->
-			<br>
-			<button type="submit" class="file-upload-btn">등록하기</button>
-		</div>
-
-
-	</form>
-
-	<jsp:include page="footer.jsp" />
-</body>
-</html>
+				</div>	
+		</div>	
+		-->
