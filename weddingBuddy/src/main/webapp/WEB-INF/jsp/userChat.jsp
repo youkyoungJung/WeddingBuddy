@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -47,6 +46,7 @@
 							<p class="mb-1">이름 : ${planner.name }</p> <small
 							class="text-muted">채팅예약 시간 : </small>
 							<div>
+
 								<button type="button" class="btn btn-primary"
 									onClick=location.href='<c:url value="/start"/>?user_id=${LoginUser.user_id }&planner_id=${planner.planner_id }'>실시간채팅
 									바로가기</button>
