@@ -78,6 +78,7 @@ public class UserController {
 
 	@RequestMapping(value = "mypage/userChat")
 	public String myChatGet(HttpServletRequest request, Model model) throws Exception {
+
 		String account_id = UserSession.getLoginUserId(request.getSession());
 		User returnVo = userService.selectOne(account_id);
 		logger.info("현재유저 " + returnVo);
@@ -87,10 +88,12 @@ public class UserController {
 		logger.info("현재유저 " + p_returnVo);
 		request.setAttribute("LoginUser", returnVo);
 
+
 		// ReviewController로 user_id 전달
 	    int userId = returnVo.getUser_id(); // 사용자의 user_id 가져오기
 	    System.out.println(userId);
 	    model.addAttribute("user_id", userId); // user_id를 model에 추가
+
 
 		
 		return "userChat";

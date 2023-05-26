@@ -11,8 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
@@ -63,6 +65,7 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
+
 	public int insertReview(Planner_Review review) {
 		return mapper.insertReview(review);
 	}
@@ -92,6 +95,7 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return mapper.searchByAd(address);
 	}
 	
+
 	@Override
 	public List<Planner> searchByName(String name) throws Exception {
 		// TODO Auto-generated method stub
@@ -114,8 +118,6 @@ public class MyBatisPlannerDao implements PlannerDao {
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
 		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
 	}
-
-
 
 	 
 

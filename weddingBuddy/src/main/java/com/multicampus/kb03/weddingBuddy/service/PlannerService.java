@@ -29,6 +29,7 @@ public interface PlannerService {
 	
 	public List<Top3Vo> selectTop3() throws Exception;
 	
+
 	int saveReviewImage(Review_Image image) throws Exception;
 
 	int saveReview(Planner_Review review) throws Exception;
@@ -38,6 +39,7 @@ public interface PlannerService {
 	List<Review_Image> getReviewImages(int reviewId) throws Exception;
 
 	public String getUserAccountName(int user_id);
+
 
 
 	public List<Planner> searchByAd(String address) throws Exception;

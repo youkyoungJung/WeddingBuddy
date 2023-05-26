@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.P
 import org.springframework.data.domain.Page;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.paging.Criteria;
@@ -33,6 +35,7 @@ public interface PlannerMapper {
 	
 	public List<Top3Vo> selectTop3();
 
+
 	public int insertReview();
 
 	public int saveReviewImage(Review_Image image);
@@ -45,7 +48,6 @@ public interface PlannerMapper {
 
 	public String getUserAccountName(int user_id);
 
-	
 	public List<Planner> searchByAd(String address);
 
 	public List<Planner> searchByName(String name);

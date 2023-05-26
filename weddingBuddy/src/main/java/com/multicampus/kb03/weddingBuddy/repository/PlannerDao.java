@@ -28,6 +28,7 @@ public interface PlannerDao {
 	//top3
 	public List<Top3Vo> selectTop3() throws Exception;
 	
+
 	public int insertReview(Planner_Review review);
 	
 	public int saveReviewImage(Review_Image image);
@@ -39,6 +40,7 @@ public interface PlannerDao {
 	public String getUserAccountName(int user_id);
 
 	
+
 	public List<Planner> searchByAd(String address) throws Exception;
 	
 	public List<Planner> searchByName(String name) throws Exception;
