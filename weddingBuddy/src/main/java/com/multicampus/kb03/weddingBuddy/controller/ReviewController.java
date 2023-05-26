@@ -38,28 +38,16 @@ public class ReviewController {
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
-
 	@Autowired
 	private PlannerService plannerService;
 
 	@GetMapping("/review")
 	public String ReviewGet(Model model, @RequestParam("planner_id") String planner_id,
 			@RequestParam("user_id") int user_id) throws Exception {
-		logger.info("parameter�뿉 �엳�뒗 user_id: " + user_id);
-		logger.info("parameter�뿉 �엳�뒗 planner_id: " + planner_id);
+		logger.info("parameter에 있는 user_id: " + user_id);
+		logger.info("parameter에 있는 planner_id: " + planner_id);
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("planner_id", planner_id);
-
-	@GetMapping
-	public String ReviewGet(
-			HttpServletRequest request, 
-			HttpServletResponse response, @RequestParam("planner_id") String planner_id) throws Exception { 
-		request.setAttribute("planner_id",planner_id);
-        return "review";
-    }
-	@PostMapping
-	public String ReviewPost(Planner_Review review, Review_Image image) {
-
 		return "review";
 	}
 
@@ -76,7 +64,7 @@ public class ReviewController {
 	        int reviewResult = plannerService.saveReview(reviewData);
 
 	        if (reviewResult > 0) {
-	            logger.info("由щ럭 �젙蹂닿� �꽦怨듭쟻�쑝濡� ���옣�릺�뿀�뒿�땲�떎.");
+	            logger.info("리뷰 정보가 성공적으로 저장되었습니다.");
 	            int reviewId = reviewData.getReview_id();
 	            logger.info("review_id: " + reviewId);
 
@@ -88,7 +76,7 @@ public class ReviewController {
 	                    File destFile = new File(uploadDirectory + "/" + fileName);
 
 	                    destFile.createNewFile();
-	                    System.out.println("�뙆�씪 �뾽濡쒕뱶 �꽦怨�");
+	                    System.out.println("파일 업로드 성공");
 
 	                    imageFile.transferTo(destFile);
 
@@ -99,24 +87,24 @@ public class ReviewController {
 	                    int imageResult = plannerService.saveReviewImage(imageData);
 
 	                    if (imageResult > 0) {
-	                        logger.info("由щ럭 �씠誘몄� �젙蹂닿� �꽦怨듭쟻�쑝濡� ���옣�릺�뿀�뒿�땲�떎.");
-	                        // �씠誘몄� �뙆�씪 �씠由� 異붽�
+	                        logger.info("리뷰 이미지 정보가 성공적으로 저장되었습니다.");
+	                        // 이미지 파일 이름 추가
 	                        imageNames.add(fileName);
 	                    } else {
-	                        logger.info("由щ럭 �씠誘몄� �젙蹂� ���옣�뿉 �떎�뙣�뻽�뒿�땲�떎.");
+	                        logger.info("리뷰 이미지 정보 저장에 실패했습니다.");
 	                    }
 	                }
 	            }
 
-	            // �씠誘몄� �뙆�씪 �씠由꾨뱾�쓣 Model 媛앹껜�뿉 異붽�
+	            // 이미지 파일 이름들을 Model 객체에 추가
 	            model.addAttribute("imageNames", imageNames);
 
 	            return "redirect:/review/detail?planner_id=" + plannerId;
 	        } else {
-	            logger.info("由щ럭 �젙蹂� ���옣�뿉 �떎�뙣�뻽�뒿�땲�떎.");
+	            logger.info("리뷰 정보 저장에 실패했습니다.");
 	        }
 	    } catch (Exception e) {
-	        logger.error("由щ럭 ���옣 怨쇱젙�뿉�꽌 �삤瑜섍� 諛쒖깮�뻽�뒿�땲�떎: " + e.getMessage());
+	        logger.error("리뷰 저장 과정에서 오류가 발생했습니다: " + e.getMessage());
 	        e.printStackTrace();
 	    }
 
@@ -125,8 +113,8 @@ public class ReviewController {
 
 
 	private String generateUniqueFileName(String originalFileName) {
-		// 怨좎쑀�븳 �뙆�씪 �씠由� �깮�꽦 濡쒖쭅 援ы쁽
-		// �삁�떆: ���엫�뒪�꺃�봽 + �썝蹂� �뙆�씪 �씠由�
+		// 고유한 파일 이름 생성 로직 구현
+		// 예시: 타임스탬프 + 원본 파일 이름
 		String timestamp = String.valueOf(System.currentTimeMillis());
 		return timestamp + "_" + originalFileName;
 	}
@@ -136,25 +124,25 @@ public class ReviewController {
 	    try {
 	        List<Planner_Review> reviewList = plannerService.getReviewDetail(plannerId);
 
-	        // 由щ럭 �씠誘몄� �젙蹂대�� 媛��졇�삤湲� �쐞�빐 Review_Image �겢�옒�뒪 ���떊 Map<String, String> �삎�깭濡� 蹂�寃쏀빀�땲�떎.
+	        // 리뷰 이미지 정보를 가져오기 위해 Review_Image 클래스 대신 Map<String, String> 형태로 변경합니다.
 	        List<Map<String, String>> reviewImagesList = new ArrayList<>();
 
-	        // user_id�� name�쓽 留ㅽ븨 �젙蹂대�� 媛�吏� Map�쓣 �깮�꽦�빀�땲�떎.
+	        // user_id와 name의 매핑 정보를 가진 Map을 생성합니다.
 	        Map<Integer, String> userAccountMap = new HashMap<>();
 
 	        for (Planner_Review review : reviewList) {
-	            // user_id瑜� �궎濡쒗븯�뿬 user_account�뿉�꽌 name 媛믪쓣 媛��졇�샃�땲�떎.
+	            // user_id를 키로하여 user_account에서 name 값을 가져옵니다.
 	            String name = plannerService.getUserAccountName(review.getUser_id());
 	            userAccountMap.put(review.getUser_id(), name);
 
 	            List<Review_Image> reviewImages = plannerService.getReviewImages(review.getReview_id());
 
 	            for (Review_Image reviewImage : reviewImages) {
-	                // 由щ럭 �씠誘몄��쓽 review_id�� image瑜� Map �삎�깭濡� 蹂��솚�븯�뿬 由ъ뒪�듃�뿉 異붽��빀�땲�떎.
+	                // 리뷰 이미지의 review_id와 image를 Map 형태로 변환하여 리스트에 추가합니다.
 	                Map<String, String> reviewImageMap = new HashMap<>();
 	                reviewImageMap.put("review_id", String.valueOf(reviewImage.getReview_id()));
 	                String imagePath = reviewImage.getImage();
-	                String trimmedImagePath = imagePath.substring(imagePath.indexOf("/static") + 7); // "/static" �씠�썑�쓽 遺�遺꾨쭔 媛��졇�샂
+	                String trimmedImagePath = imagePath.substring(imagePath.indexOf("/static") + 7); // "/static" 이후의 부분만 가져옴
 	                reviewImageMap.put("image", trimmedImagePath);
 	                reviewImagesList.add(reviewImageMap);
 	                logger.info("reviewImageMap : "+ reviewImageMap);
@@ -163,15 +151,15 @@ public class ReviewController {
 
 	        model.addAttribute("reviewList", reviewList);
 	        model.addAttribute("reviewImagesList", reviewImagesList);
-	        model.addAttribute("userAccountMap", userAccountMap); // user_id�� name�쓽 留ㅽ븨 �젙蹂대�� 紐⑤뜽�뿉 異붽��빀�땲�떎.
+	        model.addAttribute("userAccountMap", userAccountMap); // user_id와 name의 매핑 정보를 모델에 추가합니다.
 
 	        return "review_detail";
 	    } catch (Exception e) {
-	        logger.error("由щ럭 �긽�꽭 �젙蹂� 媛��졇�삤湲곗뿉�꽌 �삤瑜섍� 諛쒖깮�뻽�뒿�땲�떎: " + e.getMessage());
+	        logger.error("리뷰 상세 정보 가져오기에서 오류가 발생했습니다: " + e.getMessage());
 	        e.printStackTrace();
 	    }
 
-	    return "error"; // �삤瑜� 諛쒖깮 �떆 error �럹�씠吏�濡� �씠�룞�븯�룄濡� �닔�젙�빐�빞 �븿
+	    return "error"; // 오류 발생 시 error 페이지로 이동하도록 수정해야 함
 	}
 
 
