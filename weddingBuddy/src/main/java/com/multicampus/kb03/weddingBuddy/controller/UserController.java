@@ -1,6 +1,8 @@
 package com.multicampus.kb03.weddingBuddy.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
+import com.multicampus.kb03.weddingBuddy.service.ChatReservationService;
+import com.multicampus.kb03.weddingBuddy.service.ChatService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
 @Controller
@@ -25,6 +29,12 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ChatService chatService;
+	
+	@Autowired
+	private ChatReservationService chatReservationService;
 
 	@RequestMapping(value = "/login")
 	public String loginGet(Model model) {
@@ -93,8 +103,18 @@ public class UserController {
 	    int userId = returnVo.getUser_id(); // 사용자의 user_id 가져오기
 	    System.out.println(userId);
 	    model.addAttribute("user_id", userId); // user_id를 model에 추가
-
-
+	    
+	    Map<Integer, String> reservedDates = new HashMap<>();
+	    
+	    for (Planner planner : p_returnVo) {
+	    	int planner_id = planner.getPlanner_id();
+			int chatting_id = chatService.selectChattingId(userId, planner_id);
+			String nextReservedDateTime = chatReservationService.selectNextReservedDatetime(chatting_id);
+			// 사용자가 예약한 플래너 별 다음 예약 시간을 Map 에 저장.
+			reservedDates.put(planner_id, nextReservedDateTime);
+		}
+	    
+	    model.addAttribute("reservedDatesMap", reservedDates);
 		
 		return "userChat";
 

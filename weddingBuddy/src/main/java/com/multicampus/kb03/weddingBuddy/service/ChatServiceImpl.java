@@ -40,4 +40,11 @@ public class ChatServiceImpl implements ChatService {
 		return dao.selectChattingId(user_id, planner_id);
 	}
 
+	@Override
+	public boolean chatting_notExist(int user_id, int planner_id) {
+		if (dao.chattingCountBetweenUserAndPlanner(user_id, planner_id) == 0)
+			return true;
+		return false;
+	}
+
 }

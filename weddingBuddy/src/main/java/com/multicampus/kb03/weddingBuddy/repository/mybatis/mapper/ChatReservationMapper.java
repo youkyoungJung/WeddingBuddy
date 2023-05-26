@@ -12,5 +12,7 @@ public interface ChatReservationMapper {
 
 	public void insertReservation(@Param("chatting_id") int chatting_id, @Param("reservation_date") String reservation_date);
 
+	public String selectNextReservedDatetime(int chatting_id);
+
 	
 }

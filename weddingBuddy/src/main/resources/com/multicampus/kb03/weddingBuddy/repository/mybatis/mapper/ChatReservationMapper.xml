@@ -21,6 +21,16 @@
 			  #{chatting_id})
 	</select>
 	
+	<select id="selectNextReservedDatetime" resultType="String">
+		select nextReservedDatetime
+	    from (
+	        select to_char(reservation_date, 'YY-MM-DD HH24:MI') as nextReservedDatetime,
+	               row_number() over (order by reservation_date) as rn
+	        from chat_reservation
+	        where chatting_id = #{chatting_id} and reservation_date > sysdate
+	    ) rd
+	    where rn = 1
+	</select>
 	
 
 </mapper>

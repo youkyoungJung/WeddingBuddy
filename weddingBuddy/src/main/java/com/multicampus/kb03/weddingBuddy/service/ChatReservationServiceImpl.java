@@ -25,4 +25,9 @@ public class ChatReservationServiceImpl implements ChatReservationService {
 		dao.insertReservation(chatting_id, reservation_date);
 	}
 
+	@Override
+	public String selectNextReservedDatetime(int chatting_id) {
+		return dao.selectNextReservedDatetime(chatting_id);
+	}
+
 }

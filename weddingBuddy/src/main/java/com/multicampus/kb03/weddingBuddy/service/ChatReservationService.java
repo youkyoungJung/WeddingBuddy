@@ -6,6 +6,8 @@ public interface ChatReservationService {
 	
 	public boolean reservationExist(int planner_id, String reservation_date) throws Exception;
 
-	public void insertReservation(int chatting_id, String reservation_date); 
+	public void insertReservation(int chatting_id, String reservation_date);
+
+	public String selectNextReservedDatetime(int chatting_id); 
 		
 }

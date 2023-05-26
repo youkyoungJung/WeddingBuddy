@@ -22,4 +22,6 @@ public interface ChatMapper {
 
 	public int selectChattingId(@Param("user_id") int user_id, @Param("planner_id") int planner_id);
 
+	public int chattingCountBetweenUserAndPlanner(@Param("user_id") int user_id, @Param("planner_id") int planner_id);
+
 }
