@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
@@ -52,5 +55,49 @@ public class PlannerServiceImpl implements PlannerService {
 	public List<Top3Vo> selectTop3() throws Exception {
 		return dao.selectTop3();
 	}
+	
 
+
+	
+
+	@Override
+	public List<Planner> searchByAd(String address) throws Exception {
+		return dao.searchByAd(address);
+	}
+
+	@Override
+	public List<Planner> searchByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.searchByName(name);
+	}
+
+	@Override
+	public List<Planner> searchByGroup(String agency) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.searchByGroup(agency);
+	}
+	
+	@Override
+	public Page<Planner> getPlanners(Pageable pageable){
+		return dao.findAll(pageable);
+	}
+
+	@Override
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertPlannerLike(Map<String, Object> parameters) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+
+	
+	
 }

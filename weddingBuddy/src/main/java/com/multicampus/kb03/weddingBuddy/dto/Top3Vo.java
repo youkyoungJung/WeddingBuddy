@@ -7,6 +7,7 @@ public class Top3Vo {
 	private String intro;
 	private String agency_name;
 	
+	
 	public int get_id() {
 		return _id;
 	}
