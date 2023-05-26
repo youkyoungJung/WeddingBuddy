@@ -47,13 +47,7 @@ public class MyBatisUserDao implements UserDao {
 	 */
 
 	@Override
-	public User readUserWithIDPW(String account_id, String password) throws Exception {
-		/*
-		 * Map<String, Object> map = new HashMap<String, Object>();
-		 * map.put("account_id", account_id); map.put("password", password);
-		 */
-
-		// return mapper.readUserWithIDPW(map);
+	public User readUserWithIDPW(String account_id, String password) throws Exception{
 		return mapper.readUserWithIDPW(account_id, password);
 	}
 

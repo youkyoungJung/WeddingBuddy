@@ -1,7 +1,8 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="my_user_id" value="Hello, JSTL!" />
+<c:set var="my_planner_id" value="Hello, JSTL!" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,11 @@
 </style>
 
 <%@ include file="navbar.jsp"%>
+
+<%-- <c:set var="user_id" value="${LoginUser.user_id }"/>
+<c:set var="planner_id" value="${LoginUser.planner_id }"/>
+ --%>
+
 </head>
 
 <body>
@@ -37,9 +43,7 @@
 			<div class="col-lg-10 col-md-10 col-sm-12">
 				<c:forEach items="${chatPlanner}" var="planner">
 					<div class="list-group">
-						<input type="hidden" name="user_id" value="${LoginUser.user_id }">
-						<input type="hidden" name="planner_id"
-							value="${planner.planner_id }"> <a href="#"
+						 <a href="#"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 							<div class="d-flex w-100 justify-content-between">
 								<h5 class="mb-1"></h5>

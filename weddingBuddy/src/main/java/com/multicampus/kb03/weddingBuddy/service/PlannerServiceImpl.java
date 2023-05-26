@@ -52,5 +52,30 @@ public class PlannerServiceImpl implements PlannerService {
 	public List<Top3Vo> selectTop3() throws Exception {
 		return dao.selectTop3();
 	}
+	
+	@Override
+	public Planner loginUser(String account_id, String password) throws Exception {
+		// TODO Auto-generated method stub
+		Planner returnVO = null;
+		try {
+			returnVO = dao.readUserWithIDPW(account_id, password);
+			System.out.println(returnVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnVO = null; 
+		}
+		return returnVO; 
+	}
+
+	@Override
+	public Planner selectOne2(String account_id) throws Exception {
+		return dao.selectOne2(account_id);
+	}
+
+	@Override
+	public List<User> chattingWithSomeone(int planner_id) throws Exception {
+		return dao.chattingWithSomeone(planner_id);
+	}
+
 
 }

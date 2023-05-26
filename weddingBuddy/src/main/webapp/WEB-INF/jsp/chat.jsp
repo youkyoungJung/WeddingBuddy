@@ -54,19 +54,6 @@ body {
 		$("#history").scrollTop($("#history")[0].scrollHeight);
 	});
 
-	 // sanitizeHTML 함수: HTML Sanitization을 수행하는 함수
-	  function sanitizeHTML(html) {
-	    var temp = document.createElement('div');
-	    temp.textContent = html;
-	    return temp.innerHTML;
-	  }
-
-	  // createLink 함수: 주어진 URL을 가지고 하이퍼링크를 생성하는 함수
-	  function createLink(url) {
-	    var sanitizedURL = sanitizeHTML(url);
-	    return '<a href="' + sanitizedURL + '" target="_blank">' + sanitizedURL + '</a>';
-	  }
-	  
 	function submitFunction() {
 		var chat_content = $('#content').val();
 		var sanitizedHTML = DOMPurify.sanitize(chat_content);
@@ -76,7 +63,6 @@ body {
 			"to_id" : to_id,
 			"from_id" : from_id,
 			"chat_content" : chat_content
-			
 		};
 
 		$.ajax({

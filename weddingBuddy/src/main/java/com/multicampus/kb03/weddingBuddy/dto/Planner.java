@@ -10,6 +10,7 @@ public class Planner {
 	private int agency_id;
 	private String intro;
 	private String region;
+	private String account_id;
 	
 	public int getPlanner_id() {
 		return planner_id;
@@ -59,11 +60,20 @@ public class Planner {
 	public void setRegion(String region) {
 		this.region = region;
 	}
+	
+	public String getAccount_id() {
+		return account_id;
+	}
+	public void setAccount_id(String account_id) {
+		this.account_id = account_id;
+	}
 	@Override
 	public String toString() {
 		return "Planner [planner_id=" + planner_id + ", name=" + name + ", password=" + password + ", phone=" + phone
-				+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region + "]";
+				+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region
+				+ ", account_id=" + account_id + "]";
 	}
+
 	
 	
 	

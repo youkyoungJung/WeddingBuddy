@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import javax.servlet.http.HttpSession;
 
-public class UserSession implements Serializable {
+public class PlannerSession implements Serializable {
 
-	public static final String MEMBER_SESSION_KEY = "account_id";
+	public static final String PLANNER_SESSION_KEY = "account_id";
 
     public static String getLoginUserId(HttpSession session) {
-        String userId = (String)session.getAttribute(MEMBER_SESSION_KEY);
+        String userId = (String)session.getAttribute(PLANNER_SESSION_KEY);
         return userId;
     }
 

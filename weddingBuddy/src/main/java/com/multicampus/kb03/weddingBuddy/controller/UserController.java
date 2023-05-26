@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
+import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
 @Controller
@@ -26,53 +27,60 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private PlannerService plannerService;
+
 	@RequestMapping(value = "/login")
 	public String loginGet(Model model) {
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(User vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// User returnVo = null;
-		logger.info("濡쒓렇�씤泥섎━ �럹�씠吏� 吏꾩엯 loginPOST");
-		logger.info("vo �꽆�뼱�삤�뒗媛�" + vo);
+	public String loginPost(User vo, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+	
 		User returnVO = userService.loginUser(vo.getAccount_id(), vo.getPassword());
 
-		logger.info("由ы꽩VO寃곌낵(�꽌鍮꾩뒪�뿉�꽌 �삁�쇅泥섎━瑜� 吏꾪뻾�뻽�쑝誘�濡� null�씠 異쒕젰�릺硫� 肄붾뱶�뿉 臾몄젣�엳�떎�뒗 �쓽誘�) " + returnVO);
-
 		if (returnVO != null) {
-			// �꽭�뀡媛믪깮�꽦
 			/* session.setAttribute("member", returnVO.getMember_id()); */
 			HttpSession session = request.getSession();
 			session.setAttribute(UserSession.MEMBER_SESSION_KEY, String.valueOf(returnVO.getAccount_id()));
 			session.setAttribute("isLogin", UserSession.isLoginUser(returnVO.getAccount_id(), session));
 			return "redirect:/";
 
-		} else {
-			// �빐�떦 �젙蹂� �뾾�뒗 寃쎌슦 : => login�럹�씠吏�濡� �씠�룞
+		}
+		else {
 			request.setAttribute("loginFailde", true);
 			return "redirect:/login";
 		}
 
 	}
 
-	// 濡쒓렇�븘�썐
+	// 로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logOut(HttpServletRequest request, HttpServletResponse response) {
-		// �꽭�뀡�뿉 ���옣�맂 �궗�슜�옄 �씠�씠�뵒瑜� �궘�젣�븯怨� �꽭�뀡�쓣 臾댄슚�솕 �븿
 		HttpSession session = request.getSession();
-		session.removeAttribute(UserSession.MEMBER_SESSION_KEY);
+		if (UserSession.MEMBER_SESSION_KEY != null)
+			session.removeAttribute(UserSession.MEMBER_SESSION_KEY);
 		session.invalidate();
-		logger.info("濡쒓렇�씤 �꽭�뀡 �걡�쓬");
 
 		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPageGet(HttpServletRequest request) {
-		if(!UserSession.hasLogined(request.getSession())) {
-			return "login";
-		}
+//		if (!UserSession.hasLogined(request.getSession())) {
+//			return "login";
+//		}
+//		if(!UserSession.hasLogined(request.getSession()) && PlannerSession.hasLogined(request.getSession())) { //유저세션이 없고, 플래너세션이 있으면 플래너 아이디 담음
+//			String planner_account = PlannerSession.getLoginUserId(request.getSession());
+//			request.setAttribute("planner_account", planner_account);
+//			return "mypage";
+//		}
+//		//유저 세션을 담음
+//		String user_account = UserSession.getLoginUserId(request.getSession());
+//		request.setAttribute("user_account", user_account);
 		return "mypage";
 	}
 

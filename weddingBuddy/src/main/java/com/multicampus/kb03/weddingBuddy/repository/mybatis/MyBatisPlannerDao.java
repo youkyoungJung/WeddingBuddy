@@ -56,7 +56,20 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return mapper.selectTop3();
 	}
 
+	@Override
+	public Planner readUserWithIDPW(String account_id, String password) throws Exception {
+		return mapper.readUserWithIDPW(account_id, password);
+	}
 
+	@Override
+	public Planner selectOne2(String account_id) throws Exception {
+		return mapper.selectOne2(account_id);
+	}
+
+	@Override
+	public List<User> chattingWithSomeone(int planner_id) throws Exception {
+		return mapper.chattingWithSomeone(planner_id);
+	}
 	 
 
 }

@@ -83,8 +83,33 @@
 		and P.planner_id = R.planner_id
 		order by cnt desc
 	</select>
+	
+	<!--회원 찾기(아이디로 찾기)  -->
+	<select id="selectOne2" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+		select *
+		from planner_account
+		where account_id =
+		#{account_id}
+	</select>
 
-
+		<!--로그인 -->
+	<select id="readUserWithIDPW" parameterType="String"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+		select *
+		from planner_account
+		where account_id=#{account_id} and
+		password=#{password}
+	</select>
+	
+	<!--마이페이지에서 chatting 누구랑 했는지 sql -->
+	<select id="chattingWithSomeone" resultType="com.multicampus.kb03.weddingBuddy.dto.User">
+select name, user_id
+	from user_account
+	where user_id in
+	(select user_id
+	from chatting
+	where planner_id = #{planner_id})
+	</select>
 
 
 

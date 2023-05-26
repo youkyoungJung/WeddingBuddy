@@ -33,14 +33,11 @@ public class ReviewController {
 	public String ReviewGet(
 			HttpServletRequest request, 
 			HttpServletResponse response, @RequestParam("planner_id") String planner_id) throws Exception { 
-		logger.info("parameter에 있는 planner_id: "+ planner_id);
 		request.setAttribute("planner_id",planner_id);
         return "review";
     }
 	@PostMapping
 	public String ReviewPost(Planner_Review review, Review_Image image) {
-		logger.info("planner id 넘어오는가: " + review.getPlanner_id());
-		logger.info("content msg: " + review.getContent());
 		return "review";
 	}
     
