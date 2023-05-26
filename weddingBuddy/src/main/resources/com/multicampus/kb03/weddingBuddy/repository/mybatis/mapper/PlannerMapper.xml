@@ -76,7 +76,51 @@
   LEFT JOIN (SELECT planner_id, COUNT(*) as cnt FROM planner_review GROUP BY planner_id) R ON P.planner_id = R.planner_id
   ORDER BY cnt DESC
 </select>
+	<!-- 리뷰 작성 -->
+	<insert id="insertReview"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		<selectKey keyProperty="review_id" resultType="int"
+			order="BEFORE">
+			SELECT review_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO planner_review (review_id, planner_id, user_id, reg_date,
+		content)
+		VALUES (#{review_id}, #{planner_id}, #{user_id}, sysdate,
+		#{content})
+	</insert>
 
+
+	<!-- 리뷰 detail 보기 -->
+	<select id="getReviewDetail" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		SELECT *
+		FROM Planner_Review
+		WHERE planner_id = #{plannerId}
+		ORDER BY reg_date DESC
+	</select>
+
+
+	<!-- 리뷰 이미지 등록 -->
+	<insert id="saveReviewImage"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Review_Image">
+		INSERT INTO Review_Image (Review_Image_ID, Review_ID,
+		Image)
+		VALUES (seq_review_image.nextval, #{review_id}, #{image})
+	</insert>
+
+	<!-- 리뷰 이미지 불러오기 -->
+	<select id="getReviewImages" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Review_Image">
+		SELECT * FROM Review_Image WHERE Review_ID = #{reviewId}
+	</select>
+	
+	<!-- 유저 아이디로 유저네임 가져오기 -->
+	<select id="getUserAccountName" parameterType="int"
+		resultType="java.lang.String">
+		SELECT CONCAT(SUBSTR(name, 1, 1), '**')
+		FROM user_account
+		WHERE user_id = #{userId}
+	</select>
 	
 	
 	<!-- searchByAd -->
