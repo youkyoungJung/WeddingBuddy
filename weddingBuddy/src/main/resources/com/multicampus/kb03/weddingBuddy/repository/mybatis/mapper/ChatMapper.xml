@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.ChatMapper">
+	<cache />
+
+	<insert id="messagesend">
+		insert into message(message_id, chatting_id, to_id,
+		from_id, chat_content, timestamp, CHAT_READ_CHECK)
+		values(message_seq.nextval, #{chatting_id}, #{to_id}, #{from_id},
+		#{chat_content}, sysdate, 'N')
+	</insert>
+
+	<select id="chatList"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Message">
+		select * from message
+		where to_id = #{to_id} and from_id =
+		#{from_id}
+		or from_id = #{to_id} and to_id = #{from_id}
+		order by
+		timestamp
+	</select>
+
+	<select id="messagebox"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Message">
+		SELECT * FROM message
+		WHERE message_id
+		IN (SELECT
+		MAX(message_id)
+		FROM message
+		WHERE from_id = #{to_id} or to_id=
+		#{from_id}
+		GROUP BY to_id, from_id)
+	</select>
+	
+	<select id="insertNewChat">
+		insert into chatting
+		values(#{planner_id}, chatting_seq.nextval, #{user_id})
+	</select>
+	
+	<select id="selectChattingId"
+		resultType="int">
+		select chatting_id from chatting
+		where user_id = #{user_id}
+		and planner_id = #{planner_id}
+	</select>
+
+</mapper>

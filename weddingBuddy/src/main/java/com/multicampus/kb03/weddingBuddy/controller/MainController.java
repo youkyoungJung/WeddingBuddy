@@ -28,8 +28,7 @@ public class MainController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String main(Model model, HttpServletRequest request, HttpServletResponse response ) throws Exception {
     	List<Top3Vo> returnVo = plannerService.selectTop3();
-    	logger.info("List 넘어오는가 " + returnVo.size());
-    	logger.info("list: "+returnVo);
+    	logger.info("List size " + returnVo.size());
     	request.setAttribute("plannerTop3", returnVo);
     	return "index";
     }

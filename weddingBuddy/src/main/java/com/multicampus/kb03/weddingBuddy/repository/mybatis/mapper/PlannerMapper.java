@@ -5,12 +5,16 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
+import com.multicampus.kb03.weddingBuddy.paging.Criteria;
+
 
 @Mapper
 public interface PlannerMapper {
@@ -41,5 +45,17 @@ public interface PlannerMapper {
 
 	public String getUserAccountName(int user_id);
 
+	
+	public List<Planner> searchByAd(String address);
 
+	public List<Planner> searchByName(String name);
+
+
+	public List<Planner> searchByGroup(String agency);
+
+	public Planner updateFavorite(int planner_id, boolean isFavorite);
+
+	public void insertPlannerLike(Map<String, Object> parameters);
+	
+	
 }

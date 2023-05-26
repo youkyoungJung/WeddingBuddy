@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Searching Planner</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
 
@@ -85,118 +85,38 @@ img.profile-photo-lg{
 <body>
 
 <div class="container">
-    <h3 id="header">Best Planner Top 3</h3>
-    <c:forEach items="${plannerTop3}" var="planner">
-        <div class="row">
+
+      <h3 id="header">Best Planner Top 3</h3>
+      <c:forEach items="${plannerTop3}" var="planner">
+         <div class="row">
             <div class="col-md-8">
-                <div class="people-nearby">
-                    <div class="nearby-user">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                     alt="user" class="profile-photo-lg">
-                            </div>
-                            <div class="col-md-7 col-sm-7">
-                                <h5>
-                                    이름:<a href="<c:url value='/search/planner/detail' />"
-                                           class="profile-link">${planner.name }</a>
-                                </h5>
-                                <p>소속:${planner.agency_name }</p>
-                                <p class="text-muted">소개: ${planner.intro }</p>
-                            </div>
-                            <div class="col-md-3 col-sm-3">
-                                <button class="btn btn-primary pull-right" onclick="redirectToReviewDetail(${planner._id})">
-                                    고객후기: ${planner.cnt}
-                                </button>
-                            </div>
+               <div class="people-nearby">
+                  <div class="nearby-user">
+                     <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                           <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                              alt="user" class="profile-photo-lg">
                         </div>
-                    </div>
-                </div>
+                        <div class="col-md-7 col-sm-7">
+                           <h5>
+                              이름:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
+                                 class="profile-link">${planner.name }</a>
+                           </h5>
+                           <p>소속:${planner.agency_name }</p>
+                           <p class="text-muted">소개: ${planner.intro }</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                           <button class="btn btn-primary pull-right"
+                              onClick=location.href='<c:url value="#"/>' >고객후기:
+                              ${planner.cnt }</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </c:forEach>
-</div>
-
-<script>
-    function redirectToReviewDetail(plannerId) {
-        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
-        location.href = url;
-    }
-</script>
-
-
-<c:if test="${isLogin}">
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Chat Room</title>
-<style>
-.header-avatar{
-    pointer-events: none;
-    
- } 
-
-</style>
-</head>
-<body>
-<div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-    <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;" data-custom-css="https://raw.githubusercontent.com/Kongonii/WeddingBuddy/develop/weddingBuddy/src/main/resources/static/css/chat.css"></div>
-</div>
-<script async src="https://tlk.io/embed.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    var tlkio = document.getElementById('tlkio');
-    var username = "<c:out value="${account_id}" />";
-    tlkio.setAttribute('data-nickname', username);
-    tlkio.setAttribute('data-disable-twitter', 'true');
-</script>
-
-
-
-<script type="text/javascript">
-    Notification.requestPermission().then(function(permission) {
-        if (permission !== 'granted') {
-            console.log('알림 허용이 거부되었습니다.');
-        }
-    });
-
-    function showNotification(title, options) {
-        if (!('Notification' in window)) {
-            console.log('알림을 지원하지 않는 브라우저입니다.');
-            return;
-        }
-
-        if (Notification.permission === 'granted') {
-            var notification = new Notification(title, options);
-        }
-    }
-
-    var chatRoom = document.getElementById('tlkio');
-    chatRoom.addEventListener('tlkio.chatMessage', function(event) {
-        var message = event.detail.message;
-        var options = {
-            body: message,
-            icon: "/images/warning.png"
-        };
-        showNotification('새로운 메시지', options);
-    });
-</script>
-
-</body>
-</html>
-
-
-</c:if>
-<script src="<c:url value="//code.jquery.com/jquery-3.2.1.min.js"/>"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-      $('.chat-icon').click(function() {
-        $('#tlkio').toggle();
-      });
-    });
-</script>
+         </div>
+      </c:forEach>
+   </div>
 
 </body>
 

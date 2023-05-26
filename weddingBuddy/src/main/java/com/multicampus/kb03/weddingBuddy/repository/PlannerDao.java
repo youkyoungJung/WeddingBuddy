@@ -3,6 +3,10 @@ package com.multicampus.kb03.weddingBuddy.repository;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
@@ -34,5 +38,20 @@ public interface PlannerDao {
 	
 	public String getUserAccountName(int user_id);
 
+	
+	public List<Planner> searchByAd(String address) throws Exception;
+	
+	public List<Planner> searchByName(String name) throws Exception;
+	
+	public List<Planner> searchByGroup(String agency) throws Exception;
+	
+	public Page<Planner> findAll(Pageable pageable);
+	
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
+	
+	
+	
+	
+	
 
 }

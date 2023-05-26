@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 		return returnVO; //null이 반환되면 앞의 코드가 문제가 있다는 것을 바로 알수있다.
 	}
 
+
 	/*
 	 * @Override public int count() throws Exception { // TODO Auto-generated method
 	 * stub return dao.count(); }
@@ -61,6 +62,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Planner> chattingWithSomeone(int user_id) throws Exception {
 		return dao.chattingWithSomeone(user_id);
+	}
+
+
+
+
+	@Override
+	public int selectUserIdByAccountId(String accountId) {
+		return dao.selectUserIdByAccountId(accountId);
 	}
 
 }
