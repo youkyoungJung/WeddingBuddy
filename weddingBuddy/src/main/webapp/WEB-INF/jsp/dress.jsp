@@ -60,6 +60,8 @@
 					<div class="image-container">
 						<img src="<c:url value='${dressImage.image}' />" alt="Dress Image" />
 					</div>
+					<%-- 첫 번째 이미지만 표시하고 반복문 종료 --%>
+					<%-- <c:break /> --%>
 				</c:if>
 			</c:forEach>
 		</div>

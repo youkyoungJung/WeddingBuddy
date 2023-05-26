@@ -14,4 +14,8 @@ public interface DressMapper {
 
 	List<Company_Image> getCompanyImages(int company_unique_id);
 
+	List<Company_Image> getImagesByShopId(int dress_shop_id);
+
+	Dress_Shop getDressShopById(int dress_shop_id);
+
 }

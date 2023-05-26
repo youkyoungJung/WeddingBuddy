@@ -11,9 +11,28 @@
 	</select>
 
 	<!-- Dress 이미지 조회 -->
-	<select id="getCompanyImages" 
+	<select id="getCompanyImages"
 		resultType="com.multicampus.kb03.weddingBuddy.dto.Company_Image">
-		SELECT * FROM company_image WHERE company_unique_id = #{company_unique_id}
+		SELECT * FROM company_image WHERE company_unique_id =
+		#{company_unique_id}
+	</select>
+
+	<!-- dress_shop_id로 이미지 찾기  -->
+	<select id="getImagesByShopId" resultType="com.multicampus.kb03.weddingBuddy.dto.Company_Image">
+		SELECT image
+		FROM company_image
+		WHERE company_unique_id = (
+		SELECT company_unique_id
+		FROM dress_shop
+		WHERE dress_shop_id = #{dress_shop_id}
+		)
+	</select>
+	
+	<!-- dress_shop_id로 드레스 상세 정보 조회  -->
+	<select id="getDressShopById" resultType="com.multicampus.kb03.weddingBuddy.dto.Dress_Shop">
+		select *
+		from dress_shop
+		where dress_shop_id = #{dress_shop_id}
 	</select>
 
 

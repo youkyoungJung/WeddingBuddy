@@ -24,4 +24,14 @@ public class DressServiceImpl implements DressService{
 		return dao.getCompanyImages(company_unique_id);
 	}
 
+	@Override
+	public List<Company_Image> getImagesByShopId(int dress_shop_id) {
+		return dao.getImagesByShopId(dress_shop_id);
+	}
+
+	@Override
+	public Dress_Shop getDressShopById(int dress_shop_id) {
+		return dao.getDressShopById(dress_shop_id);
+	}
+
 }

@@ -74,10 +74,31 @@ public class DressController {
 		return "error";
     }
 	@GetMapping("/dress_detail")
-	public String findDressDetail(@RequestParam("dress_shop_id") int dress_shop_id,Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		model.addAttribute("dress_shop_id",dress_shop_id);
-		logger.info("dress_shop_id :"+dress_shop_id);
-		return "dress_detail"; 
+	public String findDressDetail(@RequestParam("dress_shop_id") int dress_shop_id, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			// Dress_Shop 정보 가져오기
+			Dress_Shop dressShop = dressService.getDressShopById(dress_shop_id);
+			model.addAttribute("dressShop", dressShop);
+			
+			List<String> dressImagesList = new ArrayList<>();
+			
+			// Company_Image 정보 가져오기
+			List<Company_Image> companyImages = dressService.getImagesByShopId(dress_shop_id);
+			for (Company_Image companyImage : companyImages) {
+				String imagePath = companyImage.getImage();
+				String trimmedImagePath = imagePath.substring(imagePath.indexOf("/static") + 7);
+				dressImagesList.add(trimmedImagePath);
+			}
+			
+			logger.info("dressImagesList : "+dressImagesList);
+			model.addAttribute("dressImagesList", dressImagesList);
+
+			return "dress_detail";
+		} catch (Exception e) {
+			logger.error("드레스 상세 정보 가져오기에서 오류가 발생했습니다: " + e.getMessage());
+			e.printStackTrace();
+		}
+		return "error";
 	}
         
 }

@@ -21,5 +21,13 @@ public class MyBatisDressDao implements DressDao{
 	public List<Company_Image> getCompanyImages(int company_unique_id) {
 		return mapper.getCompanyImages(company_unique_id);
 	}
+	@Override
+	public List<Company_Image> getImagesByShopId(int dress_shop_id) {
+		return mapper.getImagesByShopId(dress_shop_id);
+	}
+	@Override
+	public Dress_Shop getDressShopById(int dress_shop_id) {
+		return mapper.getDressShopById(dress_shop_id);
+	}
 
 }
