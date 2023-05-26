@@ -85,19 +85,30 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/mypage/chat")
-	public String myChatGet(HttpServletRequest request) throws Exception {
+	public String myChatGet(HttpServletRequest request, HttpSession session) throws Exception {
 		String account_id = UserSession.getLoginUserId(request.getSession());
+		logger.info("/my/chat : user: " + account_id);
 		User returnVo = userService.selectOne(account_id);
-		logger.info("현재유저 " + returnVo);
+		Planner returnVo2 = plannerService.selectOne2(account_id);
 		
-		List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
-		request.setAttribute("chatPlanner", p_returnVo);
-		logger.info("현재유저 " + p_returnVo);
-		request.setAttribute("LoginUser", returnVo);
-//		
-		return "userChat";
-		//return "chat";
-		//return "chat_list";
+		if(returnVo2 == null && returnVo != null) {
+			logger.info("현재유저 " + returnVo);
+			List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
+			request.setAttribute("chatPlanner", p_returnVo);
+			request.setAttribute("LoginUser", returnVo);
+			return "userChat";
+		}
+		else 
+			
+			if((returnVo2 != null && returnVo == null) ) {
+			List<User> p_returnVo = plannerService.chattingWithSomeone(returnVo2.getPlanner_id());
+			request.setAttribute("PlannerInfo", p_returnVo);
+			request.setAttribute("ChatWithUser", returnVo2);
+			logger.info("플래너현재유저 PlannerInfo: " + p_returnVo);
+			logger.info("플래너랑 채팅하는 사람 ChatWithInfo: " + returnVo2);
+			return "plannerChat";
+		}
+		return null;
 	}
 
 }

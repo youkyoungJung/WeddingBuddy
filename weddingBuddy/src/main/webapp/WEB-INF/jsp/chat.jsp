@@ -122,7 +122,7 @@ body {
 		          $('#area').append(
 		            "<div class='incoming_msg' id='incoming_msg'>" +
 		            "<div class='incoming_msg_img'>" +
-		            "<img src='/images/logo.jpg' alt='sunil'>" +
+		            "<img src='/images/logo.jpg' alt=''>" +
 		            "</div>" +
 		            "<div class='received_msg'>" +
 		            "<div class='received_withd_msg'>" +
@@ -197,7 +197,7 @@ body {
 						<c:if test="${list.to_id ne id}">
 							<div class="incoming_msg" id="incoming_msg">
 								<div class="incoming_msg_img">
-									<img src="/images/logo.jpg" alt="sunil">
+									<img src="<c:url value ="/images/logo.jpg" />" alt="">
 								</div>
 								<div class="received_msg">
 									<div class="received_withd_msg">

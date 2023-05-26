@@ -15,10 +15,9 @@ public class StartController {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(StartController.class);
 	
     @RequestMapping(value="/start", method=RequestMethod.GET)
-    public String main(@RequestParam("user_id") String user_id, @RequestParam("planner_id") String planner_id, Model model) throws Exception {
-    	logger.info("planner_id"+planner_id);
-    	model.addAttribute("to_id", user_id);
-    	model.addAttribute("from_id", planner_id);
+    public String main(@RequestParam("to_id") int to_id, @RequestParam("from_id") int from_id, Model model) throws Exception {
+    	model.addAttribute("to_id", to_id);
+    	model.addAttribute("from_id", from_id);
     	
     	return "start";
     }
