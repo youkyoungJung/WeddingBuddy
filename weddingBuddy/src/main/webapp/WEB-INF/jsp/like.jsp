@@ -13,14 +13,14 @@
 <body>
     <h1>Like Page</h1>
     
-    <form action="/addLikedPlanner" method="POST">
+    <form method="post" action="<c:url value='/updateFavorite' />" accept-charset="utf-8">
         <input type="hidden" name="plannerId" value="${plannerId}">
-        <input type="submit" value="Add to Liked List">
+       
     </form>
     
-    <p>Planner ID: ${plannerId}</p>
+    <p>Planner ID: ${ plannerId}</p>
     <p>Is Favorite: ${isFavorite}</p>
     
-    <a href="/likedPlanners">View Liked Planners</a>
+    
 </body>
 </html>

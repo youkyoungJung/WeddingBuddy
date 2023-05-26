@@ -170,7 +170,7 @@ img.profile-photo-lg {
 
     <div style="text-align: center; margin-top: 10px;">
     <a href="#" class="image-button" onclick = "handleFavoriteClick(${planner._id})">
-        <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;" data-planner-id = "${planner._id}">
+      <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;" data-planner-id = "${planner._id}">
     </a>
     
     <script>

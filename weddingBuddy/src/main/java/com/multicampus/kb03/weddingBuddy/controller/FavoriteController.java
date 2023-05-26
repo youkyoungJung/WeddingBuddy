@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class FavoriteController {
     @RequestMapping(value="/updateFavorite", method = RequestMethod.POST)
     public String favoriteStatus(@RequestParam("planner_id") int plannerId,
                                  @RequestParam("isFavorite") boolean isFavorite,
-                                 Model model, HttpSession session) {
+                                 Model model, HttpSession session) throws Exception {
        
       
         String accountId = UserSession.getLoginUserId(session);
@@ -56,6 +57,13 @@ public class FavoriteController {
 
         return "like";
     }
+    
+//    @GetMapping("/like")
+//    public String showLikePage(Model model) {
+//        // 필요한 작업 수행
+//        return "like";
+//    }
 
+    
    
 }

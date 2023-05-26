@@ -118,39 +118,7 @@ img.profile-photo-lg{
       </c:forEach>
    </div>
 
-<c:if test="${isLogin}">
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Chat Room</title>
-<style>
-.header-avatar{
-    pointer-events: none;
-    
- } 
-
-</style>
-</head>
-<body>
-<div class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-    <img src="${pageContext.request.contextPath}/images/chaticon.png" alt="Chat Icon" class="chat-icon-image" style="display: none;" onload="this.style.display = 'block';" >
-    <div id="tlkio" data-channel="weddingbuddy" data-theme="theme--pop" style="width:200px;height:600px;"></div>
-</div>
-<script async src="https://tlk.io/embed.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    var tlkio = document.getElementById('tlkio');
-    var username = "<c:out value="${account_id}" />";
-    tlkio.setAttribute('data-nickname', username);
-    tlkio.setAttribute('data-disable-twitter', 'true');
-</script>
-
-
-
-
 </body>
-</html>
 
 <jsp:include page="footer.jsp" />
 </html>
