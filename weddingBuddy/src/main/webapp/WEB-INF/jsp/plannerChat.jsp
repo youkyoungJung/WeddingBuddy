@@ -37,30 +37,26 @@
 
 <body>
 	<div class="container">
-		<h1>내 채팅방</h1>
+		<h1>플래너 채팅방</h1>
 
 		<div class="row">
 			<div class="col-lg-10 col-md-10 col-sm-12">
-				<c:forEach items="${chatPlanner}" var="planner">
+				<c:forEach items="${PlannerInfo}" var="info">
 					<div class="list-group">
 						 <a href="#"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 							<div class="d-flex w-100 justify-content-between">
 								<h5 class="mb-1"></h5>
 							</div>
-							<p class="mb-1">이름 : ${planner.name }</p> 
-							<small class="text-muted">채팅예약 시간 : ${reservedDatesMap[planner.planner_id]}</small>
-				
+							<p class="mb-1">고객님 성함 : ${info.name }</p> <small
+							class="text-muted">채팅예약 시간 : </small>
 							<div>
-
 								<button type="button" class="btn btn-primary"
-									onClick=location.href='<c:url value="/start"/>?to_id=${LoginUser.user_id }&from_id=${planner.planner_id }'>실시간채팅
+									onClick=location.href='<c:url value="/start"/>?to_id=${ChatWithUser.planner_id }&from_id=${info.user_id }'>실시간채팅
 									바로가기</button>
 								<button type="button" class="btn btn-secondary"
-                                	onClick="location.href='<c:url value="/review?planner_id=${planner.planner_id}&user_id=${LoginUser.user_id}"/>'">
-                                    리뷰 쓰기
-                                </button>
-
+									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
+									쓰기</button>
 							</div>
 						</a>
 					</div>

@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.multicampus.kb03.weddingBuddy.dto.Message;
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.service.ChatService;
+import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
 @Controller
@@ -28,9 +30,13 @@ public class MessageController {
 
 	@Autowired
 	private ChatService service;
+	
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private PlannerService plannerService;
+	
 	/*
 	 * //메세지함
 	 * 
@@ -63,8 +69,12 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		if(chatlist.size() != 0) {
 			int chatting_id = chatlist.get(0).getChatting_id();
+			logger.info("chatting_id 담기 성공? : " + chatting_id);
 			session.setAttribute("chatting_id", chatting_id);
 		}
+		session.setAttribute("to_id", to_id);
+		session.setAttribute("from_id", from_id);
+		
 		mav.setViewName("chat");
 		mav.addObject("list", chatlist);
 		mav.addObject("to_id", to_id);
@@ -77,24 +87,16 @@ public class MessageController {
 	@RequestMapping(value = "/chat/send", method = RequestMethod.POST)
 	public ModelAndView messagesend(@ModelAttribute Message m, HttpServletRequest request,  HttpSession session) throws Exception {
 
-		//logger.info("To_id" + m.getTo_id());
-		logger.info("From_id" + m.getFrom_id());
-		logger.info("Message content" + m.getChat_content());
-		logger.info("chatting_id" + m.getChatting_id());
-		logger.info("Message" + m);
 
-		
-		String account_id = UserSession.getLoginUserId(request.getSession());
-		User returnVo = userService.selectOne(account_id);
-
-		int to_id = returnVo.getUser_id();
+		int to_id = (int) session.getAttribute("to_id");
+		int from_id = (int) session.getAttribute("from_id");
 		int chatting_id = (int) session.getAttribute("chatting_id");
+
 		m.setTo_id(to_id);
 		m.setChatting_id(chatting_id);
-//		m.setTo_id(m.getTo_id)
+
 		service.messagesend(m);
 
-		int from_id = m.getFrom_id();
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/chat/" + to_id + "/" + from_id);

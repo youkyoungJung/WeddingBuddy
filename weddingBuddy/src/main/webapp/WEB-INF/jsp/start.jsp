@@ -8,6 +8,7 @@
 <title>프레임 예시</title>
 <style>
 body, html {
+	width:100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;

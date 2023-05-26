@@ -21,15 +21,24 @@
 				<div class="col-md-6">
 					<div class="header-top-menu">
 						<ul class="nav nav-pills navbar-right">
-							<c:if test="${!isLogin}">
+							<c:if test="${!p_isLogin && !isLogin}">
+								<li><a href="<c:url value='/planner/login'/>"><i
+										class="pe-7s-lock"></i>Planner Login/Register</a></li>
 								<li><a href="<c:url value='/login'/>"><i
 										class="pe-7s-lock"></i>Login/Register</a></li>
 							</c:if>
-							<c:if test="${isLogin}">
-								<li><a href="<c:url value='/mypage'></c:url>">My Page</a></li>
-								<li><a href="<c:url value='/logout'/>"><i
-										class="pe-7s-lock"></i>Logout</a></li>
-							</c:if>
+							<c:choose>
+								<c:when test="${isLogin }">
+									<li><a href="<c:url value='/mypage'></c:url>">User My Page</a></li>
+									<li><a href="<c:url value='/logout'/>"><i
+											class="pe-7s-lock"></i>Logout</a></li>
+								</c:when>
+								<c:when test="${p_isLogin }">
+									<li><a href="<c:url value='/mypage'></c:url>">Planner My Page</a></li>
+									<li><a href="<c:url value='/logout'/>"><i
+											class="pe-7s-lock"></i>Logout</a></li>
+								</c:when>
+							</c:choose>
 						</ul>
 					</div>
 				</div>
@@ -73,7 +82,8 @@
 		</nav>
 	</header>
 
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script><script src="js/owl.carousel.js"></script>
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
 
 </body>
 </html>

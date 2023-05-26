@@ -58,18 +58,42 @@ public class PlannerServiceImpl implements PlannerService {
 		return dao.selectTop3();
 	}
 	
+	@Override
+	public Planner loginUser(String account_id, String password) throws Exception {
+		// TODO Auto-generated method stub
+		Planner returnVO = null;
+		try {
+			returnVO = dao.readUserWithIDPW(account_id, password);
+			System.out.println(returnVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnVO = null; 
+		}
+		return returnVO; 
+	}
+
+	@Override
+	public Planner selectOne2(String account_id) throws Exception {
+		return dao.selectOne2(account_id);
+	}
+
+	@Override
+	public List<User> chattingWithSomeone(int planner_id) throws Exception {
+		return dao.chattingWithSomeone(planner_id);
+	}
+
 
 	@Override
     public int saveReview(Planner_Review review) throws Exception {
-        // 리뷰 정보를 데이터베이스에 저장하는 로직 구현
-        // 예시로 dao.insertReview(review)를 호출한다고 가정
+        // 由щ럭 �젙蹂대�� �뜲�씠�꽣踰좎씠�뒪�뿉 ���옣�븯�뒗 濡쒖쭅 援ы쁽
+        // �삁�떆濡� dao.insertReview(review)瑜� �샇異쒗븳�떎怨� 媛��젙
         return dao.insertReview(review);
     }
 
     @Override
     public int saveReviewImage(Review_Image image) throws Exception {
-        // 이미지 정보를 데이터베이스에 저장하는 로직 구현
-        // 예시로 dao.insertReviewImage(image)를 호출한다고 가정
+        // �씠誘몄� �젙蹂대�� �뜲�씠�꽣踰좎씠�뒪�뿉 ���옣�븯�뒗 濡쒖쭅 援ы쁽
+        // �삁�떆濡� dao.insertReviewImage(image)瑜� �샇異쒗븳�떎怨� 媛��젙
         return dao.saveReviewImage(image);
     }
 
