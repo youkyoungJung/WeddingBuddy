@@ -44,15 +44,17 @@
 								<h5 class="mb-1"></h5>
 							</div>
 							<p class="mb-1">이름 : ${planner.name }</p> <small
-							class="text-muted">채팅예약 시간 : </small>
+							class="text-muted">채팅예약 시간 : ${reservedDatesMap[planner.planner_id]}</small>
 							<div>
 
 								<button type="button" class="btn btn-primary"
 									onClick=location.href='<c:url value="/start"/>?user_id=${LoginUser.user_id }&planner_id=${planner.planner_id }'>실시간채팅
 									바로가기</button>
 								<button type="button" class="btn btn-secondary"
-									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
-									쓰기</button>
+                                	onClick="location.href='<c:url value="/review?planner_id=${planner.planner_id}&user_id=${LoginUser.user_id}"/>'">
+                                    리뷰 쓰기
+                                </button>
+
 							</div>
 						</a>
 					</div>

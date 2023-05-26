@@ -17,5 +17,7 @@ public interface ChatService {
 	public void insertNewChat(int user_id, int planner_id);
 
 	public int selectChattingId(int user_id, int planner_id);
+
+	public boolean chatting_notExist(int user_id, int planner_id);
 	
 }

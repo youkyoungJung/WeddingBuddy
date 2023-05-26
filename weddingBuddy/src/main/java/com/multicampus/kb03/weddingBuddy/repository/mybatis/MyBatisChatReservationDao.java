@@ -22,4 +22,9 @@ class MyBatisChatReservationDao implements ChatReservationDao {
 		chatReservationMapper.insertReservation(chatting_id, reservation_date);
 	}
 
+	@Override
+	public String selectNextReservedDatetime(int chatting_id) {
+		return chatReservationMapper.selectNextReservedDatetime(chatting_id);
+	}
+
 }

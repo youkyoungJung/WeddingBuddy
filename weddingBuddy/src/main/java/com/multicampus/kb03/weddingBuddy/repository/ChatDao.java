@@ -17,6 +17,8 @@ public interface ChatDao {
 		public void insertNewChat(int user_id, int planner_id);
 
 		public int selectChattingId(int user_id, int planner_id);
+
+		public int chattingCountBetweenUserAndPlanner(int user_id, int planner_id);
 		
 		
 }

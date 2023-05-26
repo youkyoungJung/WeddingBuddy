@@ -71,4 +71,9 @@ class MyBatisChatDao implements ChatDao {
 		return chatMapper.selectChattingId(user_id, planner_id);
 	}
 
+	@Override
+	public int chattingCountBetweenUserAndPlanner(int user_id, int planner_id) {
+		return chatMapper.chattingCountBetweenUserAndPlanner(user_id, planner_id);
+	}
+
 }

@@ -116,7 +116,7 @@
 			<c:forEach var="hour" begin="0" end="23">
 				<option value="${hour}">${hour}시</option>
 			</c:forEach>
-		</select> <input type="submit" value="date"> <br>
+		</select> <input type="submit" value="예약하기"> <br>
 		<div>${reservation_message }</div>
 	</form>
 

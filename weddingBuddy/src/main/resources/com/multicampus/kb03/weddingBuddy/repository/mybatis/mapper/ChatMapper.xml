@@ -45,5 +45,12 @@
 		where user_id = #{user_id}
 		and planner_id = #{planner_id}
 	</select>
+	
+	<select id="chattingCountBetweenUserAndPlanner" 
+		resultType="int">
+		select count(*) from chatting
+		where user_id = #{user_id}
+		and planner_id = #{planner_id}
+	</select>
 
 </mapper>
