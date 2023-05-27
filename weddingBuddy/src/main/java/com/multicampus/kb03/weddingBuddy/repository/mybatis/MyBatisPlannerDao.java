@@ -52,7 +52,7 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
-	public List<Planner> selectAll() throws Exception {
+	public List<Top3Vo> selectAll() throws Exception {
 		return mapper.selectAll();
 	}
 
@@ -62,19 +62,19 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
-	public List<Planner> searchByAd(String address) throws Exception {
+	public List<Top3Vo> searchByAd(String address) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.searchByAd(address);
 	}
 
 	@Override
-	public List<Planner> searchByName(String name) throws Exception {
+	public List<Top3Vo> searchByName(String name) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.searchByName(name);
 	}
 
 	@Override
-	public List<Planner> searchByGroup(String agency) throws Exception {
+	public List<Top3Vo> searchByGroup(String agency) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.searchByGroup(agency);
 	}

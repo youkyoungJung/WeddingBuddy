@@ -39,7 +39,7 @@ public class FindController {
                                  @RequestParam(value = "type", required = false) String searchType,
                                  @RequestParam(value = "search", required = false) String searchKeyword,
                                  Model model) throws Exception {
-        List<Planner> foundPlanners;
+        List<Top3Vo> foundPlanners;
         int totalPlanners;
 
         if ("area".equals(searchType)) {
@@ -71,7 +71,7 @@ public class FindController {
         }
         
         // 페이징된 플래너 목록 가져오기
-        List<Planner> pagedPlanners = foundPlanners.subList(startIndex, endIndex);
+        List<Top3Vo> pagedPlanners = foundPlanners.subList(startIndex, endIndex);
 
         model.addAttribute("PlannerAll", pagedPlanners);
         model.addAttribute("type", searchType);

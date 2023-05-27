@@ -48,7 +48,7 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 
 	@Override
-	public List<Planner> selectAll() throws Exception {
+	public List<Top3Vo> selectAll() throws Exception {
 		return dao.selectAll();
 	}
 
@@ -62,18 +62,18 @@ public class PlannerServiceImpl implements PlannerService {
 	
 
 	@Override
-	public List<Planner> searchByAd(String address) throws Exception {
+	public List<Top3Vo> searchByAd(String address) throws Exception {
 		return dao.searchByAd(address);
 	}
 
 	@Override
-	public List<Planner> searchByName(String name) throws Exception {
+	public List<Top3Vo> searchByName(String name) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.searchByName(name);
 	}
 
 	@Override
-	public List<Planner> searchByGroup(String agency) throws Exception {
+	public List<Top3Vo> searchByGroup(String agency) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.searchByGroup(agency);
 	}

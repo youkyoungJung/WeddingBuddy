@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Searching Planner</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
 

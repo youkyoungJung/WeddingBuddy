@@ -28,15 +28,15 @@ public interface PlannerMapper {
 
 	public Planner selectOne(int planner_id);
 
-	public List<Planner> selectAll();
+	public List<Top3Vo> selectAll();
 	
 	public List<Top3Vo> selectTop3();
 
-	public List<Planner> searchByAd(String address);
+	public List<Top3Vo> searchByAd(String address);
 
-	public List<Planner> searchByName(String name);
+	public List<Top3Vo> searchByName(String name);
 
-	public List<Planner> searchByGroup(String agency);
+	public List<Top3Vo> searchByGroup(String agency);
 
 
 	public void insertPlannerLike(Map<String, Object> parameters);

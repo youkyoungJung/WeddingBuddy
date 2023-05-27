@@ -167,13 +167,16 @@ img.profile-photo-lg {
 								<p class="text-muted">소개: ${planner.intro }</p>
 							</div>
 							<div class="col-md-3 col-sm-3">
-    <button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기: ${planner.cnt }</button>
+   <button class="btn btn-primary pull-right"
+										onclick="redirectToReviewDetail(${planner._id})">
+										고객후기: ${planner.cnt}</button>
 
     <div style="text-align: center; margin-top: 10px;">
    <!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
 <a href="#" class="image-button heart-button" onclick="handleFavoriteClick(event, ${planner._id})">
   <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
 </a>
+
 
 <script>
 function handleFavoriteClick(event,plannerId,isFavorite) {

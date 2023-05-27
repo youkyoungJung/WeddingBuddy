@@ -22,15 +22,15 @@ public interface PlannerService {
 	
 	public Planner selectOne(int planner_id) throws Exception; //selectAll 회원전체보기 public List<User>
 	
-	public List<Planner> selectAll() throws Exception;
+	public List<Top3Vo> selectAll() throws Exception;
 	
 	public List<Top3Vo> selectTop3() throws Exception;
 	
-	public List<Planner> searchByAd(String address) throws Exception;
+	public List<Top3Vo> searchByAd(String address) throws Exception;
 
-	public List<Planner> searchByName(String name) throws Exception;
+	public List<Top3Vo> searchByName(String name) throws Exception;
 
-	public List<Planner> searchByGroup(String agency) throws Exception;
+	public List<Top3Vo> searchByGroup(String agency) throws Exception;
 
 	public Page<Planner> getPlanners(Pageable pageable);
 
