@@ -58,6 +58,8 @@ public interface PlannerMapper {
 	public Planner updateFavorite(int planner_id, boolean isFavorite);
 
 	public void insertPlannerLike(Map<String, Object> parameters);
+
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
 	
 	
 }

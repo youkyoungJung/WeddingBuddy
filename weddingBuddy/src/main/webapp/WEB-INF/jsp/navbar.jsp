@@ -61,7 +61,7 @@
 					<ul class="nav navbar-nav">
 						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
 						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
-						<li><a href="#">드레스</a></li>
+						<li><a href="<c:url value='/dress'></c:url>">드레스</a></li>
 						<li><a href="#">헤어</a></li>
 						<li><a href="#">메이크업</a></li>
 						<li><a href="#">웨딩홀</a></li>

@@ -125,6 +125,12 @@ public class PlannerServiceImpl implements PlannerService {
 		
 	}
 
+	@Override
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id) {
+		// TODO Auto-generated method stub
+		return dao.getTop3ReviewsByPlannerId(planner_id);
+	}
+
 
 	
 	

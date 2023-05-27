@@ -51,8 +51,9 @@
 									onClick=location.href='<c:url value="/start"/>?user_id=${LoginUser.user_id }&planner_id=${planner.planner_id }'>실시간채팅
 									바로가기</button>
 								<button type="button" class="btn btn-secondary"
-									onClick=location.href='<c:url value="/review?planner_id=${planner.planner_id }"/>' >리뷰
-									쓰기</button>
+                                	onClick="location.href='<c:url value="/review?planner_id=${planner.planner_id}&user_id=${LoginUser.user_id}"/>'">
+                                    리뷰 쓰기
+                                </button>
 							</div>
 						</a>
 					</div>

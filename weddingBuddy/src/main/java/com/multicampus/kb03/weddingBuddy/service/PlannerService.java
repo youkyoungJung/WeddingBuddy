@@ -54,6 +54,8 @@ public interface PlannerService {
 
 	public void insertPlannerLike(Map<String, Object> parameters);
 
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
+
 	
 	
 

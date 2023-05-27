@@ -119,6 +119,11 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
 	}
 
+	@Override
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id) {
+		return mapper.getTop3ReviewsByPlannerId(planner_id);
+	}
+
 	 
 
 }

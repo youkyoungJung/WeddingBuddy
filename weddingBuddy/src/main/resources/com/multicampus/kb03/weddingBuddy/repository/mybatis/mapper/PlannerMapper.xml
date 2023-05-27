@@ -157,7 +157,17 @@
 </insert>
     
     
+<!-- 리뷰를 최신순으로 가져오는 쿼리 -->
+  <select id="getTop3ReviewsByPlannerId" parameterType="int" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+    SELECT *
+    FROM (
+        SELECT *
+        FROM planner_review
+        WHERE planner_id = #{plannerId}
+        ORDER BY reg_date DESC
+    ) WHERE ROWNUM &lt;= 3
 
+  </select>
     
     
 
