@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
-
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
@@ -87,9 +87,34 @@ public class MyBatisPlannerDao implements PlannerDao {
 
 	@Override
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
-		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
+		return mapper.updateFavoriteStatus(planner_id, isFavorite);
 	}
 
+	@Override
+	public List<Planner> selectPlannerLike(int user_id) throws Exception {
+		return mapper.selectPlannerLike(user_id);
+	}
+	
+	@Override
+	public void deletePlannerLike(int user_id, int planner_id) {
+		mapper.deletePlannerLike(user_id, planner_id);
+	}
+
+	@Override
+	public void insertPlannerLike(Map<String, Object> parameters) {
+		mapper.insertPlannerLike(parameters);
+	}
+
+	@Override
+	public Planner_Like getPlannerLike(int user_id, int planner_id) throws Exception {
+		return mapper.getPlannerLike(user_id, planner_id);
+	}
+
+	@Override
+	public int updateFavorite(int planner_like_id, boolean isFavorite) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.updateFavorite(planner_like_id, isFavorite);
+	}
 
 	 
 

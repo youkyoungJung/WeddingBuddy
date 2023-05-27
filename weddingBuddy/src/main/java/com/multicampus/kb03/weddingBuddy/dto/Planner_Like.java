@@ -4,9 +4,15 @@ public class Planner_Like {
 private int planner_like_id;
 private int planner_id;
 private int user_id;
-private String isFavorite;
+private boolean isFavorite;
 
 
+public boolean isFavorite() {
+	return isFavorite;
+}
+public void setFavorite(boolean isFavorite) {
+	this.isFavorite = isFavorite;
+}
 public int getPlanner_like_id() {
 	return planner_like_id;
 }
@@ -25,12 +31,7 @@ public int getUser_id() {
 public void setUser_id(int user_id) {
 	this.user_id = user_id;
 }
-public String getIsFavorite() {
-	return isFavorite;
-}
-public void setIsFavorite(String isFavorite) {
-	this.isFavorite = isFavorite;
-}
+
 @Override
 public String toString() {
 	return "Planner_Like [planner_like_id=" + planner_like_id + ", planner_id=" + planner_id + ", user_id=" + user_id

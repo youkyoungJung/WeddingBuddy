@@ -160,8 +160,9 @@ img.profile-photo-lg {
 							</div>
 							<div class="col-md-7 col-sm-7">
 								<h5>
-									이름:<a href="<c:url value="/search/planner/detail" />" class="profile-link">${planner.name }</a>
-								</h5>
+                              이름:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
+                                 class="profile-link">${planner.name }</a>
+                           </h5>
 								<p>소속:${planner.agency_name }</p>
 								<p class="text-muted">소개: ${planner.intro }</p>
 							</div>
@@ -169,42 +170,38 @@ img.profile-photo-lg {
     <button class="btn btn-primary pull-right" onClick=location.href='<c:url value="#"/>' >고객후기: ${planner.cnt }</button>
 
     <div style="text-align: center; margin-top: 10px;">
-    <a href="#" class="image-button" onclick = "handleFavoriteClick(${planner._id})">
-      <img id="heartImage" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;" data-planner-id = "${planner._id}">
-    </a>
-    
-    <script>
-function handleFavoriteClick(plannerId) {
-	console.log('aaa')
-  // 서버로 AJAX 요청을 보내 찜하기 상태를 업데이트
-  var heartImage = document.getElementById('heartImage');
-  var isFavorite = heartImage.getAttribute('src') == '${pageContext.request.contextPath}/images/prev_heart.png';
-  console.log("isFavorite", heartImage.getAttribute('src'))
+   <!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
+<a href="#" class="image-button heart-button" onclick="handleFavoriteClick(event, ${planner._id})">
+  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
+</a>
+
+<script>
+function handleFavoriteClick(event,plannerId,isFavorite) {
+  event.preventDefault(); // 기본 동작 방지
+
+  var heartImage = event.currentTarget.querySelector('img');
+  var isFavorite = heartImage.getAttribute('src') === '${pageContext.request.contextPath}/images/prev_heart.png';
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-	  if (this.readyState === 4 && this.status === 200) {
-	    // 응답을 받았을 때 처리할 내용
-	    if (isFavorite) {
-	      heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/next_heart.png');
-	    } else {
-	      heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/prev_heart.png');
-	    }
-
-	    // 플래너 정보 업데이트
-/* 	    var plannerName = document.getElementById('plannerName');
-	    plannerName.textContent = '${planner.name}';  */// 업데이트할 플래너 정보를 서버에서 받아와서 설정
-	  }
-	};
-
+    if (this.readyState === 4 && this.status === 200) {
+      if (isFavorite) {
+        heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/next_heart.png');
+      } else {
+        heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/prev_heart.png');
+      }
+    }
+  };
 
   xhttp.open('POST', '${pageContext.request.contextPath}/updateFavorite', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + isFavorite);
-  
-  console.log("planner_id" ,plannerId);
-  
+  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + !isFavorite); // 눌릴 때마다 isFavorite 값을 반전시킴 (!isFavorite)
+
+  console.log("isFavorite", isFavorite);
 }
+
+
+
 </script>
     
    
@@ -243,13 +240,8 @@ function handleFavoriteClick(plannerId) {
         </c:if>
     </ul>
 </div>
-
-
-
-
 	
 </body>
-
 
 <jsp:include page="footer.jsp" />
 </html>

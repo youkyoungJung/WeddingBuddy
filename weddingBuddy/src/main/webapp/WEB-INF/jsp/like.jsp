@@ -1,26 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%-- 
-<c:set var="plannerId" value="${param.planner_id}" />
-<c:set var="isFavorite" value="${param.isFavorite}" /> --%>
-
-<!-- ø©±‚ø°º≠ plannerIdøÕ isFavorite ∞™¿ª »∞øÎ«œø© ø¯«œ¥¬ ¿€æ˜¿ª ºˆ«‡«’¥œ¥Ÿ. -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Like</title>
+    <style>
+        .plannerlike-item {
+            cursor: pointer;
+        }
+
+        .plannerlike-item:hover {
+            background-color: #F0F0F0;
+            color: black;
+        }
+    </style>
+    <script>
+        function goToPlannerDetail(planner_id) {
+            var contextPath = "${pageContext.request.contextPath}";
+            location.href = contextPath + '/search/planner/detail?planner_id=' + planner_id;
+        }
+    </script>
 </head>
 <body>
-    <h1>Like Page</h1>
-    
     <form method="post" action="<c:url value='/updateFavorite' />" accept-charset="utf-8">
         <input type="hidden" name="plannerId" value="${plannerId}">
-       
     </form>
-    
-    <p>Planner ID: ${ plannerId}</p>
-    <p>Is Favorite: ${isFavorite}</p>
-    
-    
+
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <c:forEach items="${returnPlanner}" var="planner">
+                <div class="plannerlike-item" onclick="goToPlannerDetail(${planner.planner_id})">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="card-img-top" alt="jisoo">
+                    <p>Ïù¥Î¶Ñ: ${planner.name}</p>
+                    <p>Ïù¥Î©îÏùº: ${planner.email}</p>
+                    <p>Ïó∞ÎùΩÏ≤ò: ${planner.phone}</p>
+                    <a href="<c:url value='/search/planner/detail'/>?planner_id=${planner.planner_id}" class="btn btn-primary"></a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
 </body>
 </html>

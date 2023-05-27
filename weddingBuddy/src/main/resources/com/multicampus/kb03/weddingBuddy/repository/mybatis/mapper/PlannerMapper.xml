@@ -113,7 +113,35 @@
 </insert>
     
     
+<!-- selectPlannerLike -->
+<select id="selectPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+	select *
+	from planner_account 
+	where planner_id in
+	(select planner_id
+	from planner_like
+	where user_id = #{user_id})
+ </select>
+ 
+ <delete id ="deletePlannerLike">
+ 	delete
+ 	from planner_like
+ 	where planner_like_id = #{planner_like_id}
+ 	and user_id = #{user_id}
+ </delete>
+    
+    
+    <!-- selectPlannerLike -->
+<select id="getPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Like">
+	select *
+	from planner_like
+	where user_id = #{user_id} and planner_id =#{planner_id}
+ </select>
+ 
+ <!-- update like -->
+ <update id="updateFavorite">
 
+</update>
     
     
 

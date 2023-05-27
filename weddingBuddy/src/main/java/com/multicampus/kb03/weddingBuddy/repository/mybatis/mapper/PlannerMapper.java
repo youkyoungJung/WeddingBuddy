@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.P
 import org.springframework.data.domain.Page;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
-
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.paging.Criteria;
@@ -36,12 +36,20 @@ public interface PlannerMapper {
 
 	public List<Planner> searchByName(String name);
 
-
 	public List<Planner> searchByGroup(String agency);
 
-	public Planner updateFavorite(int planner_id, boolean isFavorite);
 
 	public void insertPlannerLike(Map<String, Object> parameters);
+
+	public List<Planner> selectPlannerLike(int user_id);
+
+	public Planner_Like getPlannerLike(@Param(value = "user_id") int user_id, @Param(value = "planner_id")int planner_id);
+	
+	public int updateFavorite(int planner_like_id, boolean isFavorite);
+
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite);
+
+	public void deletePlannerLike(@Param(value = "user_id")int user_id,  @Param(value = "planner_like_id") int planner_like_id);
 	
 	
 }
