@@ -20,6 +20,7 @@ import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.service.ChatReservationService;
 import com.multicampus.kb03.weddingBuddy.service.ChatService;
+import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
 
 @Controller
@@ -32,6 +33,9 @@ public class UserController {
 	
 	@Autowired
 	private ChatService chatService;
+	
+	@Autowired
+	private PlannerService plannerService;
 	
 	@Autowired
 	private ChatReservationService chatReservationService;
@@ -86,39 +90,80 @@ public class UserController {
 		return "mypage";
 	}
 
-	@RequestMapping(value = "mypage/userChat")
-	public String myChatGet(HttpServletRequest request, Model model) throws Exception {
-
+	@RequestMapping(value = "/mypage/chat")
+	public String myChatGet(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 		String account_id = UserSession.getLoginUserId(request.getSession());
+		logger.info("/my/chat : user: " + account_id);
 		User returnVo = userService.selectOne(account_id);
-		logger.info("현재유저 " + returnVo);
+		Planner returnVo2 = plannerService.selectOne2(account_id);
 		
-		List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
-		request.setAttribute("chatPlanner", p_returnVo);
-		logger.info("현재유저 " + p_returnVo);
-		request.setAttribute("LoginUser", returnVo);
-
-
-		// ReviewController로 user_id 전달
-	    int userId = returnVo.getUser_id(); // 사용자의 user_id 가져오기
-	    System.out.println(userId);
-	    model.addAttribute("user_id", userId); // user_id를 model에 추가
-	    
-	    Map<Integer, String> reservedDates = new HashMap<>();
-	    
-	    for (Planner planner : p_returnVo) {
-	    	int planner_id = planner.getPlanner_id();
-			int chatting_id = chatService.selectChattingId(userId, planner_id);
-			String nextReservedDateTime = chatReservationService.selectNextReservedDatetime(chatting_id);
-			// 사용자가 예약한 플래너 별 다음 예약 시간을 Map 에 저장.
-			reservedDates.put(planner_id, nextReservedDateTime);
+		if(returnVo2 == null && returnVo != null) {
+			logger.info("현재유저 " + returnVo);
+			List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
+			request.setAttribute("chatPlanner", p_returnVo);
+			request.setAttribute("LoginUser", returnVo);
+			
+			// ReviewController로 user_id 전달
+		    int userId = returnVo.getUser_id(); // 사용자의 user_id 가져오기
+		    System.out.println(userId);
+		    model.addAttribute("user_id", userId); // user_id를 model에 추가
+		    
+		    Map<Integer, String> reservedDates = new HashMap<>();
+		    
+		    for (Planner planner : p_returnVo) {
+		    	int planner_id = planner.getPlanner_id();
+		    	
+		    	int chatting_id = chatService.selectChattingId(userId, planner_id);
+				String nextReservedDateTime = chatReservationService.selectNextReservedDatetime(chatting_id);
+				// 사용자가 예약한 플래너 별 다음 예약 시간을 Map 에 저장.
+				reservedDates.put(planner_id, nextReservedDateTime);
+			}
+			return "userChat";
 		}
-	    
-	    model.addAttribute("reservedDatesMap", reservedDates);
-		
-		return "userChat";
-
+		else if((returnVo2 != null && returnVo == null) ) {
+			List<User> p_returnVo = plannerService.chattingWithSomeone(returnVo2.getPlanner_id());
+			request.setAttribute("PlannerInfo", p_returnVo);
+			request.setAttribute("ChatWithUser", returnVo2);
+			logger.info("플래너현재유저 PlannerInfo: " + p_returnVo);
+			logger.info("플래너랑 채팅하는 사람 ChatWithInfo: " + returnVo2);
+			return "plannerChat";
+		}
+		return null;
 	}
+//	@RequestMapping(value = "mypage/userChat")
+//	public String myChatGet(HttpServletRequest request, Model model) throws Exception {
+//
+//		String account_id = UserSession.getLoginUserId(request.getSession());
+//		User returnVo = userService.selectOne(account_id);
+//		logger.info("현재유저 " + returnVo);
+//		
+//		List<Planner> p_returnVo = userService.chattingWithSomeone(returnVo.getUser_id());
+//		request.setAttribute("chatPlanner", p_returnVo);
+//		logger.info("현재유저 " + p_returnVo);
+//		request.setAttribute("LoginUser", returnVo);
+//
+//
+//		// ReviewController로 user_id 전달
+//	    int userId = returnVo.getUser_id(); // 사용자의 user_id 가져오기
+//	    System.out.println(userId);
+//	    model.addAttribute("user_id", userId); // user_id를 model에 추가
+//	    
+//	    Map<Integer, String> reservedDates = new HashMap<>();
+//	    
+//	    for (Planner planner : p_returnVo) {
+//	    	int planner_id = planner.getPlanner_id();
+//	    	
+//	    	int chatting_id = chatService.selectChattingId(userId, planner_id);
+//			String nextReservedDateTime = chatReservationService.selectNextReservedDatetime(chatting_id);
+//			// 사용자가 예약한 플래너 별 다음 예약 시간을 Map 에 저장.
+//			reservedDates.put(planner_id, nextReservedDateTime);
+//		}
+//	    
+//	    model.addAttribute("reservedDatesMap", reservedDates);
+//		
+//		return "userChat";
+//
+//	}
 	
 	
 	

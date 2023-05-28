@@ -183,7 +183,7 @@ figcaption .project-creator {
 					<img src="<c:url value='/images/mypage_chat.png' />" > 
 					<span class="actions">
 
-						<button onClick="location.href='<c:url value="/mypage/userChat" />'" class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥
+						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥
 						</button>
 					</span>
 				</figure>

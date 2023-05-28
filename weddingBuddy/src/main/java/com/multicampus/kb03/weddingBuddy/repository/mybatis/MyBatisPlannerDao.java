@@ -65,7 +65,6 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
-
 	public int insertReview(Planner_Review review) {
 		return mapper.insertReview(review);
 	}
@@ -118,7 +117,19 @@ public class MyBatisPlannerDao implements PlannerDao {
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception {
 		return (Planner) mapper.updateFavorite(planner_id, isFavorite);
 	}
+	public Planner readUserWithIDPW(String account_id, String password) throws Exception {
+		return mapper.readUserWithIDPW(account_id, password);
+	}
 
+	@Override
+	public Planner selectOne2(String account_id) throws Exception {
+		return mapper.selectOne2(account_id);
+	}
+
+	@Override
+	public List<User> chattingWithSomeone(int planner_id) throws Exception {
+		return mapper.chattingWithSomeone(planner_id);
+	}
 	 
 
 }

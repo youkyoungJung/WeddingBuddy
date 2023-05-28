@@ -34,6 +34,13 @@ public interface PlannerMapper {
 	public List<Planner> selectAll();
 	
 	public List<Top3Vo> selectTop3();
+	
+	public Planner readUserWithIDPW(@Param("account_id")String account_id, @Param("password")String password);
+	
+	public Planner selectOne2(String account_id);
+
+	public List<User> chattingWithSomeone(int planner_id);
+
 
 
 	public int insertReview();

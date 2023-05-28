@@ -67,29 +67,29 @@ public class PlannerDetailController {
 			@RequestParam("date") String date, @RequestParam("hour") String hour, 
 			HttpSession session) throws Exception {
 		
-		// post로 선택한 날짜와 시간을 형식에 맞게 변환
+		// post濡� �꽑�깮�븳 �궇吏쒖� �떆媛꾩쓣 �삎�떇�뿉 留욊쾶 蹂��솚
 		String reservation_date = date+" "+hour+":00";
         
-		//현재 시간 기준으로 이후 시간만 예약시간으로 선택하도록 
+		//�쁽�옱 �떆媛� 湲곗��쑝濡� �씠�썑 �떆媛꾨쭔 �삁�빟�떆媛꾩쑝濡� �꽑�깮�븯�룄濡� 
 		LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = now.format(formatter);
         
 		if (reservation_date.compareTo(formattedDateTime) < 0) {
-			model.addAttribute("reservation_message", "현재 이후 시간만 예약 가능합니다.");
+			model.addAttribute("reservation_message", "�쁽�옱 �씠�썑 �떆媛꾨쭔 �삁�빟 媛��뒫�빀�땲�떎.");
 			return "planner_detail";
 		}
 
-		// 해당 시간에 플래너 예약이 존재하는 경우
+		// �빐�떦 �떆媛꾩뿉 �뵆�옒�꼫 �삁�빟�씠 議댁옱�븯�뒗 寃쎌슦
 		if (chatReservationService.reservationExist(planner_id, reservation_date)) {
-			model.addAttribute("reservation_message", "이미 예약된 시간입니다.");
+			model.addAttribute("reservation_message", "�씠誘� �삁�빟�맂 �떆媛꾩엯�땲�떎.");
 			return "planner_detail";
 		}
 		User user = userService.selectOne(UserSession.getLoginUserId(session));
 		
 		int user_id = user.getUser_id();
 		
-		// 예약과 동시에 채팅을 생성한다.(채팅이 없다면)
+		// �삁�빟怨� �룞�떆�뿉 梨꾪똿�쓣 �깮�꽦�븳�떎.(梨꾪똿�씠 �뾾�떎硫�)
 		if (chatService.chatting_notExist(user_id, planner_id)) 
 			chatService.insertNewChat(user_id, planner_id);
 		int chatting_id = chatService.selectChattingId(user_id, planner_id);
