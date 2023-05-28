@@ -76,9 +76,9 @@
 						<li><a href="#">웨딩홀</a></li>
 					</ul>
 				</div>
-				<!-- /.navbar-collapse -->
+				<!— /.navbar-collapse —>
 			</div>
-			<!-- /.container -->
+			<!— /.container —>
 		</nav>
 	</header>
 

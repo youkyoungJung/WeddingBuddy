@@ -13,6 +13,7 @@ import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
 
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.paging.Criteria;
@@ -31,7 +32,7 @@ public interface PlannerMapper {
 
 	public Planner selectOne(int planner_id);
 
-	public List<Planner> selectAll();
+	public List<Top3Vo> selectAll();
 	
 	public List<Top3Vo> selectTop3();
 	
@@ -55,18 +56,25 @@ public interface PlannerMapper {
 
 	public String getUserAccountName(int user_id);
 
-	public List<Planner> searchByAd(String address);
+	public List<Top3Vo> searchByAd(String address);
 
-	public List<Planner> searchByName(String name);
+	public List<Top3Vo> searchByName(String name);
 
+	public List<Top3Vo> searchByGroup(String agency);
 
-	public List<Planner> searchByGroup(String agency);
-
-	public Planner updateFavorite(int planner_id, boolean isFavorite);
 
 	public void insertPlannerLike(Map<String, Object> parameters);
 
 	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
+	public List<Planner> selectPlannerLike(int user_id);
+
+	public Planner_Like getPlannerLike(@Param(value = "user_id") int user_id, @Param(value = "planner_id")int planner_id);
+	
+	public int updateFavorite(int planner_like_id, boolean isFavorite);
+
+	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite);
+
+	public void deletePlannerLike(@Param(value = "user_id")int user_id,  @Param(value = "planner_like_id") int planner_like_id);
 	
 	
 }

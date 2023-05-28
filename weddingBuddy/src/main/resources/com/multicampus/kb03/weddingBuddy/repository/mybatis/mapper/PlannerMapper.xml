@@ -137,29 +137,33 @@
 	
 	<!-- searchByAd -->
 <select id="searchByAd"  resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
-    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name",COUNT(R.review_id) as "cnt"
     FROM planner_account P
     INNER JOIN planner_agency A 
     ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
     WHERE A.address LIKE '%' || #{address} || '%'
+    GROUP BY P.planner_id, P.name, P.intro, A.name
 </select>
 
-<!-- searchByName -->
 <select id="searchByName" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
-    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name", COUNT(R.review_id) as "cnt"
     FROM planner_account P
-    INNER JOIN planner_agency A 
-    ON P.agency_id = A.agency_id
+    INNER JOIN planner_agency A ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
     WHERE P.name LIKE '%' || #{name} || '%'
-    </select>
+    GROUP BY P.planner_id, P.name, P.intro, A.name
+</select>
     
 <!-- searchByGroup -->
 <select id="searchByGroup" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
-    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name"
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name",COUNT(R.review_id) as "cnt"
     FROM planner_account P
     INNER JOIN planner_agency A 
     ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
     WHERE A.name LIKE '%' || #{agency} || '%'
+    GROUP BY P.planner_id, P.name, P.intro, A.name
     </select>
     
 <!-- planner_like 테이블에 데이터 추가 -->
@@ -169,6 +173,36 @@
 </insert>
     
 
+    
+<!-- selectPlannerLike -->
+<select id="selectPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+	select *
+	from planner_account 
+	where planner_id in
+	(select planner_id
+	from planner_like
+	where user_id = #{user_id})
+ </select>
+ 
+ <delete id ="deletePlannerLike">
+ 	delete
+ 	from planner_like
+ 	where planner_like_id = #{planner_like_id}
+ 	and user_id = #{user_id}
+ </delete>
+    
+    
+    <!-- selectPlannerLike -->
+<select id="getPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Like">
+	select *
+	from planner_like
+	where user_id = #{user_id} and planner_id =#{planner_id}
+ </select>
+ 
+ <!-- update like -->
+ <update id="updateFavorite">
+
+</update>
     
 <!-- 리뷰를 최신순으로 가져오는 쿼리 -->
   <select id="getTop3ReviewsByPlannerId" parameterType="int" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">

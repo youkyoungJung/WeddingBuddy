@@ -126,12 +126,6 @@ img.profile-photo-lg{
 </script>
 
 
-<script>
-    function redirectToReviewDetail(plannerId) {
-        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
-        location.href = url;
-    }
-</script>
 
 </body>
 

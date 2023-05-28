@@ -40,6 +40,9 @@ public class UserController {
 	@Autowired
 	private ChatReservationService chatReservationService;
 
+	@Autowired
+	private PlannerService plannerService;
+	
 	@RequestMapping(value = "/login")
 	public String loginGet(Model model) {
 		return "login";
@@ -83,8 +86,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String myPageGet(HttpServletRequest request) {
-		if(!UserSession.hasLogined(request.getSession())) {
+	public String myPageGet(HttpServletRequest request) throws Exception {
+		if (!UserSession.hasLogined(request.getSession())) {
+			  //현재 user_id 알수 있음
+
 			return "login";
 		}
 		return "mypage";
@@ -164,16 +169,23 @@ public class UserController {
 //		return "userChat";
 //
 //	}
+
 	
-	
-	
-	/*
-	 * @RequestMapping(value = "mypage/like") public String
-	 * myLikeGet(HttpServletRequest request) throws Exception{ String account_id =
-	 * UserSession.getLoginUserId(request.getSession());
-	 * 
-	 * return "like"; }
-	 */
+	  @RequestMapping(value = "mypage/like") 
+	  public String myLikeGet(HttpServletRequest request) throws Exception{
+		  String account_id = UserSession.getLoginUserId(request.getSession());
+		  //현재 user_id 알수 있음
+		  User returnVo = userService.selectOne(account_id);
+		  //plannerService.deletePlannerLike(returnVo.getUser_id());
+		  
+		  List<Planner> returnPlanner = plannerService.selectPlannerLike(returnVo.getUser_id());
+		  logger.info("returnPlanner: "+returnPlanner);
+		  
+		  //request에 List를 담아서 보냄
+		  request.setAttribute("returnPlanner", returnPlanner);
+		  
+		  return "like"; 
+	  }
 	 
 
 }
