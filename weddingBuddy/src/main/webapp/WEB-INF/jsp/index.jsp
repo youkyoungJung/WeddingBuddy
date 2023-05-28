@@ -106,7 +106,8 @@ img.profile-photo-lg{
                            <p class="text-muted">소개: ${planner.intro }</p>
                         </div>
                         <div class="col-md-3 col-sm-3">
-                            <button class="btn btn-primary pull-right" onclick="redirectToReviewDetail(${planner._id})">
+
+                           <button class="btn btn-primary pull-right" onclick="redirectToReviewDetail(${planner._id})">
                                     고객후기: ${planner.cnt}
                          	</button>
                         </div>
@@ -117,6 +118,13 @@ img.profile-photo-lg{
          </div>
       </c:forEach>
    </div>
+<script>
+    function redirectToReviewDetail(plannerId) {
+        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
+        location.href = url;
+    }
+</script>
+
 
 <script>
     function redirectToReviewDetail(plannerId) {

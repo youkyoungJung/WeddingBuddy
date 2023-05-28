@@ -56,6 +56,8 @@ public interface PlannerDao {
 	
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
 	
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
+	
 	
 	
 	
