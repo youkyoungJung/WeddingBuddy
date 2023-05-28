@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Searching Planner</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
 
@@ -106,9 +106,9 @@ img.profile-photo-lg{
                            <p class="text-muted">소개: ${planner.intro }</p>
                         </div>
                         <div class="col-md-3 col-sm-3">
-                           <button class="btn btn-primary pull-right"
-                              onClick=location.href='<c:url value="#"/>' >고객후기:
-                              ${planner.cnt }</button>
+                           <button class="btn btn-primary pull-right" onclick="redirectToReviewDetail(${planner._id})">
+                                    고객후기: ${planner.cnt}
+                         	</button>
                         </div>
                      </div>
                   </div>
@@ -117,6 +117,13 @@ img.profile-photo-lg{
          </div>
       </c:forEach>
    </div>
+<script>
+    function redirectToReviewDetail(plannerId) {
+        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
+        location.href = url;
+    }
+</script>
+
 
 </body>
 
