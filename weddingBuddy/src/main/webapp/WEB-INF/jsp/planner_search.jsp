@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Searching Planner</title>
 
 <style>
@@ -109,23 +109,23 @@ img.profile-photo-lg {
 <body>
 
 	<div class="container">
-		<h3 id="header">ÇÃ·¡³Ê Ã£±â</h3>
+		<h3 id="header">í”Œë˜ë„ˆ ì°¾ê¸°</h3>
 
-		<!-- °Ë»öºä ½ÃÀÛ -->
+		<!-- ê²€ìƒ‰ë·° ì‹œì‘ -->
 <section class="search-section">
 	<div align="center">
 <form method="post" action="<c:url value='/search/planner' />" accept-charset="utf-8">
     <label class="box-radio-input">
         <input type="radio" name="type" value="area" <c:if test="${type eq 'area'}">checked="checked"</c:if>>
-        <span>Áö¿ª</span>
+        <span>ì§€ì—­</span>
     </label>
     <label class="box-radio-input">
         <input type="radio" name="type" value="name" <c:if test="${type eq 'name'}">checked="checked"</c:if>>
-        <span>ÀÌ¸§</span>
+        <span>ì´ë¦„</span>
     </label>
     <label class="box-radio-input">
         <input type="radio" name="type" value="group" <c:if test="${type eq 'group'}">checked="checked"</c:if>>
-        <span>¼Ò¼Ó</span>
+        <span>ì†Œì†</span>
     </label>
 
 
@@ -133,7 +133,7 @@ img.profile-photo-lg {
 
 			<div id="custom-search-input">
 				<div class="input-group col-md-12">
-					<input type="text" class="form-control input-lg" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä." name="search"  value = "${searchKeyword }"/>
+					<input type="text" class="form-control input-lg" placeholder="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”." name="search"  value = "${searchKeyword }"/>
 					<span class="input-group-btn">
 						<button class="searchbtn" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
@@ -144,11 +144,11 @@ img.profile-photo-lg {
 		</form>
 	</div>
 </section>
-<!-- °Ë»ö ³¡ -->
+<!-- ê²€ìƒ‰ ë -->
 
 
 		<br>
-<div class="row justify-content-center"> <!-- Áß¾Ó Á¤·ÄÀ» À§ÇØ justify-content-center Å¬·¡½º Ãß°¡ -->
+<div class="row justify-content-center"> <!-- ì¤‘ì•™ ì •ë ¬ì„ ìœ„í•´ justify-content-center í´ë˜ìŠ¤ ì¶”ê°€ -->
 		<c:forEach items="${PlannerAll}" var="planner">
 			<div class="col-md-8">
 				<div class="people-nearby">
@@ -160,27 +160,27 @@ img.profile-photo-lg {
 							</div>
 							<div class="col-md-7 col-sm-7">
 								<h5>
-                              ÀÌ¸§:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
+                              ì´ë¦„:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
                                  class="profile-link">${planner.name }</a>
                            </h5>
-								<p>¼Ò¼Ó:${planner.agency_name }</p>
-								<p class="text-muted">¼Ò°³: ${planner.intro }</p>
+								<p>ì†Œì†:${planner.agency_name }</p>
+								<p class="text-muted">ì†Œê°œ: ${planner.intro }</p>
 							</div>
 							<div class="col-md-3 col-sm-3">
    <button class="btn btn-primary pull-right"
 										onclick="redirectToReviewDetail(${planner._id})">
-										°í°´ÈÄ±â: ${planner.cnt}</button>
+										ê³ ê°í›„ê¸°: ${planner.cnt}</button>
 
     <div style="text-align: center; margin-top: 10px;">
-   <!-- °¢ Ç×¸ñÀÇ °íÀ¯ ID¸¦ data-planner-id ¼Ó¼ºÀ¸·Î Àü´Ş -->
+   <!-- ê° í•­ëª©ì˜ ê³ ìœ  IDë¥¼ data-planner-id ì†ì„±ìœ¼ë¡œ ì „ë‹¬ -->
 <a href="#" class="image-button heart-button" onclick="handleFavoriteClick(event, ${planner._id})">
-  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="ÀÌ¹ÌÁö ¹öÆ°" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
+  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="ì´ë¯¸ì§€ ë²„íŠ¼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
 </a>
 
 
 <script>
 function handleFavoriteClick(event,plannerId,isFavorite) {
-  event.preventDefault(); // ±âº» µ¿ÀÛ ¹æÁö
+  event.preventDefault(); // ê¸°ë³¸ ë™ì‘ ë°©ì§€
 
   var heartImage = event.currentTarget.querySelector('img');
   var isFavorite = heartImage.getAttribute('src') === '${pageContext.request.contextPath}/images/prev_heart.png';
@@ -198,7 +198,7 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
 
   xhttp.open('POST', '${pageContext.request.contextPath}/updateFavorite', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + !isFavorite); // ´­¸± ¶§¸¶´Ù isFavorite °ªÀ» ¹İÀü½ÃÅ´ (!isFavorite)
+  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + !isFavorite); // ëˆŒë¦´ ë•Œë§ˆë‹¤ isFavorite ê°’ì„ ë°˜ì „ì‹œí‚´ (!isFavorite)
 
   console.log("isFavorite", isFavorite);
 }
@@ -222,7 +222,7 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
 	</div>
 	
 	
-	<!-- ÆäÀÌÁö³×ÀÌ¼Ç -->
+	<!-- í˜ì´ì§€ë„¤ì´ì…˜ -->
 <div class="pagination-container text-center">
     <ul class="pagination">
         <c:if test="${currentPage > 1}">
@@ -243,8 +243,16 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
         </c:if>
     </ul>
 </div>
+
+
 	
 </body>
+<script>
+    function redirectToReviewDetail(plannerId) {
+        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
+        location.href = url;
+    }
+</script>
 
 <jsp:include page="footer.jsp" />
 </html>
