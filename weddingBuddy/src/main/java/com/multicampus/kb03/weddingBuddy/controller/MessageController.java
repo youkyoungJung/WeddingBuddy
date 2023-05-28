@@ -57,23 +57,23 @@ public class MessageController {
 	public ModelAndView messageList(@PathVariable int to_id, @PathVariable int from_id, Message msg, HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		logger.info("msg담긴것: " + msg);
 
-		msg.setTo_id(to_id);
-		msg.setFrom_id(from_id);
-
+		logger.info("to_id: " + to_id + "from_id: "+from_id);
 		List<Message> chatlist = service.chatList(msg);
 
 		logger.info("chatlist 크기 " + chatlist.size());
 		logger.info("chatting " + chatlist);
 		
+
+		// 채팅 _id 가져오기
+		int chatting_id = service.selectChattingId(to_id, from_id);
+		
 		HttpSession session = request.getSession();
-		if(chatlist.size() != 0) {
-			int chatting_id = chatlist.get(0).getChatting_id();
-			logger.info("chatting_id 담기 성공? : " + chatting_id);
-			session.setAttribute("chatting_id", chatting_id);
-		}
 		session.setAttribute("to_id", to_id);
 		session.setAttribute("from_id", from_id);
+		session.setAttribute("chatting_id", chatting_id);
+
 		
 		mav.setViewName("chat");
 		mav.addObject("list", chatlist);
