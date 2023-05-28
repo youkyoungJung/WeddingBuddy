@@ -92,7 +92,6 @@ public class MyBatisPlannerDao implements PlannerDao {
 	}
 
 	@Override
-	public List<Planner> searchByAd(String address) throws Exception {
 	public List<Top3Vo> searchByAd(String address) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.searchByAd(address);
@@ -145,9 +144,11 @@ public class MyBatisPlannerDao implements PlannerDao {
 	public List<User> chattingWithSomeone(int planner_id) throws Exception {
 		return mapper.chattingWithSomeone(planner_id);
 	}
-  @Override
+    @Override
 	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id) {
 		return mapper.getTop3ReviewsByPlannerId(planner_id);
+	}
+	
 	public void insertPlannerLike(Map<String, Object> parameters) {
 		mapper.insertPlannerLike(parameters);
 	}

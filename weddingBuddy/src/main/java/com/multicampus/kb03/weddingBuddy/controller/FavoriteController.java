@@ -24,7 +24,6 @@ import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.PlannerMapper;
 import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
-import com.sun.org.slf4j.internal.Logger;
 
 @Controller
 public class FavoriteController {
@@ -35,7 +34,7 @@ public class FavoriteController {
     @Autowired
     private UserService userService;
 
-    //ajax 작동 post
+    //ajax �옉�룞 post
     @RequestMapping(value="/updateFavorite", method = RequestMethod.POST)
     public String favoriteStatus(@RequestParam("planner_id") int planner_id,
                                  @RequestParam("isFavorite") boolean isFavorite,
@@ -55,20 +54,20 @@ public class FavoriteController {
         
         
         System.out.println("parameters: " + parameters.toString());
-        //plannerService 에서 기존 planner_like 가 있는지 확인
+        //plannerService �뿉�꽌 湲곗〈 planner_like 媛� �엳�뒗吏� �솗�씤
         Planner_Like planner_like = plannerService.getPlannerLike(user_id, planner_id);
         
-        //없으면 insert, 있으면 delete
+        //�뾾�쑝硫� insert, �엳�쑝硫� delete
         if(planner_like != null) {
         	int planner_like_id = planner_like.getPlanner_like_id();
-        	System.out.println("planner_like_id를 찾는가? : "+planner_like_id);
+        	System.out.println("planner_like_id瑜� 李얜뒗媛�? : "+planner_like_id);
         	plannerService.deletePlannerLike(user_id, planner_like_id);
-        	System.out.println("delete 수행하나?");
+        	System.out.println("delete �닔�뻾�븯�굹?");
         	Planner_Like planner_like_2 = plannerService.getPlannerLike(user_id, planner_id);
-            System.out.println("정보전달: "+ planner_like_2);
+            System.out.println("�젙蹂댁쟾�떖: "+ planner_like_2);
         } 
         else {
-        	System.out.println("정보전달: "+ planner_like);
+        	System.out.println("�젙蹂댁쟾�떖: "+ planner_like);
         	plannerService.insertPlannerLike(parameters);
         }	
         return "like";

@@ -53,8 +53,6 @@ public interface PlannerService {
 
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
 
-	public void insertPlannerLike(Map<String, Object> parameters);
-
 
 	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
 
