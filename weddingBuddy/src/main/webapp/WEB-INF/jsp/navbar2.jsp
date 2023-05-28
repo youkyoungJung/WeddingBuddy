@@ -4,110 +4,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>NAVBAR2</title>
+<meta charset="EUC-KR">
+<link rel="stylesheet" href="/css/style.css">
+<!-- 부트스트랩 -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<style>
-.fixed-top {
-	position: relative;
-}
 
-.navbar-new-top {
-	background: #fff;
-}
-
-.navbar-brand {
-	font-weight: 600;
-}
-
-.navbar-brand img {
-	width: 20%;
-}
-
-.navbar-new-top ul {
-	margin-right: 9%;
-}
-
-.navbar-new-top ul li {
-	margin-right: 8%;
-}
-
-.navbar-new-bottom {
-	background-color: #f7f7f7;
-	box-shadow: 0 5px 6px -2px rgba(0, 0, 0, .3);
-	border-top: 1px solid #e0e0e0;
-	margin-top: 4%;
-	height: 40px;
-}
-
-.navbar-new-bottom ul li {
-	margin-left: 2%;
-	margin-right: 2%;
-}
-
-.navbar-nav .nav-item a {
-	color: #333;
-	font-size: 14px;
-	font-weight: 600;
-	transition: 1s ease;
-}
-
-.navbar-nav .nav-item a:hover {
-	color: #0062cc;
-}
-
-.dropdown-menu.show {
-	background: #f8f9fa;
-	border-radius: 0;
-}
-
-.header-btn {
-	width: 161%;
-	border: none;
-	border-radius: 1rem;
-	padding: 8%;
-	background: #0062cc;
-	color: #fff;
-	font-weight: 700;
-	font-size: 13px;
-	cursor: pointer;
-}
-</style>
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
-	<nav
-		class="navbar fixed-top navbar-expand-md flex-nowrap navbar-new-top">
-<!-- 		<a href="/" class="navbar-brand"><img src="#" alt="" />WeddingBuddy</a>
- -->		<ul class="nav navbar-nav mr-auto"></ul>
-		<ul class="navbar-nav flex-row">
-			<li class="nav-item"><a class="nav-link px-2">Link</a></li>
-			<li class="nav-item"><a class="nav-link px-2">Link</a></li>
-			<li class="nav-item">
-				<button type="button" class="header-btn">Button</button>
-			</li>
-		</ul>
-		<button class="navbar-toggler ml-auto" type="button"
-			data-toggle="collapse" data-target="#navbar2">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	</nav>
-	<nav class="navbar fixed-top navbar-expand-md navbar-new-bottom">
-		<div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
-			<ul class="navbar-nav w-100 justify-content-center px-3">
-				<a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
-				<li class="nav-item"><a class="nav-link">드레스</a></a></li>
-				<li class="nav-item"><a class="nav-link">헤어</a></li>
-				<li class="nav-item"><a class="nav-link">메이크업</a></li>
-				<li class="nav-item"><a class="nav-link">웨딩홀</a></li>
-			</ul>
+	<section class="header-top-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6"></div>
+				<div class="col-md-6">
+					<div class="header-top-menu">
+						<ul class="nav nav-pills navbar-right">
+							<c:if test="${!p_isLogin && !isLogin}">
+								<li><a href="<c:url value='/planner/login'/>"><i
+										class="pe-7s-lock"></i>Planner Login/Register</a></li>
+								<li><a href="<c:url value='/login'/>"><i
+										class="pe-7s-lock"></i>Login/Register</a></li>
+							</c:if>
+							<c:choose>
+								<c:when test="${isLogin }">
+									<li><a href="<c:url value='/mypage'></c:url>">User My Page</a></li>
+									<li><a href="<c:url value='/logout'/>"><i
+											class="pe-7s-lock"></i>Logout</a></li>
+								</c:when>
+								<c:when test="${p_isLogin }">
+									<li><a href="<c:url value='/mypage'></c:url>">Planner My Page</a></li>
+									<li><a href="<c:url value='/planner/logout'/>"><i
+											class="pe-7s-lock"></i>Logout</a></li>
+								</c:when>
+							</c:choose>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
-	</nav>
+	</section>
+
+	<header class="header-section">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/weddingBuddy" style="padding-top: 0">
+						<img src="<c:url value='/images/logo.jpg'></c:url>" width="50"
+						height="50" class="d-inline-block brand-image" alt="">
+					</a> <a class="navbar-brand" href="/weddingBuddy"><b>WeddingBuddy</b></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
+						<li><a href="<c:url value='/search/planner'></c:url>">플래너찾기</a></li>
+						<li><a href="#">드레스</a></li>
+						<li><a href="#">헤어</a></li>
+						<li><a href="#">메이크업</a></li>
+						<li><a href="#">웨딩홀</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+	</header>
+
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+
 </body>
 </html>
