@@ -175,6 +175,10 @@ figcaption .project-creator {
 					</span>
 				</figure>
 			</div>
+			
+			
+			
+			
 		</div>
 
 		<div class="col-ms-10 col-md-4">

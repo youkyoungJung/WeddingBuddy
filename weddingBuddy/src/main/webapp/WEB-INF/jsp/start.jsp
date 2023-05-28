@@ -15,6 +15,7 @@ body, html {
 }
 
 .iframe-container {
+	width: 30%;
 	height: 100%;
 	float: left;
 	box-sizing: border-box;

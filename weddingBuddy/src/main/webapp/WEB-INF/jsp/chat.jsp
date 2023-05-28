@@ -162,6 +162,32 @@ body {
          // 부모 프레임인 start.jsp의 changeIframe 함수 호출
          parent.changeIframe(url);
      }
+	 
+	 $(document).ready(function() {
+		  $('#content').on('input', function() {
+		    adjustTextAreaHeight();
+		  });
+		});
+
+		function adjustTextAreaHeight() {
+		  var textarea = $('#content');
+		  var maxHeight = parseInt(textarea.css('max-height'));
+
+		  // 임시로 높이를 자동으로 조정하여 텍스트가 너비를 벗어나는지 확인
+		  textarea.css('height', 'auto');
+		  var currentHeight = textarea.prop('scrollHeight');
+
+		  // 텍스트 영역이 최대 높이보다 클 경우 다음 줄로 내려감
+		  if (currentHeight > maxHeight) {
+		    textarea.css('height', maxHeight + 'px');
+		  } else {
+		    textarea.css('height', currentHeight + 'px');
+		  }
+		}
+
+	 
+
+
 
 </script>
 
@@ -226,8 +252,9 @@ body {
 			</div>
 			<div class="type_msg" id="enter">
 				<div class="input_msg_write">
-					<input type="text" id="content" class="write_msg"
-						placeholder="Type a message" />
+					<textarea id="content" class="write_msg"
+						placeholder="Type a message" style="height: 200%;width: 100%;">
+					</textarea>
 					<button class="msg_send_btn" type="button" id="btn"
 						onClick="isitEmpty(); false;">
 						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
@@ -242,7 +269,7 @@ body {
 <script>
 	var input = document.getElementById("content");
 	input.addEventListener("keyup", function(event) {
-		if (event.keyCode === 13) {
+		if (event.keyCode === 13 && !event.shiftKey) {
 			event.preventDefault();
 			document.getElementById("btn").click();
 		}
