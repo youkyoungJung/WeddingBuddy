@@ -98,6 +98,8 @@ public class UserController {
 		logger.info("/my/chat : user: " + account_id);
 		User returnVo = userService.selectOne(account_id);
 		Planner returnVo2 = plannerService.selectOne2(account_id);
+		logger.info("user_account 조건문 들어가기 전: "+returnVo);
+		logger.info("planner_account 조건문 들어가기 전: "+returnVo2);
 		
 		if(returnVo2 == null && returnVo != null) {
 			logger.info("현재유저 " + returnVo);

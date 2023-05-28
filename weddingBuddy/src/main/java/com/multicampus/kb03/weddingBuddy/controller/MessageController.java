@@ -66,7 +66,7 @@ public class MessageController {
 		logger.info("chatting " + chatlist);
 		
 
-		// 채팅 _id 가져오기
+		// 채팅 _id 가져오기(user일 경우만됨)
 		int chatting_id = service.selectChattingId(to_id, from_id);
 		
 		HttpSession session = request.getSession();

@@ -47,6 +47,7 @@ body, html {
 </script>
 </head>
 <body>
+	
 	<div class="iframe-container">
 		<iframe src="<c:url value="/" />" name="contentrame" id="contentFrame"></iframe>
 	</div>
