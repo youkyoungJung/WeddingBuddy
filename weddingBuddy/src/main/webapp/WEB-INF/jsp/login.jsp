@@ -60,11 +60,11 @@
 
 				<hr class="mb-4">
 				<div style="text-align: center;">
-					<button class="btn btn-primary btn-dark" id="btn" type="submit"
+					<button class="btn btn-primary btn-primary" id="btn" type="submit"
 						style="width: 30%">로그인</button>
 					&nbsp; &nbsp;
 
-					<button class="btn btn-primary btn-dark" id="buttons" type="button"
+					<button class="btn btn-primary btn-primary" id="buttons" type="button"
 						style="width: 35%" onClick="location.href='/join'">회원가입</button>
 				</div>
 			</form>
