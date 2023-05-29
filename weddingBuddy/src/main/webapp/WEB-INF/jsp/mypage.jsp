@@ -153,7 +153,6 @@ figcaption .project-creator {
 	<div class="container bootstrap snippets bootdey">
 		<h1 class="text-center text-primary title">Wedding Buddy MyPage</h1>
 		<hr class="divider-title">
-
 		<div class="container">
 			<div class="row">
 				<div class="col-ms-10 col-md-4">
@@ -192,6 +191,19 @@ figcaption .project-creator {
 						</figure>
 					</div>
 				</div>
+		<div class="col-ms-10 col-md-4">
+			<div class="project">
+				<figure class="img-responsive">
+					<img src="<c:url value='/images/mypage_like.png' />" > 
+					<span class="actions">
+
+						<button onClick="location.href='<c:url value="/mypage/like" />'" class="btn btn-warning bnt-action" type="submit">♥찜 바로가기 ♥
+
+						</button>
+					</span>
+				</figure>
+			</div>
+		</div>
 			</div>
 		</div>
 	</div>

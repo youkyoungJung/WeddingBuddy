@@ -451,9 +451,7 @@
         location.href = url;
     }
 	</script>
-
-
-
+  
 	<!-- Team Start -->
 	<div class="container-xxl py-6">
 		<div class="container">
@@ -537,6 +535,7 @@
 
 	<%@ include file="footer.jsp"%>
 
+</script>
 
 </body>
 

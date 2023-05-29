@@ -15,6 +15,7 @@
       padding: 0;
     }
 
+
     .iframe-container {
       width: 25%;
       height: 100%;
@@ -22,6 +23,8 @@
       box-sizing: border-box;
       border: 1px solid #ccc;
     }
+
+
 
     .iframe-container:first-child {
       width: 75%;
@@ -54,6 +57,7 @@
   </script>
 </head>
 <body>
+	
 	<div class="iframe-container">
 		<iframe src="<c:url value="/" />" name="contentrame" id="contentFrame"></iframe>
 	</div>

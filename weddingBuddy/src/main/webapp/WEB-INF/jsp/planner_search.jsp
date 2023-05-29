@@ -1,8 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>Searching Planner </title> 
 <style>body {
@@ -14,89 +16,89 @@ develop /*==================================================
   Nearby People CSS
   ==================================================*/   
 .people-nearby .google-maps {
-	background: #f8f8f8;
-	border-radius: 4px;
-	border: 1px solid #f1f2f2;
-	padding: 20px;
-	margin-bottom: 20px;
+   background: #f8f8f8;
+   border-radius: 4px;
+   border: 1px solid #f1f2f2;
+   padding: 20px;
+   margin-bottom: 20px;
 }
 
 .people-nearby .google-maps .map {
-	height: 300px;
-	width: 100%;
-	border: none;
+   height: 300px;
+   width: 100%;
+   border: none;
 }
 
 .people-nearby .nearby-user {
-	padding: 20px 0;
-	border-top: 1px solid #f1f2f2;
-	border-bottom: 1px solid #f1f2f2;
-	margin-bottom: 20px;
+   padding: 20px 0;
+   border-top: 1px solid #f1f2f2;
+   border-bottom: 1px solid #f1f2f2;
+   margin-bottom: 20px;
 }
 
 img.profile-photo-lg {
-	height: 80px;
-	width: 80px;
-	border-radius: 50%;
+   height: 80px;
+   width: 80px;
+   border-radius: 50%;
 }
 
 #header {
-	margin-left: 30px;
+   margin-left: 30px;
 }
 
 .box-radio-input input[type="radio"] {
-	display: none;
+   display: none;
 }
 
 .box-radio-input input[type="radio"]+span {
-	display: inline-block;
-	background: none;
-	border: 1px solid #dfdfdf;
-	padding: 0px 10px;
-	text-align: center;
-	height: 35px;
-	line-height: 33px;
-	font-weight: 500;
-	cursor: pointer;
+   display: inline-block;
+   background: none;
+   border: 1px solid #dfdfdf;
+   padding: 0px 10px;
+   text-align: center;
+   height: 35px;
+   line-height: 33px;
+   font-weight: 500;
+   cursor: pointer;
 }
 
 .box-radio-input input[type="radio"]:checked+span {
-	border: 1px solid #F48fb1;
-	background: #F48fb1;
-	color: #fff;
+   border: 1px solid #F48fb1;
+   background: #F48fb1;
+   color: #fff;
 }
 
 #custom-search-input {
-	padding: 3px;
-	border: solid 1px #E4E4E4;
-	border-radius: 6px;
-	background-color: #fff;
-	width: 40%
+   padding: 3px;
+   border: solid 1px #E4E4E4;
+   border-radius: 6px;
+   background-color: #fff;
+   width: 40%
 }
 
 #custom-search-input input {
-	border: 0;
-	box-shadow: none;
+   border: 0;
+   box-shadow: none;
 }
 
 #custom-search-input button {
-	margin: 2px 0 0 0;
-	background: none;
-	box-shadow: none;
-	border: 0;
-	color: #666666;
-	padding: 0 8px 0 10px;
-	border-left: solid 1px #ccc;
+   margin: 2px 0 0 0;
+   background: none;
+   box-shadow: none;
+   border: 0;
+   color: #666666;
+   padding: 0 8px 0 10px;
+   border-left: solid 1px #ccc;
 }
 
 #custom-search-input button:hover {
-	border: 0;
-	box-shadow: none;
-	border-left: solid 1px #ccc;
+   border: 0;
+   box-shadow: none;
+   border-left: solid 1px #ccc;
 }
 
 #custom-search-input .glyphicon-search {
-	font-size: 23px;
+   font-size: 23px;
 }
 
 @font-face {
@@ -115,6 +117,7 @@ body {
 </head>
 
 <body>
+
 	<div class="container-xxl bg-white p-0">
 		<%@ include file="navbar.jsp"%>
 		<!-- 상황에 맞게 적어줘야함 -->
@@ -211,6 +214,7 @@ body {
 
 
 										<script>
+
 function handleFavoriteClick(event,plannerId,isFavorite) {
   event.preventDefault(); // 기본 동작 방지
 
@@ -234,7 +238,6 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
 
   console.log("isFavorite", isFavorite);
 }
-
 
 
 </script>
