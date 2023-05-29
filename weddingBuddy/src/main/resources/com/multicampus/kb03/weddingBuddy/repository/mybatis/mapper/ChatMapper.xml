@@ -44,6 +44,7 @@
 		select chatting_id from chatting
 		where user_id = #{user_id}
 		and planner_id = #{planner_id}
+		or planner_id = #{user_id} and user_id = #{planner_id}
 	</select>
 	
 	<select id="chattingCountBetweenUserAndPlanner" 

@@ -8,8 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 
@@ -25,8 +28,6 @@ public interface PlannerDao {
 	public Planner selectOne(int planner_id) throws Exception;
 	
 	public Planner selectOne2(String account_id) throws Exception;
-
-	public List<Planner> selectAll() throws Exception;
 
 	public List<Top3Vo> selectTop3() throws Exception;
 	
@@ -44,19 +45,38 @@ public interface PlannerDao {
 
 	public List<User> chattingWithSomeone(int planner_id) throws Exception;
 
+	// selectAll 회원전체보기 
+	public List<Top3Vo> selectAll() throws Exception;
+
 	
 
-	public List<Planner> searchByAd(String address) throws Exception;
+	public List<Top3Vo> searchByAd(String address) throws Exception;
+
 	
-	public List<Planner> searchByName(String name) throws Exception;
+	public List<Top3Vo> searchByName(String name) throws Exception;
 	
-	public List<Planner> searchByGroup(String agency) throws Exception;
+	public List<Top3Vo> searchByGroup(String agency) throws Exception;
 	
 	public Page<Planner> findAll(Pageable pageable);
 	
 	public Planner updateFavoriteStatus(int planner_id, boolean isFavorite) throws Exception;
 	
+
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id);
 	
+
+	public List<Planner> selectPlannerLike(int user_id) throws Exception;
+
+	
+	public void deletePlannerLike(int user_id, int planner_id) throws Exception;
+	
+	public void insertPlannerLike(Map<String, Object> parameters)throws Exception;
+	
+	//Planner like id 가져옴
+	public Planner_Like getPlannerLike(int user_id, int planner_id) throws Exception;
+	
+	public int updateFavorite(int planner_like_id, boolean isFavorite) throws Exception;
+
 	
 	
 	

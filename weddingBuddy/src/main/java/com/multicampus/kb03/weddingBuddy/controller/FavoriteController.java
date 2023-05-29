@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.PlannerMapper;
 import com.multicampus.kb03.weddingBuddy.service.PlannerService;
 import com.multicampus.kb03.weddingBuddy.service.UserService;
@@ -28,41 +29,50 @@ import com.multicampus.kb03.weddingBuddy.service.UserService;
 public class FavoriteController {
 
     @Autowired
-    private PlannerMapper plannerMapper;
+    private PlannerService plannerService;
     
     @Autowired
     private UserService userService;
 
+    //ajax �옉�룞 post
     @RequestMapping(value="/updateFavorite", method = RequestMethod.POST)
-    public String favoriteStatus(@RequestParam("planner_id") int plannerId,
+    public String favoriteStatus(@RequestParam("planner_id") int planner_id,
                                  @RequestParam("isFavorite") boolean isFavorite,
                                  Model model, HttpSession session) throws Exception {
        
       
         String accountId = UserSession.getLoginUserId(session);
         int user_id = userService.selectUserIdByAccountId(accountId);
-        System.out.println(" "+user_id);
+        System.out.println("user_id: "+user_id + " isFavorite: "+isFavorite);
         
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("user_id", user_id);
-        parameters.put("plannerId", plannerId);
+        parameters.put("plannerId", planner_id);
         parameters.put("isFavorite", isFavorite);
-        plannerMapper.insertPlannerLike(parameters);
         
-        if(isFavorite) {
-        	model.addAttribute("plannerId", plannerId);
-        	model.addAttribute("isFavorite", isFavorite);
-        }
-      
-
+        model.addAttribute("planner_id",planner_id);
+        
+        
+        System.out.println("parameters: " + parameters.toString());
+        //plannerService �뿉�꽌 湲곗〈 planner_like 媛� �엳�뒗吏� �솗�씤
+        Planner_Like planner_like = plannerService.getPlannerLike(user_id, planner_id);
+        
+        //�뾾�쑝硫� insert, �엳�쑝硫� delete
+        if(planner_like != null) {
+        	int planner_like_id = planner_like.getPlanner_like_id();
+        	System.out.println("planner_like_id瑜� 李얜뒗媛�? : "+planner_like_id);
+        	plannerService.deletePlannerLike(user_id, planner_like_id);
+        	System.out.println("delete �닔�뻾�븯�굹?");
+        	Planner_Like planner_like_2 = plannerService.getPlannerLike(user_id, planner_id);
+            System.out.println("�젙蹂댁쟾�떖: "+ planner_like_2);
+        } 
+        else {
+        	System.out.println("�젙蹂댁쟾�떖: "+ planner_like);
+        	plannerService.insertPlannerLike(parameters);
+        }	
         return "like";
     }
     
-//    @GetMapping("/like")
-//    public String showLikePage(Model model) {
-//        // 필요한 작업 수행
-//        return "like";
-//    }
 
     
    

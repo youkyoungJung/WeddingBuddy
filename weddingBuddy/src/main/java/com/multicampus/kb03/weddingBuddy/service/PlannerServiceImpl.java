@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.dto.Planner_Review;
 import com.multicampus.kb03.weddingBuddy.dto.Review_Image;
+import com.multicampus.kb03.weddingBuddy.dto.Planner_Like;
 import com.multicampus.kb03.weddingBuddy.dto.Top3Vo;
 import com.multicampus.kb03.weddingBuddy.dto.User;
 import com.multicampus.kb03.weddingBuddy.repository.PlannerDao;
@@ -49,7 +50,7 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 
 	@Override
-	public List<Planner> selectAll() throws Exception {
+	public List<Top3Vo> selectAll() throws Exception {
 		return dao.selectAll();
 	}
 
@@ -116,18 +117,18 @@ public class PlannerServiceImpl implements PlannerService {
 	
 
 	@Override
-	public List<Planner> searchByAd(String address) throws Exception {
+	public List<Top3Vo> searchByAd(String address) throws Exception {
 		return dao.searchByAd(address);
 	}
 
 	@Override
-	public List<Planner> searchByName(String name) throws Exception {
+	public List<Top3Vo> searchByName(String name) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.searchByName(name);
 	}
 
 	@Override
-	public List<Planner> searchByGroup(String agency) throws Exception {
+	public List<Top3Vo> searchByGroup(String agency) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.searchByGroup(agency);
 	}
@@ -144,11 +145,36 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 
 	@Override
-	public void insertPlannerLike(Map<String, Object> parameters) {
-		// TODO Auto-generated method stub
+	public void insertPlannerLike(Map<String, Object> parameters) throws Exception {
+		dao.insertPlannerLike(parameters);
 		
 	}
 
+	@Override
+	public List<Planner> selectPlannerLike(int user_id) throws Exception {
+		return dao.selectPlannerLike(user_id);
+	}
+
+	@Override
+	public void deletePlannerLike(int user_id, int planner_id) throws Exception {
+		dao.deletePlannerLike(user_id, planner_id);
+		
+	}
+
+	@Override
+	public List<Planner_Review> getTop3ReviewsByPlannerId(int planner_id) {
+		// TODO Auto-generated method stub
+		return dao.getTop3ReviewsByPlannerId(planner_id);
+	}
+
+	public Planner_Like getPlannerLike(int user_id, int planner_id) throws Exception {
+		return dao.getPlannerLike(user_id, planner_id);
+	}
+
+	@Override
+	public int updateFavorite(int planner_like_id, boolean isFavorite) throws Exception {
+		return dao.updateFavorite(planner_like_id, isFavorite);
+	}
 
 	
 	

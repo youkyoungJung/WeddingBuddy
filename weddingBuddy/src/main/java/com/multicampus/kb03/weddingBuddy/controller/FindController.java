@@ -1,5 +1,6 @@
 package com.multicampus.kb03.weddingBuddy.controller;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class FindController {
                                  @RequestParam(value = "type", required = false) String searchType,
                                  @RequestParam(value = "search", required = false) String searchKeyword,
                                  Model model) throws Exception {
-        List<Planner> foundPlanners;
+        List<Top3Vo> foundPlanners;
         int totalPlanners;
 
         if ("area".equals(searchType)) {
@@ -54,16 +55,23 @@ public class FindController {
             // 검색 유형이 잘못된 경우 기본 검색 로직 수행
             foundPlanners = plannerService.selectAll();
         }
+       
+        
+       
 
         totalPlanners = foundPlanners.size();
 
         // 페이지네이션 계산
         int totalPages = (int) Math.ceil((double) totalPlanners / PAGE_SIZE);
         int startIndex = (page - 1) * PAGE_SIZE;
+        
         int endIndex = Math.min(startIndex + PAGE_SIZE, totalPlanners);
-
+        if(startIndex <0 || startIndex >= endIndex) {
+        	return "planner_search";
+        }
+        
         // 페이징된 플래너 목록 가져오기
-        List<Planner> pagedPlanners = foundPlanners.subList(startIndex, endIndex);
+        List<Top3Vo> pagedPlanners = foundPlanners.subList(startIndex, endIndex);
 
         model.addAttribute("PlannerAll", pagedPlanners);
         model.addAttribute("type", searchType);

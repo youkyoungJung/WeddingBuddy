@@ -11,7 +11,14 @@ public class Planner {
 	private String intro;
 	private String region;
 	private String account_id;
+	private boolean isFavorite;
 	
+	public boolean isFavorite() {
+		return isFavorite;
+	}
+	public void setFavorite(boolean isFavorite) {
+		this.isFavorite = isFavorite;
+	}
 	public int getPlanner_id() {
 		return planner_id;
 	}
@@ -70,8 +77,8 @@ public class Planner {
 	@Override
 	public String toString() {
 		return "Planner [planner_id=" + planner_id + ", name=" + name + ", password=" + password + ", phone=" + phone
-				+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region
-				+ ", account_id=" + account_id + "]";
+ +",account_id=" + account_id+ ", email=" + email + ", agency_id=" + agency_id + ", intro=" + intro + ", region=" + region +", isFavorite = "+isFavorite;
+
 	}
 	
 }

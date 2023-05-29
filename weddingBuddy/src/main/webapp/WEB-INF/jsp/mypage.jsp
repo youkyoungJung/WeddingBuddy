@@ -9,7 +9,7 @@
 <title>Review</title>
 <style>
 body {
-	background: #eee;;
+	background: #eee;
 }
 
 .title {
@@ -130,23 +130,67 @@ figcaption .project-creator {
 	letter-spacing: 1px;
 }
 </style>
-<!-- Core theme CSS (includes Bootstrap)-->
-<link rel="stylesheet" href="/css/style.css">
-<!-- 遺��몄�ㅽ�몃�� -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
 </head>
-<jsp:include page="navbar.jsp" />
 <body>
+	<!-- navbar 추가해줘야할 것 -->
+	<div class="container-xxl bg-white p-0">
+		<%@ include file="navbar.jsp"%>
+		<div class="container-xxl bg-primary page-header">
+			<div class="container text-center">
+				<h1 class="text-white animated zoomIn mb-3">마이페이지</h1>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb justify-content-center">
+						<li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+						<li class="breadcrumb-item"><a class="text-white" href="#">플래너찾기</a></li>
+						<li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- 추가해 줘야할 것 끝 -->
 
 	<div class="container bootstrap snippets bootdey">
 		<h1 class="text-center text-primary title">Wedding Buddy MyPage</h1>
 		<hr class="divider-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-ms-10 col-md-4">
+					<div class="project">
+						<figure class="img-responsive">
+							<img src="<c:url value='/images/mypage_like.png' />">
+							<span class="actions">
+								<button class="btn btn-warning bnt-action" type="submit">♥
+									찜보로가기 ♥</button>
+							</span>
+						</figure>
+					</div>
+				</div>
 
+				<div class="col-ms-10 col-md-4">
+					<div class="project">
+						<figure class="img-responsive">
+							<img src="<c:url value='/images/mypage_update.png' />">
+							<span class="actions">
+								<button class="btn btn-warning bnt-action" type="submit">♥
+									수정하기 ♥</button>
+							</span>
+						</figure>
+					</div>
+				</div>
+
+				<div class="col-ms-10 col-md-4">
+					<div class="project">
+						<figure class="img-responsive">
+							<img src="<c:url value='/images/mypage_chat.png' />">
+							<span class="actions">
+								<button onClick="location.href='<c:url value="/mypage/chat" />'"
+									class="btn btn-warning bnt-action" type="submit">♥
+									내채팅방 ♥</button>
+							</span>
+						</figure>
+					</div>
+				</div>
 		<div class="col-ms-10 col-md-4">
 			<div class="project">
 				<figure class="img-responsive">
@@ -160,37 +204,10 @@ figcaption .project-creator {
 				</figure>
 			</div>
 		</div>
-
-		<div class="col-ms-10 col-md-4">
-			<div class="project">
-				<figure class="img-responsive">
-					<img src="<c:url value='/images/mypage_update.png' />" > 
-					<span class="actions">
-
-						<button class="btn btn-warning bnt-action" type="submit">�λ�� ��蹂댁������
-
-						<button class="btn btn-warning bnt-action" type="submit">♥ 수정하기  ♥
-
-						</button>
-					</span>
-				</figure>
-			</div>
-		</div>
-
-		<div class="col-ms-10 col-md-4">
-			<div class="project">
-				<figure class="img-responsive">
-					<img src="<c:url value='/images/mypage_chat.png' />" > 
-					<span class="actions">
-
-						<button onClick="location.href='<c:url value="/mypage/chat" />'" class="btn btn-warning bnt-action" type="submit">♥내 채팅방♥
-						</button>
-					</span>
-				</figure>
 			</div>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
-<jsp:include page="footer.jsp" />
 
 </html>
