@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.ChatReservationMapper">
+	<cache />
+
+	<select id="reservationExist"
+		resultType="int">
+        SELECT count(*)
+		FROM chat_reservation r
+		JOIN chatting c ON r.chatting_id = c.chatting_id(+)
+		where planner_id = #{planner_id}
+		and reservation_date = to_date(#{reservation_date}, 'YYYY-MM-DD HH24:MI')
+	</select>
+	
+	<select id="insertReservation">
+		insert into chat_reservation
+		values(chat_reservation_seq.nextval,
+			 to_date(#{reservation_date}, 'YYYY-MM-DD HH24:MI'),
+			  #{chatting_id})
+	</select>
+	
+	<select id="selectNextReservedDatetime" resultType="String">
+		select nextReservedDatetime
+	    from (
+	        select to_char(reservation_date, 'YY-MM-DD HH24:MI') as nextReservedDatetime,
+	               row_number() over (order by reservation_date) as rn
+	        from chat_reservation
+	        where chatting_id = #{chatting_id} and reservation_date > sysdate
+	    ) rd
+	    where rn = 1
+	</select>
+	
+
+</mapper>

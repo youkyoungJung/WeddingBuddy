@@ -37,7 +37,6 @@
 	</div>
 	<!-- Navbar & Hero End -->
 
-
 	<!-- About Start -->
 	<div class="container-xxl py-6">
 		<div class="container">
@@ -410,6 +409,50 @@
 	</div>
 	<!-- Testimonial End -->
 
+	<!-- 기존에 있던거 -->
+	<div class="container">
+
+		<h3 id="header">Best Planner Top 3</h3>
+		<c:forEach items="${plannerTop3}" var="planner">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="people-nearby">
+						<div class="nearby-user">
+							<div class="row">
+								<div class="col-md-2 col-sm-2">
+									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+										alt="user" class="profile-photo-lg">
+								</div>
+								<div class="col-md-7 col-sm-7">
+									<h5>
+										이름:<a
+											href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
+											class="profile-link">${planner.name }</a>
+									</h5>
+									<p>소속:${planner.agency_name }</p>
+									<p class="text-muted">소개: ${planner.intro }</p>
+								</div>
+								<div class="col-md-3 col-sm-3">
+
+									<button class="btn btn-primary pull-right"
+										onclick="redirectToReviewDetail(${planner._id})">
+										고객후기: ${planner.cnt}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+	<script>
+    function redirectToReviewDetail(plannerId) {
+        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
+        location.href = url;
+    }
+	</script>
+
+
 
 	<!-- Team Start -->
 	<div class="container-xxl py-6">
@@ -493,6 +536,7 @@
 
 
 	<%@ include file="footer.jsp"%>
+
 
 </body>
 

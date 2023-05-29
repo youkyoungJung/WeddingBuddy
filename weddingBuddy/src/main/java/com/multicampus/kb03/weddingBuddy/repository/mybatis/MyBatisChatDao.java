@@ -2,19 +2,23 @@ package com.multicampus.kb03.weddingBuddy.repository.mybatis;
 
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.multicampus.kb03.weddingBuddy.controller.MessageController;
 import com.multicampus.kb03.weddingBuddy.dto.Message;
+import com.multicampus.kb03.weddingBuddy.dto.Planner;
 import com.multicampus.kb03.weddingBuddy.repository.ChatDao;
 import com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.ChatMapper;
+import com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.PlannerMapper;
 
 @Repository
 class MyBatisChatDao implements ChatDao {
 
 	@Autowired
 	private ChatMapper chatMapper;
-	
 	
 	@Override
 	public List<Message> chatList(Message m) throws Exception {
@@ -25,7 +29,7 @@ class MyBatisChatDao implements ChatDao {
 	public List<Message> messagebox(int to_id) throws Exception {
 		List<Message> messagebox = chatMapper.messagebox(to_id);
 		
-		System.out.println("¾ê Å©±â´Â " + messagebox.size());
+		System.out.println("ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ " + messagebox.size());
 		if (messagebox.size() == 0) {
 			
 		}
@@ -55,6 +59,21 @@ class MyBatisChatDao implements ChatDao {
 	@Override
 	public void messagesend(Message m) throws Exception {
 		chatMapper.messagesend(m);
+	}
+
+	@Override
+	public void insertNewChat(int user_id, int planner_id) {
+		chatMapper.insertNewChat(user_id, planner_id);
+	}
+
+	@Override
+	public int selectChattingId(int user_id, int planner_id) {
+		return chatMapper.selectChattingId(user_id, planner_id);
+	}
+
+	@Override
+	public int chattingCountBetweenUserAndPlanner(int user_id, int planner_id) {
+		return chatMapper.chattingCountBetweenUserAndPlanner(user_id, planner_id);
 	}
 
 }

@@ -6,7 +6,15 @@ public class Top3Vo {
 	private int cnt;
 	private String intro;
 	private String agency_name;
+	private String region;
 	
+	
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public int get_id() {
 		return _id;
 	}
@@ -40,7 +48,7 @@ public class Top3Vo {
 	@Override
 	public String toString() {
 		return "Top3Vo [_id=" + _id + ", name=" + name + ", cnt=" + cnt + ", intro=" + intro + ", agency_name="
-				+ agency_name + "]";
+				+ agency_name +", region = "+region+"]";
 	}
 
 	

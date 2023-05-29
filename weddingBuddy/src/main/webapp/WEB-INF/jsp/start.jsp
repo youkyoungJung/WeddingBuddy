@@ -54,12 +54,13 @@
   </script>
 </head>
 <body>
-  <div class="iframe-container">
-    <iframe src="<c:url value="/" />" name="contentFrame" id="contentFrame"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="<c:url value="/chat/${to_id }/${from_id }"/>" name="chatFrame" id="chatFrame" style="display: none;"></iframe>
-    <button onclick="toggleIframe2()">Toggle Iframe 2</button>
-  </div>
+	<div class="iframe-container">
+		<iframe src="<c:url value="/" />" name="contentrame" id="contentFrame"></iframe>
+	</div>
+	<div class="iframe-container">
+		<!-- <button onclick="goBack()">뒤로 가기</button> -->
+		<iframe src="<c:url value="/chat/${to_id }/${from_id }"/>" name="chatFrame"
+			id="chatFrame"></iframe>
+	</div>
 </body>
 </html>

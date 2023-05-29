@@ -72,20 +72,35 @@
 		#{planner_id}
 	</select>
 
-	<!-- selectAll 전체 출력 -->
-	<select id="selectAll"
-		resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
-		select P.planner_id as "_id", P.name as "name", R.cnt as
-		"cnt", P.intro as
-		"intro", A.name as "agency_name"
-		from planner_account
-		P, planner_agency A,
-		(select planner_id, count(*) as cnt from
-		planner_review group by planner_id)
-		R
-		where A.agency_id = P.agency_id
-		and P.planner_id = R.planner_id
-		order by cnt desc
+<!-- selectAll 전체 출력 -->
+<select id="selectAll" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+  SELECT P.planner_id as "_id", P.name as "name", COALESCE(R.cnt, 0) as "cnt", P.intro as "intro", A.name as "agency_name"
+  FROM planner_account P
+  INNER JOIN planner_agency A ON P.agency_id = A.agency_id
+  LEFT JOIN (SELECT planner_id, COUNT(*) as cnt FROM planner_review GROUP BY planner_id) R ON P.planner_id = R.planner_id
+  ORDER BY cnt DESC
+</select>
+	<!-- 리뷰 작성 -->
+	<insert id="insertReview"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		<selectKey keyProperty="review_id" resultType="int"
+			order="BEFORE">
+			SELECT review_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO planner_review (review_id, planner_id, user_id, reg_date,
+		content)
+		VALUES (#{review_id}, #{planner_id}, #{user_id}, sysdate,
+		#{content})
+	</insert>
+
+
+	<!-- 리뷰 detail 보기 -->
+	<select id="getReviewDetail" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+		SELECT *
+		FROM Planner_Review
+		WHERE planner_id = #{plannerId}
+		ORDER BY reg_date DESC
 	</select>
 
 	<!--회원 찾기(아이디로 찾기) -->
@@ -97,6 +112,112 @@
 		#{account_id}
 	</select>
 
+	<!-- 리뷰 이미지 등록 -->
+	<insert id="saveReviewImage"
+		parameterType="com.multicampus.kb03.weddingBuddy.dto.Review_Image">
+		INSERT INTO Review_Image (Review_Image_ID, Review_ID,
+		Image)
+		VALUES (seq_review_image.nextval, #{review_id}, #{image})
+	</insert>
+
+	<!-- 리뷰 이미지 불러오기 -->
+	<select id="getReviewImages" parameterType="int"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Review_Image">
+		SELECT * FROM Review_Image WHERE Review_ID = #{reviewId}
+	</select>
+	
+	<!-- 유저 아이디로 유저네임 가져오기 -->
+	<select id="getUserAccountName" parameterType="int"
+		resultType="java.lang.String">
+		SELECT CONCAT(SUBSTR(name, 1, 1), '**')
+		FROM user_account
+		WHERE user_id = #{userId}
+	</select>
+	
+	
+	<!-- searchByAd -->
+<select id="searchByAd"  resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name",COUNT(R.review_id) as "cnt"
+    FROM planner_account P
+    INNER JOIN planner_agency A 
+    ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
+    WHERE A.address LIKE '%' || #{address} || '%'
+    GROUP BY P.planner_id, P.name, P.intro, A.name
+</select>
+
+<select id="searchByName" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name", COUNT(R.review_id) as "cnt"
+    FROM planner_account P
+    INNER JOIN planner_agency A ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
+    WHERE P.name LIKE '%' || #{name} || '%'
+    GROUP BY P.planner_id, P.name, P.intro, A.name
+</select>
+    
+<!-- searchByGroup -->
+<select id="searchByGroup" resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
+    SELECT P.planner_id as "_id", P.name as "name", P.intro as "intro", A.name as "agency_name",COUNT(R.review_id) as "cnt"
+    FROM planner_account P
+    INNER JOIN planner_agency A 
+    ON P.agency_id = A.agency_id
+    LEFT JOIN planner_review R ON P.planner_id = R.planner_id
+    WHERE A.name LIKE '%' || #{agency} || '%'
+    GROUP BY P.planner_id, P.name, P.intro, A.name
+    </select>
+    
+<!-- planner_like 테이블에 데이터 추가 -->
+<insert id="insertPlannerLike" parameterType="map">
+  INSERT INTO planner_like (user_id, planner_like_id, planner_id, isFavorite)
+  VALUES (#{user_id}, planner_like_seq.nextval, #{plannerId}, #{isFavorite})
+</insert>
+    
+
+    
+<!-- selectPlannerLike -->
+<select id="selectPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
+	select *
+	from planner_account 
+	where planner_id in
+	(select planner_id
+	from planner_like
+	where user_id = #{user_id})
+ </select>
+ 
+ <delete id ="deletePlannerLike">
+ 	delete
+ 	from planner_like
+ 	where planner_like_id = #{planner_like_id}
+ 	and user_id = #{user_id}
+ </delete>
+    
+    
+    <!-- selectPlannerLike -->
+<select id="getPlannerLike" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Like">
+	select *
+	from planner_like
+	where user_id = #{user_id} and planner_id =#{planner_id}
+ </select>
+ 
+ <!-- update like -->
+ <update id="updateFavorite">
+
+</update>
+    
+<!-- 리뷰를 최신순으로 가져오는 쿼리 -->
+  <select id="getTop3ReviewsByPlannerId" parameterType="int" resultType="com.multicampus.kb03.weddingBuddy.dto.Planner_Review">
+    SELECT *
+    FROM (
+        SELECT *
+        FROM planner_review
+        WHERE planner_id = #{plannerId}
+        ORDER BY reg_date DESC
+    ) WHERE ROWNUM &lt;= 3
+
+  </select>
+    
+   
+	
 	<!--로그인 -->
 	<select id="readUserWithIDPW" parameterType="String"
 		resultType="com.multicampus.kb03.weddingBuddy.dto.Planner">
@@ -117,7 +238,6 @@
 		from chatting
 		where planner_id = #{planner_id})
 	</select>
-
 
 
 </mapper>

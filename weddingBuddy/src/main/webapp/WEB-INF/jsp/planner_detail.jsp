@@ -26,6 +26,38 @@
 	max-height: 300px; /* 원하는 높이로 설정 */
 	width: auto; /* 이미지의 가로 크기는 자동으로 조정됨 */
 }
+<style>
+.review-item {
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #f5f5f5;
+	/* 원하는 스타일을 여기에 추가하거나 수정하세요 */
+}
+
+.review-item h3 {
+	margin-top: 0;
+}
+
+.review-item p {
+	margin: 0;
+}
+
+.review-item .content {
+	margin-bottom: 10px;
+}
+
+.review-item img {
+	max-width: 100%;
+	height: auto;
+}
+
+.review-image {
+	max-height: 200px;
+	width: auto;
+}
+</style>
+
 </style>
 
 <jsp:include page="navbar2.jsp" />
@@ -88,16 +120,63 @@
 				alt="user" class="profile-photo-lg">
 		</div>
 		<div class="planner-name">
-			<h1>이름 :${ planner.name }</h1>
+			<div>이름 :${ planner.name }</div>
 		</div>
 		<div class="planner-agency">
-			<h1>소속 :${ agency.name }</h1>
+			<div>소속 :${ agency.name }</div>
 		</div>
 		<div class="planner-intro">
-			<h1>소개 :${ planner.intro }</h1>
+			<div>소개 :${ planner.intro }</div>
 		</div>
 	</div>
+	<%-- <form
+		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=3"
+		method="post">
+		<label for="datetime">날짜 및 시간:</label> <input type="datetime-local"
+			id="datetime" name="date" required min="2023-01-01T00:00"
+			max="2023-12-31T23:59" step="3600"> <input type="submit"
+			value="Submit"> <br>
+		<div>${reservation_message}</div>
+	</form> --%>
 
+	<form
+		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=${planner.planner_id}"
+		method="post">
+		<label for="date">날짜:</label> <input type="date" id="date" name="date">
+
+		<label for="hour">시간:</label> <select id="hour" name="hour">
+			<c:forEach var="hour" begin="0" end="23">
+				<option value="${hour}">${hour}시</option>
+			</c:forEach>
+		</select> <input type="submit" value="예약하기"> <br>
+		<div>${reservation_message }</div>
+	</form>
+
+	<br>
+	<br>
+
+	<div>
+		<h1>리뷰</h1>
+	</div>
+	<br>
+	<div>
+    <%-- 상위 3개 리뷰 출력 --%>
+    <c:forEach var="review" items="${top3Reviews}" varStatus="status">
+        <div>${userNames[status.index]}</div>
+        <div>${review.content}</div>
+        <br>
+        
+        <c:forEach var="reviewImage" items="${reviewImagesList}">
+            <c:if test="${reviewImage.review_id == review.review_id}">
+                <img src="<c:url value='${reviewImage.image}' />" alt="Review Image" style="max-width: 300px; max-height: 300px;" />
+            </c:if>
+        </c:forEach>
+    </c:forEach>
+</div>
+
+	<br>
+	<br>
+	<br>
 
 
 	<script

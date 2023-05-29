@@ -1,16 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>WeddingBuddy - Consulting HTML Template</title>
+<title>Searching Planner </title> 
+<style>body {
+	margin-top: 20px;
+	background: #FAFAFA;
+}
 
-<style>
-/*==================================================
+develop /*==================================================
   Nearby People CSS
-  ==================================================*/
+  ==================================================*/   
 .people-nearby .google-maps {
 	background: #f8f8f8;
 	border-radius: 4px;
@@ -137,34 +139,44 @@ body {
 		<!-- 검색뷰 시작 -->
 		<section class="search-section">
 			<div align="center">
-				<form action="<c:url value='/search'/>" accept-charset="utf-8">
-					<label class="box-radio-input"><input type="radio"
-						name="type" value="area" checked="checked"><span>지역</span></label>
-					<label class="box-radio-input"><input type="radio"
-						name="type" value="name"><span>이름</span></label> <label
-						class="box-radio-input"><input type="radio" name="type"
-						value="group"><span>소속</span></label>
+				<form method="post" action="<c:url value='/search/planner' />"
+					accept-charset="utf-8">
+					<label class="box-radio-input"> <input type="radio"
+						name="type" value="area"
+						<c:if test="${type eq 'area'}">checked="checked"</c:if>> <span>지역</span>
+					</label> <label class="box-radio-input"> <input type="radio"
+						name="type" value="name"
+						<c:if test="${type eq 'name'}">checked="checked"</c:if>> <span>이름</span>
+					</label> <label class="box-radio-input"> <input type="radio"
+						name="type" value="group"
+						<c:if test="${type eq 'group'}">checked="checked"</c:if>>
+						<span>소속</span>
+					</label>
+
+
+
 
 					<div id="custom-search-input">
 						<div class="input-group col-md-12">
 							<input type="text" class="form-control input-lg"
-								placeholder="검색어를 입력하세요." name="search" /> <span
-								class="input-group-btn">
-								<button class="btn btn-info btn-lg" type="submit">
+								placeholder="검색어를 입력하세요." name="search"
+								value="${searchKeyword }" /> <span class="input-group-btn">
+								<button class="searchbtn" type="submit">
 									<i class="glyphicon glyphicon-search"></i>
 								</button>
 							</span>
 						</div>
 					</div>
-
 				</form>
 			</div>
 		</section>
 		<!-- 검색 끝 -->
+
+
 		<br>
-		<!-- 모든플래너 -->
-		<c:forEach items="${PlannerAll}" var="planner">
-			<div class="row">
+		<div class="row justify-content-center">
+			<!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
+			<c:forEach items="${PlannerAll}" var="planner">
 				<div class="col-md-8">
 					<div class="people-nearby">
 						<div class="nearby-user">
@@ -175,7 +187,8 @@ body {
 								</div>
 								<div class="col-md-7 col-sm-7">
 									<h5>
-										이름:<a href="<c:url value="/search/planner/detail" />"
+										이름:<a
+											href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
 											class="profile-link">${planner.name }</a>
 									</h5>
 									<p>소속:${planner.agency_name }</p>
@@ -183,16 +196,96 @@ body {
 								</div>
 								<div class="col-md-3 col-sm-3">
 									<button class="btn btn-primary pull-right"
-										onClick=location.href="<c:url value="#"/>" >고객후기:
-										${planner.cnt }</button>
+										onclick="redirectToReviewDetail(${planner._id})">
+										고객후기: ${planner.cnt}</button>
+
+									<div style="text-align: center; margin-top: 10px;">
+										<!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
+										<a href="#" class="image-button heart-button"
+											onclick="handleFavoriteClick(event, ${planner._id})"> <img
+											id="heartImage-${planner._id}"
+											src="${pageContext.request.contextPath}/images/prev_heart.png"
+											alt="이미지 버튼" class="img-fluid"
+											style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
+										</a>
+
+
+										<script>
+function handleFavoriteClick(event,plannerId,isFavorite) {
+  event.preventDefault(); // 기본 동작 방지
+
+  var heartImage = event.currentTarget.querySelector('img');
+  var isFavorite = heartImage.getAttribute('src') === '${pageContext.request.contextPath}/images/prev_heart.png';
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      if (isFavorite) {
+        heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/next_heart.png');
+      } else {
+        heartImage.setAttribute('src', '${pageContext.request.contextPath}/images/prev_heart.png');
+      }
+    }
+  };
+
+  xhttp.open('POST', '${pageContext.request.contextPath}/updateFavorite', true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send('planner_id=' + plannerId + '&isFavorite=' + !isFavorite); // 눌릴 때마다 isFavorite 값을 반전시킴 (!isFavorite)
+
+  console.log("isFavorite", isFavorite);
+}
+
+
+
+</script>
+
+
+									</div>
+
+
 								</div>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 
+
+		<!-- 페이지네이션 -->
+		<div class="pagination-container text-center">
+			<ul class="pagination">
+				<c:if test="${currentPage > 1}">
+					<li><a
+						href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>">&laquo;</a></li>
+				</c:if>
+				<c:forEach begin="1" end="${totalPages}" varStatus="page">
+					<c:choose>
+						<c:when test="${page.index == currentPage}">
+							<li class="active"><a href="#"><c:out
+										value="${page.index}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a
+								href="<c:url value='/search/planner?page=${page.index}&type=${type}&search=${searchKeyword}'/>"><c:out
+										value="${page.index}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${currentPage < totalPages}">
+					<li><a
+						href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>">&raquo;</a></li>
+				</c:if>
+			</ul>
+		</div>
+		<script>
+    function redirectToReviewDetail(plannerId) {
+        var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
+        location.href = url;
+    }
+</script>
 
 
 
@@ -388,99 +481,6 @@ body {
 		<!-- Service End -->
 
 
-		<!-- Features Start -->
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="row g-5">
-					<div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-						<div
-							class="d-inline-block border rounded-pill text-primary px-4 mb-3">Features</div>
-						<h2 class="mb-4">Why People Choose Us? We Are Trusted & Award
-							Wining Agency</h2>
-						<p>Clita nonumy sanctus nonumy et clita tempor, et sea amet ut
-							et sadipscing rebum amet takimata amet, sed accusam eos eos
-							dolores dolore et. Et ea ea dolor rebum invidunt clita eos. Sea
-							accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-						<p>Et ea ea dolor rebum invidunt clita eos. Sea accusam stet
-							stet ipsum, sit ipsum et ipsum kasd</p>
-						<a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read
-							More</a>
-					</div>
-					<div class="col-lg-7">
-						<div class="row g-5">
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-cubes text-white"></i>
-									</div>
-									<h6 class="mb-0">Best In Industry</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-percent text-white"></i>
-									</div>
-									<h6 class="mb-0">99% Success Rate</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-award text-white"></i>
-									</div>
-									<h6 class="mb-0">Award Winning</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-smile-beam text-white"></i>
-									</div>
-									<h6 class="mb-0">100% Happy Client</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-user-tie text-white"></i>
-									</div>
-									<h6 class="mb-0">Professional Advisors</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-							<div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
-								<div class="d-flex align-items-center mb-3">
-									<div
-										class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-										<i class="fa fa-headset text-white"></i>
-									</div>
-									<h6 class="mb-0">24/7 Customer Support</h6>
-								</div>
-								<span>Magna sea eos sit dolor, ipsum amet ipsum lorem
-									diam eos diam dolor</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Features End -->
-
 
 		<!-- Client Start -->
 		<div class="container-xxl bg-primary my-6 py-5 wow fadeInUp"
@@ -501,155 +501,7 @@ body {
 		<!-- Client End -->
 
 
-		<!-- Testimonial Start -->
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s"
-					style="max-width: 600px;">
-					<div
-						class="d-inline-block border rounded-pill text-primary px-4 mb-3">Testimonial</div>
-					<h2 class="mb-5">What Our Clients Say!</h2>
-				</div>
-				<div class="owl-carousel testimonial-carousel wow fadeInUp"
-					data-wow-delay="0.1s">
-					<div class="testimonial-item rounded p-4">
-						<i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-						<p>Dolor et eos labore, stet justo sed est sed. Diam sed sed
-							dolor stet amet eirmod eos labore diam</p>
-						<div class="d-flex align-items-center">
-							<img class="img-fluid flex-shrink-0 rounded-circle"
-								src="img/testimonial-1.jpg">
-							<div class="ps-3">
-								<h6 class="mb-1">Client Name</h6>
-								<small>Profession</small>
-							</div>
-						</div>
-					</div>
-					<div class="testimonial-item rounded p-4">
-						<i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-						<p>Dolor et eos labore, stet justo sed est sed. Diam sed sed
-							dolor stet amet eirmod eos labore diam</p>
-						<div class="d-flex align-items-center">
-							<img class="img-fluid flex-shrink-0 rounded-circle"
-								src="img/testimonial-2.jpg">
-							<div class="ps-3">
-								<h6 class="mb-1">Client Name</h6>
-								<small>Profession</small>
-							</div>
-						</div>
-					</div>
-					<div class="testimonial-item rounded p-4">
-						<i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-						<p>Dolor et eos labore, stet justo sed est sed. Diam sed sed
-							dolor stet amet eirmod eos labore diam</p>
-						<div class="d-flex align-items-center">
-							<img class="img-fluid flex-shrink-0 rounded-circle"
-								src="img/testimonial-3.jpg">
-							<div class="ps-3">
-								<h6 class="mb-1">Client Name</h6>
-								<small>Profession</small>
-							</div>
-						</div>
-					</div>
-					<div class="testimonial-item rounded p-4">
-						<i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-						<p>Dolor et eos labore, stet justo sed est sed. Diam sed sed
-							dolor stet amet eirmod eos labore diam</p>
-						<div class="d-flex align-items-center">
-							<img class="img-fluid flex-shrink-0 rounded-circle"
-								src="img/testimonial-4.jpg">
-							<div class="ps-3">
-								<h6 class="mb-1">Client Name</h6>
-								<small>Profession</small>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Testimonial End -->
 
-
-		<!-- Team Start -->
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s"
-					style="max-width: 600px;">
-					<div
-						class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our
-						Team</div>
-					<h2 class="mb-5">Meet Our Team Members</h2>
-				</div>
-				<div class="row g-4">
-					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-						<div class="team-item">
-							<h5>Full Name</h5>
-							<p class="mb-4">Designation</p>
-							<img class="img-fluid rounded-circle w-100 mb-4"
-								src="img/team-1.jpg" alt="">
-							<div class="d-flex justify-content-center">
-								<a class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-facebook-f"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-twitter"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-linkedin-in"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-						<div class="team-item">
-							<h5>Full Name</h5>
-							<p class="mb-4">Designation</p>
-							<img class="img-fluid rounded-circle w-100 mb-4"
-								src="img/team-2.jpg" alt="">
-							<div class="d-flex justify-content-center">
-								<a class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-facebook-f"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-twitter"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-linkedin-in"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-						<div class="team-item">
-							<h5>Full Name</h5>
-							<p class="mb-4">Designation</p>
-							<img class="img-fluid rounded-circle w-100 mb-4"
-								src="img/team-3.jpg" alt="">
-							<div class="d-flex justify-content-center">
-								<a class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-facebook-f"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-twitter"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-linkedin-in"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-						<div class="team-item">
-							<h5>Full Name</h5>
-							<p class="mb-4">Designation</p>
-							<img class="img-fluid rounded-circle w-100 mb-4"
-								src="img/team-4.jpg" alt="">
-							<div class="d-flex justify-content-center">
-								<a class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-facebook-f"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-twitter"></i></a> <a
-									class="btn btn-square text-primary bg-white m-1" href=""><i
-									class="fab fa-linkedin-in"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Team End -->
 		<%@ include file="footer.jsp"%>
 </body>
-
 </html>
