@@ -29,7 +29,6 @@ public interface PlannerDao {
 	
 	public Planner selectOne2(String account_id) throws Exception;
 
-	public List<Planner> selectAll() throws Exception;
 
 	public List<Top3Vo> selectTop3() throws Exception;
 	
@@ -48,9 +47,6 @@ public interface PlannerDao {
 	public List<User> chattingWithSomeone(int planner_id) throws Exception;
 
 	
-
-	public List<Planner> searchByAd(String address) throws Exception;
-	// selectAll 회원전체보기 
 	public List<Top3Vo> selectAll() throws Exception;
 
 	

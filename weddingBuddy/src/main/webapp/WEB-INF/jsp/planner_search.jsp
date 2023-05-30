@@ -6,67 +6,110 @@
 <head>
 <meta charset="UTF-8">
 <title>Searching Planner</title>
-
 <style>
-body {
-   margin-top: 20px;
-   background: #FAFAFA;
-}
-/*==================================================
-  Nearby People CSS
-  ==================================================*/
-.people-nearby .google-maps {
-   background: #f8f8f8;
-   border-radius: 4px;
-   border: 1px solid #f1f2f2;
-   padding: 20px;
-   margin-bottom: 20px;
+
+
+
+
+.kong-team-item {
+	margin-left:5px;
+  	width:25em;
+ 	height:32em;
+    position: relative;
+   
+    text-align: center;
+    transition: .5s;
+    z-index: 1;
+    
+    
 }
 
-.people-nearby .google-maps .map {
-   height: 300px;
-   width: 100%;
-   border: none;
+.kong-team-item::before,
+.kong-team-item::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    transition: .5s;
+    z-index: -1;
 }
 
-.people-nearby .nearby-user {
-   padding: 20px 0;
-   border-top: 1px solid #f1f2f2;
-   border-bottom: 1px solid #f1f2f2;
-   margin-bottom: 20px;
+.kong-team-item::after {
+    top: auto;
+    bottom: 0;
 }
 
-img.profile-photo-lg {
-   height: 80px;
-   width: 80px;
-   border-radius: 50%;
+.kong-team-item:hover::before,
+.kong-team-item:hover::after {
+    background: var(--primary);
 }
 
-#header {
-   margin-left: 30px;
+.kong-team-item h5,
+.kong-team-item p {
+    transition: .5s;
 }
+
+.kong-team-item:hover h5,
+.kong-team-item:hover p {
+    color: #FFFFFF;
+}
+
+.kong-team-item img {
+	
+    padding: 10px;
+    
+    
+    
+}
+.kong-pagination > a, #kongpage: hover {
+	color:orange;
+}
+
+
+.kong-container-xxl{display:flex;flex-wrap:inherit;align-items:center;}
 
 .box-radio-input input[type="radio"] {
    display: none;
 }
 
+
+
 .box-radio-input input[type="radio"]+span {
    display: inline-block;
    background: none;
-   border: 1px solid #dfdfdf;
+   border: 2px solid pink;
    padding: 0px 10px;
    text-align: center;
    height: 35px;
    line-height: 33px;
    font-weight: 500;
    cursor: pointer;
+    margin-bottom:10px;
+    border-radius:20%;
 }
 
 .box-radio-input input[type="radio"]:checked+span {
-   border: 1px solid #F48fb1;
-   background: #F48fb1;
-   color: #fff;
+   border: 1px solid white;
+   background: white;
+   color: black;
+ 
+  
 }
+
+.kong-profile-photo-lg {
+	width:18em;
+	height:18em;
+	border-radius: 50%;
+	
+
+}
+
+.col-md-6{flex:0 0 auto;width:80%}
 
 
 #custom-search-input {
@@ -76,11 +119,44 @@ img.profile-photo-lg {
    background-color: #fff;
    width: 40%
 }
+.kong-pagination{display:flex;padding-left:0;list-style:none}
+
+.kong-pagination:hover::before, a{
+	color:black;
+}
+
+.kong-pagination > .active > a{
+	color: pink;
+
+}
+
 
 #custom-search-input input {
    border: 0;
    box-shadow: none;
 }
+.kong-4, .gy-4 {
+	--bs--gutter-y: 1.5rem;
+}
+
+.kong-4, .gx-4 {
+	--bs--gutter-y: 1.5rem;
+}
+.kongrow {
+	display:flex;
+	flex-wrap: wrap;
+	margin-right: calc(var(--bs-gutter-x) / -2);
+	margin-left: calc(var(--bs-gutter-x) /-2);
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+.kong-col-lg-3{flex:0 0 auto;width:25%}
+
+.kong-col-md-6{flex:0 0 auto;width:50%}
+
+.kong-col-md-3{flex:0 0 auto;width:25%}
+
 
 #custom-search-input button {
    margin: 2px 0 0 0;
@@ -90,6 +166,7 @@ img.profile-photo-lg {
    color: #666666;
    padding: 0 8px 0 10px;
    border-left: solid 1px #ccc;
+   
 }
 
 #custom-search-input button:hover {
@@ -101,29 +178,46 @@ img.profile-photo-lg {
 #custom-search-input .glyphicon-search {
    font-size: 23px;
 }
+
+.kongbigframe  {margin-right:auto !important;margin-left:auto !important}
+
+.kong-col-sm-3{flex:0 0 auto;width:25%}
+
 </style>
-<jsp:include page="navbar.jsp" />
 
 </head>
 
 <body>
-
-   <div class="container">
-      <h3 id="header">플래너 찾기</h3>
-
+<!-- navbar 추가해줘야할 것 -->
+   <div class="container-xxl bg-white p-0">
+      <%@ include file="navbar.jsp"%>
+      <div class="container-xxl bg-primary page-header">
+         <div class="container text-center">
+            <h1 class="text-white animated zoomIn mb-3">플래너찾기</h1>
+            <nav aria-label="breadcrumb">
+               <ol class="breadcrumb justify-content-center">
+                  <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a class="text-white" href="#">내 채팅방</a></li>
+                  <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+               </ol>
+            </nav>
+         </div>
+      </div>
+   </div>
+   <!-- 추가해 줘야할 것 끝 -->
       <!-- 검색뷰 시작 -->
 <section class="search-section">
    <div align="center">
 <form method="post" action="<c:url value='/search/planner' />" accept-charset="utf-8">
-    <label class="box-radio-input">
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae'; ">
         <input type="radio" name="type" value="area" <c:if test="${type eq 'area'}">checked="checked"</c:if>>
         <span>지역</span>
     </label>
-    <label class="box-radio-input">
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae';">
         <input type="radio" name="type" value="name" <c:if test="${type eq 'name'}">checked="checked"</c:if>>
         <span>이름</span>
     </label>
-    <label class="box-radio-input">
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae';">
         <input type="radio" name="type" value="group" <c:if test="${type eq 'group'}">checked="checked"</c:if>>
         <span>소속</span>
     </label>
@@ -131,12 +225,12 @@ img.profile-photo-lg {
 
 
 
-         <div id="custom-search-input">
+         <div id="custom-search-input" style = "width: 20em;">
             <div class="input-group col-md-12">
                <input type="text" class="form-control input-lg" placeholder="검색어를 입력하세요." name="search"  value = "${searchKeyword }"/>
                <span class="input-group-btn">
-                  <button class="searchbtn" type="submit">
-                     <i class="glyphicon glyphicon-search"></i>
+                  <button class="searchbutton" type="submit" style="margin-left:2em; margin-top:7px;">
+                  	<i class="bi bi-search"></i>
                   </button>
                </span>
             </div>
@@ -144,38 +238,45 @@ img.profile-photo-lg {
       </form>
    </div>
 </section>
+
 <!-- 검색 끝 -->
 
+   
 
-      <br>
-<div class="row justify-content-center"> <!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
+  
+       <!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
+   <div class="kong-container-xxl py-6" >     
       <c:forEach items="${PlannerAll}" var="planner">
-         <div class="col-md-8">
-            <div class="people-nearby">
-               <div class="nearby-user">
-                  <div class="row">
-                     <div class="col-md-2 col-sm-2">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                           alt="user" class="profile-photo-lg">
-                     </div>
-                     <div class="col-md-7 col-sm-7">
-                        <h5>
-                              이름:<a href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
-                                 class="profile-link">${planner.name }</a>
-                           </h5>
-                        <p>소속:${planner.agency_name }</p>
-                        <p class="text-muted">소개: ${planner.intro }</p>
-                     </div>
-                     <div class="col-md-3 col-sm-3">
-   <button class="btn btn-primary pull-right"
-                              onclick="redirectToReviewDetail(${planner._id})">
-                              고객후기: ${planner.cnt}</button>
+       
+            <div class="kong-container" style = "margin-left:3.5em;">
+                <div class="kongrow kong-4">
+            <div class="kong-col-lg-3 kong-col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                   <div class = "kong-team-item" >
+                    <a href="#" class="heart-button" onclick="handleFavoriteClick(event, ${planner._id})" style = "margin-left:15em;">
+  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="kongimg-fluid" style = "width:70px;  margin-left:3em; ">
+  
+</a>
+                           <img src="${pageContext.request.contextPath}/images/${planner._id }.png"
+                              alt="user" class="kong-profile-photo-lg" onclick="goToPlannerDetail(${ planner._id })">
+                       
+                        <div class="kong-flex justify-content-center"
+                                    class="profile-link" style = "font-size: 1.1em; font-weight:500;">
+                           <h5>
+                                ${planner.name }
+                              </h5><br>
+                           <p>${planner.agency_name }</p>
+                           <p>${planner.intro }</p>
+                        </div>
+                        <div class="kong-col-md-3 kong-col-sm-3" >
+  
+                       
 
     <div style="text-align: center; margin-top: 10px;">
    <!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
-<a href="#" class="image-button heart-button" onclick="handleFavoriteClick(event, ${planner._id})">
-  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="img-fluid" style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
-</a>
+
+
+
+
 
 
 <script>
@@ -205,28 +306,37 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
 
 
 
+
+function goToPlannerDetail(planner_id) {
+    var contextPath = "${pageContext.request.contextPath}";
+    location.href = contextPath + '/search/planner/detail?planner_id=' + planner_id;
+}
+
+
+
 </script>
-    
+
    
+ </div>  
 </div>
 
 
 </div>
 
 
-                  </div>
-               </div>
+                </div>
             </div>
          </div>
       </c:forEach>
    </div>
    
    
-   <!-- 페이지네이션 -->
-<div class="pagination-container text-center">
-    <ul class="pagination">
+   
+    <!-- 페이지네이션 -->
+<div class="pagination-container" style="margin-left: 60em;align-items:center;">
+    <ul id = "kongpage" class="kong-pagination" style="font-size:20px; font-weight: 1000;letter-spacing:5px; " >
         <c:if test="${currentPage > 1}">
-            <li><a href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>">&laquo;</a></li>
+            <li><a href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>" ><i class="bi bi-chevron-double-left"></i></a></li>
         </c:if>
         <c:forEach begin="1" end="${totalPages}" varStatus="page">
             <c:choose>
@@ -239,7 +349,7 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
             </c:choose>
         </c:forEach>
         <c:if test="${currentPage < totalPages}">
-            <li><a href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>">&raquo;</a></li>
+            <li><a href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>"><i class="bi bi-chevron-double-right"></i></a></li>
         </c:if>
     </ul>
 </div>
@@ -249,7 +359,16 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
         location.href = url;
     }
 </script>
-</body>
+   
+   
+  
 
+   
+   
+   
+   
+
+
+</body>
 <jsp:include page="footer.jsp" />
 </html>

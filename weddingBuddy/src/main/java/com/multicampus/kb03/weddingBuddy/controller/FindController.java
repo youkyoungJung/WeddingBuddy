@@ -29,7 +29,7 @@ public class FindController {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(FindController.class);
 
-    private static final int PAGE_SIZE = 3; // 한 페이지에 표시할 플래너 수
+    private static final int PAGE_SIZE = 4; // 한 페이지에 표시할 플래너 수
 
     @Autowired
     private PlannerService plannerService;
