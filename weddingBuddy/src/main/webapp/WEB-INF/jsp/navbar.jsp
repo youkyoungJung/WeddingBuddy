@@ -88,10 +88,9 @@ body {
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown">Pages</a>
 						<div class="dropdown-menu m-0">
-							<a href="feature.html" class="dropdown-item">스튜디오 찾기</a> 
-							<a href="quote.html" class="dropdown-item">드레스 찾기</a> 
-							<a href="team.html" class="dropdown-item">메이크업 찾기</a>
-							<a href="testimonial.html" class="dropdown-item">웨딩홀 찾기</a>
+							<a href="<c:url value= "/studio"/>" class="dropdown-item">스튜디오 찾기</a> 
+							<a href="<c:url value= "/dress"/>" class="dropdown-item">드레스 찾기</a> 
+							<a href="<c:url value= "/beauty_Salon"/>" class="dropdown-item">메이크업 찾기</a>
 						</div>
 					</div>
 				</div>
@@ -122,7 +121,7 @@ body {
 		</nav>
 	</div>
 	
-	<!-- JavaScript Libraries -->
+	<!— JavaScript Libraries —>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -131,7 +130,7 @@ body {
 	<script src="<c url value = "/lib/waypoints/waypoints.min.js" />"></script>
 	<script src="<c:url value = "/lib/owlcarousel/owl.carousel.min.js"/>"></script>
 
-	<!-- Template Javascript -->
+	<!— Template Javascript —>
 	<script src="<c:url value = "/js/main.js" />"></script>
 </body>
 </html>

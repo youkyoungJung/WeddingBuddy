@@ -61,7 +61,7 @@
 
 							<p class="mb-1">이름 : ${planner.name }</p> <small
 							class="text-muted">채팅예약 시간 :
-								${reservedDatesMap[planner.planner_id]}</small>
+								${reservedDates[planner.planner_id]}</small>
 
 							<div>
 

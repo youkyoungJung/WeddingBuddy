@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dress Detail</title>
+<title>Beauty_Salon_Detail</title>
 <style>
 .image-container {
     position: relative;
@@ -95,7 +95,7 @@
 		<%@ include file="navbar.jsp"%>
 		<div class="container-xxl bg-primary page-header">
 			<div class="container text-center">
-				<h1 class="text-white animated zoomIn mb-3">드레스 상세보기</h1>
+				<h1 class="text-white animated zoomIn mb-3">메이크업 상세보기</h1>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb justify-content-center">
 						<li class="breadcrumb-item"><a class="text-white" href="<c:url value="/studio"/>">스튜디오</a></li>
@@ -109,9 +109,9 @@
 	
 	<div class="container">
 	<div class="image-container">
-		<c:forEach var="imagePath" items="${dressImagesList}" varStatus="loop">
+		<c:forEach var="imagePath" items="${beauty_SalonImagesList}" varStatus="loop">
 			<img src="${pageContext.request.contextPath}/${imagePath}"
-				alt="Dress Image" />
+				alt="beauty_Salon Image" />
 			<c:if test="${loop.index eq 0}">
 				<%-- 첫 번째 이미지에만 적용될 스타일 --%>
 				<div style="margin-right: 20px;"></div>
@@ -128,7 +128,7 @@
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<br>
-			<p> tel : ${dressShop.phone}</p>
+			<p> tel : ${beauty_Salon.phone}</p>
 			<br>
 			<span id ="modal_span" class="btn btn-outline-light rounded-pill border-1 py-2 px-1 animated slideInRight" onclick="closeModal()">닫기 </span>
 		</div>
