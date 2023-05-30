@@ -1,4 +1,3 @@
-<%-- <%@ page import="org.owasp.html.HtmlPolicyBuilder" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -185,10 +184,6 @@ body {
 		  }
 		}
 
-	 
-
-
-
 </script>
 
 <title>메세지창</title>
@@ -246,14 +241,12 @@ body {
 							<br>
 						</c:if>
 					</c:forEach>
-
-
 				</div>
 			</div>
 			<div class="type_msg" id="enter">
 				<div class="input_msg_write">
 					<textarea id="content" class="write_msg"
-						placeholder="Type a message" style="height: 200%;width: 100%;">
+						placeholder="Type a message" style="height: 200%; width: 100%;">
 					</textarea>
 					<button class="msg_send_btn" type="button" id="btn"
 						onClick="isitEmpty(); false;">

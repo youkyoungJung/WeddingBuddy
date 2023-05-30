@@ -81,7 +81,7 @@ body {
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav ms-auto py-0">
-					<a href="<c:url value= "/"/>" class="nav-item nav-link active">Home</a>
+					<a href="<c:url value= "/"/>" class="nav-item nav-link">Home</a>
 					<a href="<c:url value= "/search/planner"/>"
 						class="nav-item nav-link">플래너찾기</a>
 					<div class="nav-item dropdown">

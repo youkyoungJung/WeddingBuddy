@@ -68,6 +68,8 @@ public class MessageController {
 
 		// 채팅 _id 가져오기(user일 경우만됨)
 		int chatting_id = service.selectChattingId(to_id, from_id);
+		logger.info("chatting_ID: " + chatting_id);
+		
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("to_id", to_id);
