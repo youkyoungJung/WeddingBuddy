@@ -106,10 +106,12 @@
 								<c:if
 									test="${studioImage.company_unique_id == studio.company_unique_id}">
 									<div class="image-container">
+
 										<c:if test="${firstImage}">
 											<img src="<c:url value='${studioImage.image}' />"
 												alt="studio Image" style="max-width: 300px; height: auto;" />
 											<c:set var="firstImage" value="${false}" />
+
 										</c:if>
 									</div>
 								</c:if>

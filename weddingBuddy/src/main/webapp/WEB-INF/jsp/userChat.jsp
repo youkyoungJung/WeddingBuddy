@@ -129,6 +129,7 @@
 
 						<a href="#"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
+
 							<div>
 								<h5 class="mb-1">${planner.name }</h5>
 								<!-- 플래너 이름 -->

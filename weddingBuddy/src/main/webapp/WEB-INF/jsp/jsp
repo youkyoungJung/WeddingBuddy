@@ -1,0 +1,1020 @@
+/* planner_detail.jsp */
+
+position: relative;
+width: 1440px;
+height: 2872px;
+
+background: #FFFFFF;
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 1440px;
+height: 85px;
+left: 0px;
+top: 95px;
+
+background: #D9D9D9;
+
+
+/* Group 10 */
+
+position: absolute;
+width: 1489px;
+height: 178px;
+left: 0px;
+top: 6px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 1440px;
+height: 85px;
+left: 0px;
+top: 97px;
+
+background: #FDE6E6;
+
+
+/* Line 1 */
+
+position: absolute;
+width: 88px;
+height: 0px;
+left: 692px;
+top: 92px;
+
+border: 5px solid rgba(0, 0, 0, 0.3);
+transform: rotate(90deg);
+
+
+/* Line 3 */
+
+position: absolute;
+width: 88px;
+height: 0px;
+left: 1084px;
+top: 95px;
+
+border: 5px solid rgba(0, 0, 0, 0.3);
+transform: rotate(90deg);
+
+
+/* Line 2 */
+
+position: absolute;
+width: 88px;
+height: 0px;
+left: 311px;
+top: 95px;
+
+border: 5px solid rgba(0, 0, 0, 0.3);
+transform: rotate(90deg);
+
+
+/* 플래너 찾기 */
+
+position: absolute;
+width: 297px;
+height: 74px;
+left: 0px;
+top: 110px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.8);
+
+
+
+/* 스튜디오 찾기 */
+
+position: absolute;
+width: 297px;
+height: 74px;
+left: 353px;
+top: 110px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.8);
+
+
+
+/* 드레스 */
+
+position: absolute;
+width: 297px;
+height: 74px;
+left: 740px;
+top: 108px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.8);
+
+
+
+/* 로그인/회원 가입 */
+
+position: absolute;
+width: 431px;
+height: 74px;
+left: 1058px;
+top: 6px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.5);
+
+
+
+/* 메이크업 */
+
+position: absolute;
+width: 297px;
+height: 74px;
+left: 1121px;
+top: 109px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.8);
+
+
+
+/* Line 1 */
+
+position: absolute;
+width: 88px;
+height: 0px;
+left: 692px;
+top: 92px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+
+
+/* Line 3 */
+
+position: absolute;
+width: 88px;
+height: 0px;
+left: 1084px;
+top: 95px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+
+
+/* 이정은 플래너님 */
+
+position: absolute;
+width: 411px;
+height: 71px;
+left: 62px;
+top: 222px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+
+color: #000000;
+
+
+
+/* 이용자 후기 */
+
+position: absolute;
+width: 411px;
+height: 71px;
+left: 68px;
+top: 1167px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+
+color: #000000;
+
+
+
+/* 예약 현황 확인 및 예약하기 */
+
+position: absolute;
+width: 648px;
+height: 71px;
+left: 68px;
+top: 2241px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+
+color: #000000;
+
+
+
+/* Group 33 */
+
+position: absolute;
+width: 1098px;
+height: 422px;
+left: 101px;
+top: 2342px;
+
+
+
+/* Group 31 */
+
+position: absolute;
+width: 1098px;
+height: 422px;
+left: 101px;
+top: 2342px;
+
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 480px;
+height: 75px;
+left: 432px;
+top: 2689px;
+
+background: #F4E0E0;
+
+
+/* Group 17 */
+
+position: absolute;
+width: 973px;
+height: 72px;
+left: 226px;
+top: 2348px;
+
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 973px;
+height: 48.46px;
+left: 226px;
+top: 2348px;
+
+background: #F5F5F5;
+
+
+/* 2023. 05. 09. 화요일 */
+
+position: absolute;
+width: 848.95px;
+height: 69.09px;
+left: 247.91px;
+top: 2350.91px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+
+
+/* Group 30 */
+
+position: absolute;
+width: 1098px;
+height: 418px;
+left: 101px;
+top: 2342px;
+
+
+
+/* 예약하기 */
+
+position: absolute;
+width: 177px;
+height: 58px;
+left: 579px;
+top: 2702px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 58px;
+/* identical to box height */
+
+color: rgba(0, 0, 0, 0.7);
+
+
+
+/* ▼ */
+
+position: absolute;
+width: 41px;
+height: 48px;
+left: 191px;
+top: 2342px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+
+color: #000000;
+
+
+
+/* 날짜 시간 */
+
+position: absolute;
+width: 79px;
+height: 174px;
+left: 101px;
+top: 2348px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 44px;
+
+color: rgba(0, 0, 0, 0.7);
+
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 282px;
+top: 2434px;
+
+background: #FDE6E6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* 09:00 */
+
+position: absolute;
+width: 161px;
+height: 43px;
+left: 313px;
+top: 2452px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Rectangle 25 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 282px;
+top: 2554px;
+
+background: #FDE6E6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* 11:00 */
+
+position: absolute;
+width: 161px;
+height: 53px;
+left: 313px;
+top: 2572px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Rectangle 24 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 911px;
+top: 2434px;
+
+background: #D9D9D9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* Rectangle 27 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 911px;
+top: 2435px;
+
+background: #FDE6E6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* 10:30 */
+
+position: absolute;
+width: 143px;
+height: 53px;
+left: 957px;
+top: 2452px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Rectangle 28 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 911px;
+top: 2548px;
+
+background: #FDE6E6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* 12:00 */
+
+position: absolute;
+width: 143px;
+height: 53px;
+left: 957px;
+top: 2565px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 575px;
+top: 2435px;
+
+background: rgba(0, 0, 0, 0.4);
+
+
+/* 10:00 */
+
+position: absolute;
+width: 171px;
+height: 79px;
+left: 604px;
+top: 2450px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Group 32 */
+
+position: absolute;
+width: 236px;
+height: 94px;
+left: 575px;
+top: 2548px;
+
+
+
+/* Rectangle 26 */
+
+position: absolute;
+width: 236px;
+height: 83px;
+left: 575px;
+top: 2548px;
+
+background: rgba(0, 0, 0, 0.4);
+
+
+/* 11:30 */
+
+position: absolute;
+width: 171px;
+height: 79px;
+left: 604px;
+top: 2563px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #000000;
+
+
+
+/* image 6 */
+
+position: absolute;
+width: 823px;
+height: 467px;
+left: 62px;
+top: 293px;
+
+background: url(image.png);
+
+
+/* image 7 */
+
+position: absolute;
+width: 450px;
+height: 467px;
+left: 926px;
+top: 293px;
+
+background: url(image.png);
+
+
+/* image 8 */
+
+position: absolute;
+width: 290px;
+height: 286px;
+left: 62px;
+top: 790px;
+
+background: url(image.png);
+
+
+/* image 9 */
+
+position: absolute;
+width: 450px;
+height: 286px;
+left: 368px;
+top: 790px;
+
+background: url(image.png);
+
+
+/* image 10 */
+
+position: absolute;
+width: 250px;
+height: 286px;
+left: 834px;
+top: 790px;
+
+background: url(image.png);
+
+
+/* image 11 */
+
+position: absolute;
+width: 278px;
+height: 286px;
+left: 1100px;
+top: 790px;
+
+background: url(image.png);
+
+
+/* Rectangle 48 */
+
+position: absolute;
+width: 279px;
+height: 286px;
+left: 1097px;
+top: 790px;
+
+background: rgba(153, 150, 150, 0.7);
+
+
+/* + 10 */
+
+position: absolute;
+width: 162px;
+height: 79px;
+left: 1158px;
+top: 894px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 58px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.5);
+
+
+
+/* image 12 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 40px;
+top: 1238px;
+
+background: url(image.png);
+
+
+/* image 13 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 318px;
+top: 1238px;
+
+background: url(image.png);
+
+
+/* image 14 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 594px;
+top: 1238px;
+
+background: url(image.png);
+
+
+/* image 15 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 872px;
+top: 1238px;
+
+background: url(image.png);
+
+
+/* image 16 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 1147px;
+top: 1238px;
+
+background: url(image.png);
+
+
+/* Rectangle 47 */
+
+position: absolute;
+width: 250px;
+height: 250px;
+left: 1148px;
+top: 1238px;
+
+background: rgba(153, 150, 150, 0.7);
+
+
+/* + 225 */
+
+position: absolute;
+width: 162px;
+height: 79px;
+left: 1188px;
+top: 1322px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 58px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.5);
+
+
+
+/* Group 34 */
+
+position: absolute;
+width: 1198px;
+height: 122px;
+left: 83px;
+top: 1559px;
+
+
+
+/* 즐겁게 촬영했습니다. 이것 저것 따지는 게 많았는데도 처음부터 끝까지 친절하게 도와주셨어요. 감사합니다! */
+
+position: absolute;
+width: 1198px;
+height: 62px;
+left: 83px;
+top: 1619px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* heart***** 2021.02.04 */
+
+position: absolute;
+width: 1198px;
+height: 62px;
+left: 83px;
+top: 1559px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 200;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* Group 35 */
+
+position: absolute;
+width: 655px;
+height: 107px;
+left: 83px;
+top: 1708px;
+
+
+
+/* 친절한 상담 감사합니다! */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 83px;
+top: 1753px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* heim0*** 2022.08.18 */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 83px;
+top: 1708px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 200;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* Group 36 */
+
+position: absolute;
+width: 655px;
+height: 107px;
+left: 83px;
+top: 1842px;
+
+
+
+/* 너무 너무 섬세하고 좋아욧 */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 83px;
+top: 1887px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* simon*** 2023.05.20 */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 83px;
+top: 1842px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 200;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* Group 37 */
+
+position: absolute;
+width: 655px;
+height: 107px;
+left: 87px;
+top: 1976px;
+
+
+
+/* 상담 친절해요 굿굿 ♥ */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 87px;
+top: 2021px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* youky**** 2023.05.21 */
+
+position: absolute;
+width: 655px;
+height: 62px;
+left: 87px;
+top: 1976px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 200;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* 1 2 3 4 5 */
+
+position: absolute;
+width: 660px;
+height: 36px;
+left: 315px;
+top: 2123px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+
+
+
+/* free-icon-next-7728624 1 */
+
+position: absolute;
+width: 36px;
+height: 36px;
+left: 763px;
+top: 2122px;
+
+background: url(free-icon-next-7728624.png);
+
+
+/* free-icon-next-7728624 2 */
+
+position: absolute;
+width: 36px;
+height: 36px;
+left: 553px;
+top: 2122px;
+
+background: url(free-icon-next-7728624.png);
+transform: matrix(-1, 0, 0, 1, 0, 0);

@@ -119,7 +119,9 @@ public class PlannerDetailController {
         String formattedDateTime = now.format(formatter);
         
 		if (reservation_date.compareTo(formattedDateTime) < 0) {
+
 			model.addAttribute("reservation_message", "현재 이후 시간대를 선택하세요.");
+
 			return "planner_detail";
 		}
 
