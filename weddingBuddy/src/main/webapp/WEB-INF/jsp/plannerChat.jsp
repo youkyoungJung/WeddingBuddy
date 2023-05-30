@@ -167,7 +167,7 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
-	<!— Bootstrap JS 파일 로드 —>
+	<!-- Bootstrap JS 파일 로드 -->
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"></script>
 </body>

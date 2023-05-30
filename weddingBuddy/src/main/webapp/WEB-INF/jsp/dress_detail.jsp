@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Studio Detail</title>
+
+<title>Dress Detail</title>
 <style>
 .image-container {
     position: relative;
@@ -34,7 +35,7 @@
 
 .image-container img:last-child {
 	width: 60%;
-	max-height: 700px;
+	max-height: 700px; 
 	object-fit: cover;
 	margin-left: 10px;
 }
@@ -95,7 +96,7 @@
 		<%@ include file="navbar.jsp"%>
 		<div class="container-xxl bg-primary page-header">
 			<div class="container text-center">
-				<h1 class="text-white animated zoomIn mb-3">스튜디오 상세보기</h1>
+				<h1 class="text-white animated zoomIn mb-3">드레스 상세보기</h1>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb justify-content-center">
 						<li class="breadcrumb-item"><a class="text-white" href="<c:url value="/studio"/>">스튜디오</a></li>
@@ -128,7 +129,7 @@
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<br>
-			<p> tel : ${studio.phone}</p>
+			<p> tel : ${dressShop.phone}</p>
 			<br>
 			<span id ="modal_span" class="btn btn-outline-light rounded-pill border-1 py-2 px-1 animated slideInRight" onclick="closeModal()">닫기 </span>
 		</div>
