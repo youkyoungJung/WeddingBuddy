@@ -81,17 +81,16 @@ body {
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav ms-auto py-0">
-					<a href="<c:url value= "/"/>" class="nav-item nav-link">Home</a>
+					<a href="<c:url value= "/"/>" class="nav-item nav-link active">Home</a>
 					<a href="<c:url value= "/search/planner"/>"
 						class="nav-item nav-link">플래너찾기</a>
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown">Pages</a>
 						<div class="dropdown-menu m-0">
-							<a href="feature.html" class="dropdown-item">스튜디오 찾기</a> 
-							<a href="quote.html" class="dropdown-item">드레스 찾기</a> 
-							<a href="team.html" class="dropdown-item">메이크업 찾기</a>
-							<a href="testimonial.html" class="dropdown-item">웨딩홀 찾기</a>
+							<a href="<c:url value= "/studio"/>" class="dropdown-item">스튜디오 찾기</a> 
+							<a href="<c:url value= "/dress"/>" class="dropdown-item">드레스 찾기</a> 
+							<a href="<c:url value= "/beauty_Salon"/>" class="dropdown-item">메이크업 찾기</a>
 						</div>
 					</div>
 				</div>
@@ -131,7 +130,7 @@ body {
 	<script src="<c url value = "/lib/waypoints/waypoints.min.js" />"></script>
 	<script src="<c:url value = "/lib/owlcarousel/owl.carousel.min.js"/>"></script>
 
-	<!-- Template Javascript -->
+	<!-- template Javascript -->
 	<script src="<c:url value = "/js/main.js" />"></script>
 </body>
 </html>

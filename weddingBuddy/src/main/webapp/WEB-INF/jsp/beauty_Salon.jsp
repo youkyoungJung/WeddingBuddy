@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>dress.jsp</title>
+<title>beauty_Salon.jsp</title>
 <style>
 
 .service-icon{
@@ -44,9 +44,9 @@
 }
 </style>
 <script>
-        function goToDressDetail(dress_shop_id) {
+        function goToBeauty_SalonDetail(beauty_salon_id) {
             var contextPath = "${pageContext.request.contextPath}";
-            location.href = contextPath + '/dress_detail?dress_shop_id=' + dress_shop_id;
+            location.href = contextPath + '/beauty_Salon_detail?beauty_salon_id=' + beauty_salon_id;
         }
 
         function handleFavoriteClick(event) {
@@ -73,7 +73,7 @@
 		<%@ include file="navbar.jsp"%>
 		<div class="container-xxl bg-primary page-header">
 			<div class="container text-center">
-				<h1 class="text-white animated zoomIn mb-3">드레스</h1>
+				<h1 class="text-white animated zoomIn mb-3">메이크업</h1>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb justify-content-center">
 						<li class="breadcrumb-item"><a class="text-white" href="<c:url value="/studio"/>">스튜디오</a></li>
@@ -89,9 +89,9 @@
 	<div class="container-xxl py-6">
 		<div class="container">
 			<div class="row g-4">
-				<c:forEach var="dress" items="${dressShops}">
+				<c:forEach var="beauty_Salon" items="${beauty_Salons}">
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-						onclick="goToDressDetail(${dress.dress_shop_id})">
+						onclick="goToBeauty_SalonDetail(${beauty_Salon.beauty_salon_id})">
 						<div class="service-item rounded h-100">
 							<div class="d-flex justify-content-between">
 								<div class="service-icon"style="display: flex; align-items: center;">
@@ -113,14 +113,14 @@
 							<c:set var="firstImage" value="${true}" />
 							<!-- 첫 번째 이미지를 표시하기 위한 변수 추가 -->
 
-							<c:forEach var="dressImage" items="${dressImagesList}">
+							<c:forEach var="beauty_SalonImage" items="${beauty_SalonImagesList}">
 								<c:if
-									test="${dressImage.company_unique_id == dress.company_unique_id}">
+									test="${beauty_SalonImage.company_unique_id == beauty_Salon.company_unique_id}">
 									<div class="image-container">
 										<!-- 첫 번째 이미지만 표시하고 나머지 이미지는 숨김 -->
 										<c:if test="${firstImage}">
-											<img src="<c:url value='${dressImage.image}' />"
-												alt="Dress Image" style="max-width: 300px; height: auto;" />
+											<img src="<c:url value='${beauty_SalonImage.image}' />"
+												alt="beauty_Salon Image" style="max-width: 300px; height: auto;" />
 											<c:set var="firstImage" value="${false}" />
 											<!-- 첫 번째 이미지를 표시했음을 나타내는 변수 변경 -->
 										</c:if>
@@ -129,8 +129,8 @@
 							</c:forEach>
 
 							<div class="p-5">
-								<h5 class="mb-3">${dress.name}</h5>
-								<span>${dress.price_range}만원</span>
+								<h5 class="mb-3">${beauty_Salon.name}</h5>
+								<span>${beauty_Salon.price_range}만원</span>
 							</div>
 
 						</div>

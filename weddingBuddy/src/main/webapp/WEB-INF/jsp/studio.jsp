@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>dress.jsp</title>
+<title>Studio.jsp</title>
 <style>
 
 .service-icon{
@@ -44,9 +44,9 @@
 }
 </style>
 <script>
-        function goToDressDetail(dress_shop_id) {
+        function goToStudioDetail(studio_id) {
             var contextPath = "${pageContext.request.contextPath}";
-            location.href = contextPath + '/dress_detail?dress_shop_id=' + dress_shop_id;
+            location.href = contextPath + '/studio_detail?studio_id=' + studio_id;
         }
 
         function handleFavoriteClick(event) {
@@ -73,7 +73,7 @@
 		<%@ include file="navbar.jsp"%>
 		<div class="container-xxl bg-primary page-header">
 			<div class="container text-center">
-				<h1 class="text-white animated zoomIn mb-3">드레스</h1>
+				<h1 class="text-white animated zoomIn mb-3">스튜디오 </h1>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb justify-content-center">
 						<li class="breadcrumb-item"><a class="text-white" href="<c:url value="/studio"/>">스튜디오</a></li>
@@ -82,55 +82,44 @@
 					</ol>
 				</nav>
 			</div>
-		</div>
+		</div> 
 	</div>
 
 
 	<div class="container-xxl py-6">
 		<div class="container">
 			<div class="row g-4">
-				<c:forEach var="dress" items="${dressShops}">
+				<c:forEach var="studio" items="${studios}">
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-						onclick="goToDressDetail(${dress.dress_shop_id})">
+						onclick="goToStudioDetail(${studio.studio_id})">
 						<div class="service-item rounded h-100">
 							<div class="d-flex justify-content-between">
 								<div class="service-icon"style="display: flex; align-items: center;">
-									<!-- <i class="fa fa-user-tie fa-2x"></i> -->
 									<i class="bi bi-heart" style="font-size: 20px; color: #F8E8EE;"></i>
-									<%-- <img class= "flower_image" src="${pageContext.request.contextPath}/images/flower.png" alt="flower image"> --%>
 								</div>
-								<%-- <div class="heart-container">
-									<a href="#" class="heart-button"
-										onclick="handleFavoriteClick(event)"> 
-										<img
-										class="heart-image"
-										src="${pageContext.request.contextPath}/images/prev_heart.png"
-										alt="하트 이미지" style="width: 30px; height: 30px;"> 
-									</a>
-								</div> --%>
 							</div>
 
 							<c:set var="firstImage" value="${true}" />
 							<!-- 첫 번째 이미지를 표시하기 위한 변수 추가 -->
 
-							<c:forEach var="dressImage" items="${dressImagesList}">
+							<c:forEach var="studioImage" items="${studioImagesList}">
 								<c:if
-									test="${dressImage.company_unique_id == dress.company_unique_id}">
+									test="${studioImage.company_unique_id == studio.company_unique_id}">
 									<div class="image-container">
-										<!-- 첫 번째 이미지만 표시하고 나머지 이미지는 숨김 -->
+										<!— 첫 번째 이미지만 표시하고 나머지 이미지는 숨김 —>
 										<c:if test="${firstImage}">
-											<img src="<c:url value='${dressImage.image}' />"
-												alt="Dress Image" style="max-width: 300px; height: auto;" />
+											<img src="<c:url value='${studioImage.image}' />"
+												alt="studio Image" style="max-width: 300px; height: auto;" />
 											<c:set var="firstImage" value="${false}" />
-											<!-- 첫 번째 이미지를 표시했음을 나타내는 변수 변경 -->
+											<!— 첫 번째 이미지를 표시했음을 나타내는 변수 변경 —>
 										</c:if>
 									</div>
 								</c:if>
 							</c:forEach>
 
 							<div class="p-5">
-								<h5 class="mb-3">${dress.name}</h5>
-								<span>${dress.price_range}만원</span>
+								<h5 class="mb-3">${studio.name}</h5>
+								<span>${studio.price_range}만원</span>
 							</div>
 
 						</div>

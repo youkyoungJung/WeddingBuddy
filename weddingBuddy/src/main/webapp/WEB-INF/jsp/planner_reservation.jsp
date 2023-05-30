@@ -8,49 +8,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>플래너 상세보기</title>
+<meta charset="utf-8">
+<title>플래너 예약</title>
 
-<!-- bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-	crossorigin="anonymous">
 
-<style>
-#carouselExampleFade {
-	height: 300px;
-}
-
-.carousel-item img {
-	max-height: 300px; /* 원하는 높이로 설정 */
-	width: auto; /* 이미지의 가로 크기는 자동으로 조정됨 */
-}
-</style>
-
-<jsp:include page="navbar2.jsp" />
 
 </head>
 <body>
+	<div class="container-xxl bg-white p-0">
+		<%@ include file="navbar.jsp"%>
+		<div class="container-xxl bg-primary hero-header">
+			<div class="container">
+				<div class="row g-5 align-items-center">
+					<div class="col-lg-6 text-center text-lg-start">
+						<h1 class="text-white mb-4 animated zoomIn"
+							style="margin-left: 50px; font-size: 3em">예약이 완료되었습니다.</h1>
+						<p class="text-white pb-3 animated zoomIn"
+							style="margin-left: 50px; font-size: 2em;">
+							마이페이지 >> 채팅방<br>에서 예약시간을 확인할 수 있습니다.<br>좋은 시간 되세요~!
+						</p>
+						<a href="${pageContext.request.contextPath}/mypage"
+							class="btn btn-outline-light rounded-pill border-2 py-3 px-5 animated slideInRight"
+							style="margin-left: 50px">마이페이지로</a>
+					</div>
+					<div class="col-lg-6 text-center text-lg-start">
+						<img class="img-fluid animated zoomIn"
+							src="<c:url value = "/images/logo.png"/>" alt=""
+							style="margin-right: 100px">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="footer.jsp" />
 
-	<h3>예약 완료</h3>	
-	
-	
-	<a href="${pageContext.request.contextPath}/">홈으로</a>
-	<a href="${pageContext.request.contextPath}/mypage">마이페이지</a>
-	
-	
 
 
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-		crossorigin="anonymous"></script>
 </body>
 
 </html>

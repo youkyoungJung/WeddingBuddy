@@ -7,14 +7,25 @@
 <meta charset="UTF-8">
 <title>Review</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+	
+</script>
 <style>
-body {
-	font-family: sans-serif;
-	background-color: #eeeeee;
+@font-face {
+	font-family: 'Cafe24Simplehae';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
+
+
 .h2 {
+	font-family: 'Cafe24Simplehae', sans-serif;
+	font-weight: normal; /* 필요에 따라 font-weight를 추가하세요 */
+	font-style: normal; /* 필요에 따라 font-style을 추가하세요 */
 	margin-left: 30px;
 	margin-top: 20px;
 	padding: 20px;
@@ -27,6 +38,8 @@ body {
 }
 
 .file-upload {
+	border-radius:30px;
+	position: relative;
 	background-color: #ffffff;
 	width: 600px;
 	margin: 0 auto;
@@ -35,9 +48,13 @@ body {
 }
 
 .file-upload-btn {
-	width: 100%;
-	margin: 0;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 600px;
 	color: #fff;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
 	background: #f2a7a7;
 	border: none;
 	padding: 10px;
@@ -106,15 +123,21 @@ body {
 
 .file-upload-image {
 	max-height: 200px;
-	max-width: 200px;
+	max-width: 600px;
 	margin: auto;
 	padding: 20px;
 }
 
 .remove-image {
-	width: 200px;
-	margin: 0;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 600px;
 	color: #fff;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	width: 600px;
+	margin: 0;
 	background: #f2a7a7;
 	border: none;
 	padding: 10px;
@@ -188,21 +211,25 @@ body {
 	});
 </script>
 
-<jsp:include page="navbar.jsp" />
-<!-- <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script> -->
 
 </head>
 <body>
-	<script class="jsbin"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+	<div class="container-xxl bg-white p-0">
+		<%@ include file="navbar.jsp"%>
+		<div class="container-xxl bg-primary page-header">
+			<div class="container text-center">
+				<h1 class="text-white animated zoomIn mb-3">리뷰작성</h1>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb justify-content-center">
+						<li class="breadcrumb-item"><a class="text-white" href="<c:url value="/mypage/like"/>">찜</a></li>
+						<li class="breadcrumb-item"><a class="text-white" href="<c:url value='/mypage/'/>">내정보수정</a></li>
+						<li class="breadcrumb-item"><a class="text-white" href="<c:url value='/mypage/chat'/>">내채팅방</a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
 
 	<form action="<c:url value="/review" />" method="POST"
 		enctype="multipart/form-data">
@@ -210,12 +237,9 @@ body {
 		<input type="hidden" name="user_id" value="${user_id}">
 
 		<!-- Message input -->
-		<div class="form-outline mb-4">
-			<h2>리뷰 작성</h2>
-			<label class="form-label" for="form4Example3">Tell me what
-				you think!</label>
+		<div class="form-outline mb-4" style= "font-family: Cafe24Simplehae;">
 			<textarea class="form-control" id="form4Example3" rows="10"
-				name="content"></textarea>
+				name="content" placeholder="Tell me what you think!"></textarea>
 		</div>
 
 		<!-- 파일 업로드 부분 -->
@@ -225,12 +249,12 @@ body {
 				<input class="file-upload-input" type="file" name="formFileMultiple"
 					multiple onchange="readURL(this);" accept="image/*" />
 
-				<div class="drag-text">
+				<div class="drag-text" style= "font-family: Cafe24Simplehae;">
 					<h3>Drag and drop a file or select add Image</h3>
 				</div>
 			</div>
 
-			<div class="file-upload-content">
+			<div class="file-upload-content" style= "font-family: Cafe24Simplehae;" >
 				<img class="file-upload-image" src="#" alt="your image" />
 				<!-- 이미지를 미리보기할 영역 -->
 				<div class="image-title-wrap">
@@ -240,25 +264,18 @@ body {
 				</div>
 			</div>
 		</div>
-
+		<br>
+		<br>
 		<br>
 		<!-- Submit button -->
-		<button type="submit" class="file-upload-btn">등록하기</button>
+		<button type="submit" class="file-upload-btn" style= "font-family: Cafe24Simplehae;">등록하기</button>
 	</form>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
-<!-- 
-		사진 하나만 업로드 가능 
-		<div class="file-upload">
-			<div class="image-upload-wrap">
-				<input class="file-upload-input" type='file' multiple='multiple'
-					name="image_url" onchange="readURL(this);"
-					accept="<c:url value="/images/*" />" />
-				<div class="drag-text">
-					<h3>Drag and drop a file or select add Image</h3>
-				</div>	
-		</div>	
-		-->

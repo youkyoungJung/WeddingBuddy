@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>플래너 상세보기</title>
 
 <!-- bootstrap CSS -->
@@ -18,16 +18,8 @@
 	crossorigin="anonymous">
 
 <style>
-#carouselExampleFade {
-	height: 300px;
-}
-
-.carousel-item img {
-	max-height: 300px; /* 원하는 높이로 설정 */
-	width: auto; /* 이미지의 가로 크기는 자동으로 조정됨 */
-}
-<style>
-.review-item {
+<
+style>.review-item {
 	margin-bottom: 20px;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -56,137 +48,339 @@
 	max-height: 200px;
 	width: auto;
 }
+
+.image-about-planner {
+	padding-top: 15px;
+	display: inline-flex;
+}
+
+.image-container {
+	align-items: center;
+	position: relative;
+}
+
+.image-about-planner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 20px;
+	border-radius: 50px;
+}
+
+.main-image {
+	margin-bottom: 10px;
+	width: 20% !important;
+	display: flex;
+	margin-right: 6px;
+	img
+	{
+	height
+	:;
+}
+
+}
+.thumbnail-images {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 35% !important;
+}
+
+.thumbnail {
+	flex-basis: calc(50% - 5px);
+	margin-bottom: 10px;
+	object-fit: cover; img { width : 100%;
+	height: auto;
+	border-radius: 5px;
+	object-fit: cover;
+}
+
+}
+.all-photos-button {
+	background-color: #f7f7f7;
+	border: none;
+	padding: 10px;
+	margin-bottom: 20px;
+	cursor: pointer; . all-images { display : flex;
+	align-items: center; svg { width : 16px;
+	height: 16px;
+	fill: currentColor;
+	margin-right: 5px;
+}
+
+}
+}
+.page-header {
+	margin-bottom: 2rem !important;
+}
+
+.content-container {
+	border-radius: 5px;
+	border: thin;
+	border-style: solid;
+	padding: 50px;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: thin;
+	border-style: solid;
+	align-content: center;
+	flex-direction: column;
+}
+
+.form-container form {
+	display: flex;
+	align-items: center;
+}
+
+.form-container label {
+	margin: 0px;
+	padding-right: 5px;
+	width: 50px;
+	height: 29px;
+	justify-content: center;
+}
+
+.form-container select, .form-container input[type="date"],
+	.form-container input[type="submit"] {
+	margin-right: 10px;
+	padding: 0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.form-container input[type="submit"] {
+	background-color: #f7f7f7;
+	cursor: pointer;
+}
+
+.form-container div {
+	margin-left: 10px;
+	font-size: 18px;
+	color: #888;
+	display: flex;
+}
+
+.all-photos-button {
+	justify-content: flex-end;
+	padding: 0;
+	margin: 0;
+}
+
+.all-image-button {
+	margin-right: 10px;
+	padding: 0;
+}
+
+.form-box-wrap {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+}
+
+.form-reservation {
+	margin: 0;
+}
+
+.review-container {
+	margin-top: 20px;
+}
+
+.main-content-container {
+	padding: 0px 200px;
+}
+
+.reservation-container {
+	padding: 0px 200px;
+	margin-top: 20px;
+}
+
+.form-container-main {
+	padding: 20px 0px;
+}
+
+.all-images {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 200px;
+}
+
+.breadcrumb {
+	background-color: pink;
+}
 </style>
 
-</style>
-
-<jsp:include page="navbar2.jsp" />
 
 </head>
 <body>
 
-
-
-	<div id="carouselExampleFade" class="carousel slide"
-		data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<div class="row">
-					<div class="col">
-						<img src="<c:url value='/images/사진1.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="col">
-						<img src="<c:url value='/images/사진2.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="col">
-						<img src="<c:url value='/images/사진3.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<div class="row">
-					<div class="col">
-						<img src="<c:url value='/images/사진4.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="col">
-						<img src="<c:url value='/images/사진5.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="col">
-						<img src="<c:url value='/images/사진6.jpeg'></c:url>"
-							class="d-block w-100" alt="...">
-					</div>
-				</div>
+	<div class="container-xxl bg-white p-0" style="padding-bottom: 30px;">
+		<%@ include file="navbar.jsp"%>
+		<div class="container-xxl bg-primary page-header"
+			style="margin-bottom: 3">
+			<div class="container text-center">
+				<h1 class="text-white animated zoomIn mb-3">플래너 ${planner.name }</h1>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb justify-content-center">
+						<li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+						<li class="breadcrumb-item"><a class="text-white" href="#">instagram</a></li>
+						<li class="breadcrumb-item text-white active" aria-current="page">contact</li>
+					</ol>
+				</nav>
 			</div>
 		</div>
-		<a class="carousel-control-prev" href="#carouselExampleFade"
-			role="button" data-slide="prev"> <span
-			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-			class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next" href="#carouselExampleFade"
-			role="button" data-slide="next"> <span
-			class="carousel-control-next-icon" aria-hidden="true"></span> <span
-			class="sr-only">Next</span>
-		</a>
 	</div>
 
-	<div>
-		<div class="col-md-2 col-sm-2">
-			<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-				alt="user" class="profile-photo-lg">
-		</div>
-		<div class="planner-name">
-			<div>이름 :${ planner.name }</div>
-		</div>
-		<div class="planner-agency">
-			<div>소속 :${ agency.name }</div>
-		</div>
-		<div class="planner-intro">
-			<div>소개 :${ planner.intro }</div>
+	<div class="image-container">
+		<div class="image-about-planner">
+			<div class="main-image">
+				<img
+					src="<c:url value='/images/plannerImage_${planner.name}_1.jpeg' ></c:url>"
+					class="d-block w-100" alt="..." onclick="showImage(this)">
+			</div>
+			<div class="thumbnail-images">
+				<div class="thumbnail">
+					<img
+						src="<c:url value='/images/plannerImage_${planner.name}_2.jpeg'></c:url>"
+						class="d-block w-100" alt="..." onclick="showImage(this)">
+				</div>
+				<div class="thumbnail">
+					<img
+						src="<c:url value='/images/plannerImage_${planner.name}_3.jpeg'></c:url>"
+						class="d-block w-100" alt="..." onclick="showImage(this)">
+				</div>
+				<div class="thumbnail">
+					<img
+						src="<c:url value='/images/plannerImage_${planner.name}_4.jpeg'></c:url>"
+						class="d-block w-100" alt="..." onclick="showImage(this)">
+				</div>
+				<div class="thumbnail">
+					<img
+						src="<c:url value='/images/plannerImage_${planner.name}_5.jpeg'></c:url>"
+						class="d-block w-100" alt="..." onclick="showImage(this)">
+				</div>
+			</div>
 		</div>
 	</div>
-	<%-- <form
-		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=3"
-		method="post">
-		<label for="datetime">날짜 및 시간:</label> <input type="datetime-local"
-			id="datetime" name="date" required min="2023-01-01T00:00"
-			max="2023-12-31T23:59" step="3600"> <input type="submit"
-			value="Submit"> <br>
-		<div>${reservation_message}</div>
-	</form> --%>
-
-	<form
-		action="${pageContext.request.contextPath}/search/planner/detail?planner_id=${planner.planner_id}"
-		method="post">
-		<label for="date">날짜:</label> <input type="date" id="date" name="date">
-
-		<label for="hour">시간:</label> <select id="hour" name="hour">
-			<c:forEach var="hour" begin="0" end="23">
-				<option value="${hour}">${hour}시</option>
-			</c:forEach>
-		</select> <input type="submit" value="예약하기"> <br>
-		<div>${reservation_message }</div>
-	</form>
-
-	<br>
-	<br>
-
-	<div>
-		<h1>리뷰</h1>
+	<div class="all-images">
+		<button type="button"
+			class="btn btn-primary rounded-pill px-5 mt-2 all-photos-button"
+			style="background-color: pink; height: 40px;">
+			<div class="all-image-button">사진 더보기</div>
+		</button>
 	</div>
-	<br>
-	<div>
-    <%-- 상위 3개 리뷰 출력 --%>
-    <c:forEach var="review" items="${top3Reviews}" varStatus="status">
-        <div>${userNames[status.index]}</div>
-        <div>${review.content}</div>
-        <br>
-        
-        <c:forEach var="reviewImage" items="${reviewImagesList}">
-            <c:if test="${reviewImage.review_id == review.review_id}">
-                <img src="<c:url value='${reviewImage.image}' />" alt="Review Image" style="max-width: 300px; max-height: 300px;" />
-            </c:if>
-        </c:forEach>
-    </c:forEach>
-</div>
-
-	<br>
-	<br>
-	<br>
 
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-		crossorigin="anonymous"></script>
+
+	<!-- 모달 창 -->
+	<div class="modal fade" id="imageModal" tabindex="-1"
+		aria-labelledby="imageModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<img id="modalImage" src="" class="d-block mx-auto img-fluid"
+						alt="...">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="reservation-container">
+		<div class="form-container ">
+			<div class="form-container-main">
+				<form class="form-box-wrap"
+					action="${pageContext.request.contextPath}/search/planner/detail?planner_id=${planner.planner_id}"
+					method="post">
+					<h5 class="form-reservation">상담예약</h5>
+					<div>
+						<label for="date ">날짜:</label> <input type="date" id="date"
+							name="date">
+					</div>
+					<label for="hour ">시간:</label> <select id="hour" name="hour">
+						<c:forEach var="hour" begin="0" end="23">
+							<option value="${hour}">${hour}시</option>
+						</c:forEach>
+					</select>
+					<div>
+
+						<input class="btn btn-primary rounded-pill px-5 mt-2"
+							style="background-color: pink; height: 40px;" type="submit"
+							value="예약하기"> <br>
+					</div>
+				</form>
+			</div>
+			<div>${reservation_message }</div>
+		</div>
+	</div>
+
+	<div class="main-content-container">
+		<div class="content-container">
+			<div class="">
+				<div>
+					<h2>플래너 소개</h2>
+				</div>
+				<div>
+					<div style="padding-left: 15px;">
+						<div class="planner-name">
+							<div>이름 :${ planner.name }</div>
+						</div>
+						<div class="planner-agency">
+							<div>소속 :${ agency.name }</div>
+						</div>
+						<div class="planner-intro">
+							<div>소개 :${ planner.intro }</div>
+						</div>
+					</div>
+				</div>
+				<div class="review-container">
+					<h2>리뷰</h2>
+
+
+					<div class="row g-4">
+
+						<c:forEach var="review" items="${top3Reviews}" varStatus="status">
+							<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+								style="visibility: visible; animation-delay: 0.1s;">
+								<div class="service-item rounded h-100"
+									style="border-radius: 90px;">
+									<div class="d-flex justify-content-between"></div>
+									<div class="p-5">
+										<h5 class="mb-3">${userNames[status.index]}</h5>
+										<span>${review.content}</span>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
+	function showImage(element) {
+	  var imageUrl = element.src;
+	  var modalImage = document.getElementById('modalImage');
+	  modalImage.src = imageUrl;
+	  $('#imageModal').modal('show');
+	}
+	</script>
+
+	<jsp:include page="footer.jsp" />
+
 </body>
 
 </html>
