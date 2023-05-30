@@ -119,13 +119,13 @@ public class PlannerDetailController {
         String formattedDateTime = now.format(formatter);
         
 		if (reservation_date.compareTo(formattedDateTime) < 0) {
-			model.addAttribute("reservation_message", "�쁽�옱 �씠�썑 �떆媛꾨쭔 �삁�빟 媛��뒫�빀�땲�떎.");
+			model.addAttribute("reservation_message", "현재 이후 시간대를 선택하세요.");
 			return "planner_detail";
 		}
 
 		// �빐�떦 �떆媛꾩뿉 �뵆�옒�꼫 �삁�빟�씠 議댁옱�븯�뒗 寃쎌슦
 		if (chatReservationService.reservationExist(planner_id, reservation_date)) {
-			model.addAttribute("reservation_message", "�씠誘� �삁�빟�맂 �떆媛꾩엯�땲�떎.");
+			model.addAttribute("reservation_message", "이미 예약된 시간대입니다.");
 			return "planner_detail";
 		}
 		User user = userService.selectOne(UserSession.getLoginUserId(session));

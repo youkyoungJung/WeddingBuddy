@@ -69,6 +69,8 @@ public class MessageController {
 
 		// ä�� _id ������(user�� ��츸��)
 		int chatting_id = service.selectChattingId(to_id, from_id);
+		logger.info("chatting_ID: " + chatting_id);
+		
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("to_id", to_id);

@@ -279,15 +279,3 @@
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
-<!-- 
-		사진 하나만 업로드 가능 
-		<div class="file-upload">
-			<div class="image-upload-wrap">
-				<input class="file-upload-input" type='file' multiple='multiple'
-					name="image_url" onchange="readURL(this);"
-					accept="<c:url value="/images/*" />" />
-				<div class="drag-text">
-					<h3>Drag and drop a file or select add Image</h3>
-				</div>	
-		</div>	
-		-->

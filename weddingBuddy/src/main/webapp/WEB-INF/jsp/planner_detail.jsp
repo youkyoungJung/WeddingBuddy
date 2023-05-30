@@ -18,8 +18,7 @@
 	crossorigin="anonymous">
 
 <style>
-<
-style>.review-item {
+	.review-item {
 	margin-bottom: 20px;
 	padding: 10px;
 	border: 1px solid #ccc;

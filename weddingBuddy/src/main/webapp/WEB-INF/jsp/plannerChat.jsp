@@ -132,7 +132,7 @@
 		<div class="row">
 			<div class="col-lg-10 col-md-10 col-sm-12">
 				<c:forEach items="${PlannerInfo}" var="info">
-					<div class="list-group" >
+					<div class="list-group" onClick=location.href='<c:url value="/start"/>?to_id=${ChatWithUser.planner_id }&from_id=${info.user_id }' >
 						 <a href="#"
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 							<div>

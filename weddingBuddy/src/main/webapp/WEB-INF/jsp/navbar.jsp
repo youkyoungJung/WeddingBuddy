@@ -132,7 +132,7 @@ body {
 	<script src="<c url value = "/lib/waypoints/waypoints.min.js" />"></script>
 	<script src="<c:url value = "/lib/owlcarousel/owl.carousel.min.js"/>"></script>
 
-	<!-- Template Javascript -->
+	<!-- template Javascript -->
 	<script src="<c:url value = "/js/main.js" />"></script>
 </body>
 </html>
