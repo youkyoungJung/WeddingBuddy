@@ -136,6 +136,7 @@ public class PlannerDetailController {
 		if (chatService.chatting_notExist(user_id, planner_id)) 
 			chatService.insertNewChat(user_id, planner_id);
 		int chatting_id = chatService.selectChattingId(user_id, planner_id);
+		model.addAttribute("chatting_id",chatting_id);
 		logger.info("chatid: "+chatting_id);
 		logger.info("reserdate:"+reservation_date);
 		

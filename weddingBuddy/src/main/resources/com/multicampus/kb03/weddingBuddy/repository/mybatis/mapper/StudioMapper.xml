@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.multicampus.kb03.weddingBuddy.repository.mybatis.mapper.StudioMapper">
+
+	<!-- DressShop 목록 조회 -->
+	<select id="getAllStudioShops"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Studio">
+		SELECT * FROM studio
+	</select>
+
+	<!-- Dress 이미지 조회 -->
+	<select id="getCompanyImages"
+		resultType="com.multicampus.kb03.weddingBuddy.dto.Company_Image">
+		SELECT * FROM company_image WHERE company_unique_id =
+		#{company_unique_id}
+	</select>
+
+	<!-- dress_shop_id로 이미지 찾기  -->
+	<select id="getImagesByShopId" resultType="com.multicampus.kb03.weddingBuddy.dto.Company_Image">
+		SELECT image
+		FROM company_image
+		WHERE company_unique_id = (
+		SELECT company_unique_id
+		FROM studio
+		WHERE studio_id = #{studio_id}
+		)
+	</select>
+	
+	<!-- dress_shop_id로 드레스 상세 정보 조회  -->
+	<select id="getStudioById" resultType="com.multicampus.kb03.weddingBuddy.dto.Studio">
+		select *
+		from studio
+		where studio_id = #{studio_id}
+	</select>
+
+
+</mapper>

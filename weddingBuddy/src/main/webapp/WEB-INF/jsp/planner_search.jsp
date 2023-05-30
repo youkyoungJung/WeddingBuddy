@@ -1,72 +1,116 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Searching Planner</title>
+<style>
 
-<meta charset="utf-8">
-<title>Searching Planner </title> 
-<style>body {
-	margin-top: 20px;
-	background: #FAFAFA;
+
+
+
+.kong-team-item {
+   margin-left:5px;
+     width:25em;
+    height:32em;
+    position: relative;
+   
+    text-align: center;
+    transition: .5s;
+    z-index: 1;
+    
+    
 }
 
-develop /*==================================================
-  Nearby People CSS
-  ==================================================*/   
-.people-nearby .google-maps {
-   background: #f8f8f8;
-   border-radius: 4px;
-   border: 1px solid #f1f2f2;
-   padding: 20px;
-   margin-bottom: 20px;
+.kong-team-item::before,
+.kong-team-item::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    transition: .5s;
+    z-index: -1;
 }
 
-.people-nearby .google-maps .map {
-   height: 300px;
-   width: 100%;
-   border: none;
+.kong-team-item::after {
+    top: auto;
+    bottom: 0;
 }
 
-.people-nearby .nearby-user {
-   padding: 20px 0;
-   border-top: 1px solid #f1f2f2;
-   border-bottom: 1px solid #f1f2f2;
-   margin-bottom: 20px;
+.kong-team-item:hover::before,
+.kong-team-item:hover::after {
+    background: var(--primary);
 }
 
-img.profile-photo-lg {
-   height: 80px;
-   width: 80px;
-   border-radius: 50%;
+.kong-team-item h5,
+.kong-team-item p {
+    transition: .5s;
 }
 
-#header {
-   margin-left: 30px;
+.kong-team-item:hover h5,
+.kong-team-item:hover p {
+    color: #FFFFFF;
 }
+
+.kong-team-item img {
+   
+    padding: 10px;
+    
+    
+    
+}
+.kong-pagination > a, #kongpage: hover {
+   color:orange;
+}
+
+
+.kong-container-xxl{display:flex;flex-wrap:inherit;align-items:center;}
 
 .box-radio-input input[type="radio"] {
    display: none;
 }
 
+
+
 .box-radio-input input[type="radio"]+span {
    display: inline-block;
    background: none;
-   border: 1px solid #dfdfdf;
+   border: 2px solid pink;
    padding: 0px 10px;
    text-align: center;
    height: 35px;
    line-height: 33px;
    font-weight: 500;
    cursor: pointer;
+    margin-bottom:10px;
+    border-radius:20%;
 }
 
 .box-radio-input input[type="radio"]:checked+span {
-   border: 1px solid #F48fb1;
-   background: #F48fb1;
-   color: #fff;
+   border: 1px solid white;
+   background: white;
+   color: black;
+ 
+  
 }
+
+.kong-profile-photo-lg {
+   width:18em;
+   height:18em;
+   border-radius: 50%;
+   
+
+}
+
+.col-md-6{flex:0 0 auto;width:80%}
+
 
 #custom-search-input {
    padding: 3px;
@@ -75,11 +119,44 @@ img.profile-photo-lg {
    background-color: #fff;
    width: 40%
 }
+.kong-pagination{display:flex;padding-left:0;list-style:none}
+
+.kong-pagination:hover::before, a{
+   color:black;
+}
+
+.kong-pagination > .active > a{
+   color: pink;
+
+}
+
 
 #custom-search-input input {
    border: 0;
    box-shadow: none;
 }
+.kong-4, .gy-4 {
+   --bs--gutter-y: 1.5rem;
+}
+
+.kong-4, .gx-4 {
+   --bs--gutter-y: 1.5rem;
+}
+.kongrow {
+   display:flex;
+   flex-wrap: wrap;
+   margin-right: calc(var(--bs-gutter-x) / -2);
+   margin-left: calc(var(--bs-gutter-x) /-2);
+}
+*, *::before, *::after {
+   box-sizing: border-box;
+}
+.kong-col-lg-3{flex:0 0 auto;width:25%}
+
+.kong-col-md-6{flex:0 0 auto;width:50%}
+
+.kong-col-md-3{flex:0 0 auto;width:25%}
+
 
 #custom-search-input button {
    margin: 2px 0 0 0;
@@ -89,6 +166,7 @@ img.profile-photo-lg {
    color: #666666;
    padding: 0 8px 0 10px;
    border-left: solid 1px #ccc;
+   
 }
 
 #custom-search-input button:hover {
@@ -101,120 +179,107 @@ img.profile-photo-lg {
    font-size: 23px;
 }
 
-@font-face {
-	font-family: 'Cafe24Simplehae';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
+.kongbigframe  {margin-right:auto !important;margin-left:auto !important}
 
-body {
-	font-family: Cafe24Simplehae;
-}
+.kong-col-sm-3{flex:0 0 auto;width:25%}
+
 </style>
+
 </head>
 
 <body>
-
-	<div class="container-xxl bg-white p-0">
-		<%@ include file="navbar.jsp"%>
-		<!-- 상황에 맞게 적어줘야함 -->
-		<div class="container-xxl bg-primary page-header">
-			<div class="container text-center">
-				<h1 class="text-white animated zoomIn mb-3">플래너 찾기</h1>
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb justify-content-center">
-						<li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-						<li class="breadcrumb-item"><a class="text-white" href="#">스튜디오찾기</a></li>
-						<li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-					</ol>
-				</nav>
-			</div>
-		</div>
-		<!-- 끝 -->
-	</div>
-	<!-- Navbar & Hero End -->
-	<div class="container">
-		<h3 id="header">플래너 찾기</h3>
-
-		<!-- 검색뷰 시작 -->
-		<section class="search-section">
-			<div align="center">
-				<form method="post" action="<c:url value='/search/planner' />"
-					accept-charset="utf-8">
-					<label class="box-radio-input"> <input type="radio"
-						name="type" value="area"
-						<c:if test="${type eq 'area'}">checked="checked"</c:if>> <span>지역</span>
-					</label> <label class="box-radio-input"> <input type="radio"
-						name="type" value="name"
-						<c:if test="${type eq 'name'}">checked="checked"</c:if>> <span>이름</span>
-					</label> <label class="box-radio-input"> <input type="radio"
-						name="type" value="group"
-						<c:if test="${type eq 'group'}">checked="checked"</c:if>>
-						<span>소속</span>
-					</label>
+<!-- navbar 추가해줘야할 것 -->
+   <div class="container-xxl bg-white p-0">
+      <%@ include file="navbar.jsp"%>
+      <div class="container-xxl bg-primary page-header">
+         <div class="container text-center">
+            <h1 class="text-white animated zoomIn mb-3">플래너찾기</h1>
+            <nav aria-label="breadcrumb">
+               <ol class="breadcrumb justify-content-center">
+                  <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a class="text-white" href="#">내 채팅방</a></li>
+                  <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+               </ol>
+            </nav>
+         </div>
+      </div>
+   </div>
+   <!-- 추가해 줘야할 것 끝 -->
+      <!-- 검색뷰 시작 -->
+<section class="search-section">
+   <div align="center">
+<form method="post" action="<c:url value='/search/planner' />" accept-charset="utf-8">
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae'; ">
+        <input type="radio" name="type" value="area" <c:if test="${type eq 'area'}">checked="checked"</c:if>>
+        <span>지역</span>
+    </label>
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae';">
+        <input type="radio" name="type" value="name" <c:if test="${type eq 'name'}">checked="checked"</c:if>>
+        <span>이름</span>
+    </label>
+    <label class="box-radio-input" style = "font-family: 'Cafe24Simplehae';">
+        <input type="radio" name="type" value="group" <c:if test="${type eq 'group'}">checked="checked"</c:if>>
+        <span>소속</span>
+    </label>
 
 
 
 
-					<div id="custom-search-input">
-						<div class="input-group col-md-12">
-							<input type="text" class="form-control input-lg"
-								placeholder="검색어를 입력하세요." name="search"
-								value="${searchKeyword }" /> <span class="input-group-btn">
-								<button class="searchbtn" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-				</form>
-			</div>
-		</section>
-		<!-- 검색 끝 -->
+         <div id="custom-search-input" style = "width: 20em;">
+            <div class="input-group col-md-12">
+               <input type="text" class="form-control input-lg" placeholder="검색어를 입력하세요." name="search"  value = "${searchKeyword }"/>
+               <span class="input-group-btn">
+                  <button class="searchbutton" type="submit" style="margin-left:2em; margin-top:7px;">
+                     <i class="bi bi-search"></i>
+                  </button>
+               </span>
+            </div>
+         </div>
+      </form>
+   </div>
+</section>
+
+<!-- 검색 끝 -->
+
+   
+
+  
+       <!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
+   <div class="kong-container-xxl py-6" >     
+      <c:forEach items="${PlannerAll}" var="planner">
+       
+            <div class="kong-container" style = "margin-left:3.5em;">
+                <div class="kongrow kong-4">
+            <div class="kong-col-lg-3 kong-col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                   <div class = "kong-team-item" >
+                    <a href="#" class="heart-button" onclick="handleFavoriteClick(event, ${planner._id})" style = "margin-left:15em;">
+  <img id="heartImage-${planner._id}" src="${pageContext.request.contextPath}/images/prev_heart.png" alt="이미지 버튼" class="kongimg-fluid" style = "width:70px;  margin-left:3em; ">
+  
+</a>
+                           <img src="${pageContext.request.contextPath}/images/${planner._id }.png"
+                              alt="user" class="kong-profile-photo-lg" onclick="goToPlannerDetail(${ planner._id })">
+                       
+                        <div class="kong-flex justify-content-center"
+                                    class="profile-link" style = "font-size: 1.1em; font-weight:500;">
+                           <h5>
+                                ${planner.name }
+                              </h5><br>
+                           <p>${planner.agency_name }</p>
+                           <p>${planner.intro }</p>
+                        </div>
+                        <div class="kong-col-md-3 kong-col-sm-3" >
+  
+                       
+
+    <div style="text-align: center; margin-top: 10px;">
+   <!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
 
 
-		<br>
-		<div class="row justify-content-center">
-			<!-- 중앙 정렬을 위해 justify-content-center 클래스 추가 -->
-			<c:forEach items="${PlannerAll}" var="planner">
-				<div class="col-md-8">
-					<div class="people-nearby">
-						<div class="nearby-user">
-							<div class="row">
-								<div class="col-md-2 col-sm-2">
-									<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-										alt="user" class="profile-photo-lg">
-								</div>
-								<div class="col-md-7 col-sm-7">
-									<h5>
-										이름:<a
-											href="<c:url value="/search/planner/detail" />?planner_id=${ planner._id }"
-											class="profile-link">${planner.name }</a>
-									</h5>
-									<p>소속:${planner.agency_name }</p>
-									<p class="text-muted">소개: ${planner.intro }</p>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<button class="btn btn-primary pull-right"
-										onclick="redirectToReviewDetail(${planner._id})">
-										고객후기: ${planner.cnt}</button>
-
-									<div style="text-align: center; margin-top: 10px;">
-										<!-- 각 항목의 고유 ID를 data-planner-id 속성으로 전달 -->
-										<a href="#" class="image-button heart-button"
-											onclick="handleFavoriteClick(event, ${planner._id})"> <img
-											id="heartImage-${planner._id}"
-											src="${pageContext.request.contextPath}/images/prev_heart.png"
-											alt="이미지 버튼" class="img-fluid"
-											style="width: 30px; height: 30px; margin-top: 20px; margin-left: 60px;">
-										</a>
 
 
-										<script>
 
+
+<script>
 function handleFavoriteClick(event,plannerId,isFavorite) {
   event.preventDefault(); // 기본 동작 방지
 
@@ -240,271 +305,70 @@ function handleFavoriteClick(event,plannerId,isFavorite) {
 }
 
 
+
+
+function goToPlannerDetail(planner_id) {
+    var contextPath = "${pageContext.request.contextPath}";
+    location.href = contextPath + '/search/planner/detail?planner_id=' + planner_id;
+}
+
+
+
 </script>
 
-
-									</div>
-
-
-								</div>
+   
+ </div>  
+</div>
 
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
+</div>
 
 
-		<!-- 페이지네이션 -->
-		<div class="pagination-container text-center">
-			<ul class="pagination">
-				<c:if test="${currentPage > 1}">
-					<li><a
-						href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>">&laquo;</a></li>
-				</c:if>
-				<c:forEach begin="1" end="${totalPages}" varStatus="page">
-					<c:choose>
-						<c:when test="${page.index == currentPage}">
-							<li class="active"><a href="#"><c:out
-										value="${page.index}" /></a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a
-								href="<c:url value='/search/planner?page=${page.index}&type=${type}&search=${searchKeyword}'/>"><c:out
-										value="${page.index}" /></a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<c:if test="${currentPage < totalPages}">
-					<li><a
-						href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>">&raquo;</a></li>
-				</c:if>
-			</ul>
-		</div>
-		<script>
+                </div>
+            </div>
+         </div>
+      </c:forEach>
+   </div>
+   
+   
+   
+    <!-- 페이지네이션 -->
+<div class="pagination-container" style="margin-left: 60em;align-items:center;">
+    <ul id = "kongpage" class="kong-pagination" style="font-size:20px; font-weight: 1000;letter-spacing:5px; " >
+        <c:if test="${currentPage > 1}">
+            <li><a href="<c:url value='/search/planner?page=${currentPage - 1}&type=${type}&search=${searchKeyword}'/>" ><i class="bi bi-chevron-double-left"></i></a></li>
+        </c:if>
+        <c:forEach begin="1" end="${totalPages}" varStatus="page">
+            <c:choose>
+                <c:when test="${page.index == currentPage}">
+                    <li class="active"><a href="#"><c:out value="${page.index}"/></a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="<c:url value='/search/planner?page=${page.index}&type=${type}&search=${searchKeyword}'/>"><c:out value="${page.index}"/></a></li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${currentPage < totalPages}">
+            <li><a href="<c:url value='/search/planner?page=${currentPage + 1}&type=${type}&search=${searchKeyword}'/>"><i class="bi bi-chevron-double-right"></i></a></li>
+        </c:if>
+    </ul>
+</div>
+   <script>
     function redirectToReviewDetail(plannerId) {
         var url = '/weddingBuddy/review/detail?planner_id=' + plannerId;
         location.href = url;
     }
 </script>
+   
+   
+  
+
+   
+   
+   
+   
 
 
-
-
-		<!-- About Start -->
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="row g-5 align-items-center">
-					<div class="col-lg-6 wow zoomIn" data-wow-delay="0.1s">
-						<img class="img-fluid" src="img/about.png">
-					</div>
-					<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-						<div
-							class="d-inline-block border rounded-pill text-primary px-4 mb-3">About
-							Us</div>
-						<h2 class="mb-4">Award Wining Consultancy Agency For Your
-							Business</h2>
-						<p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor
-							diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-							Clita erat ipsum et lorem et sit, sed stet no labore lorem sit.
-							Sanctus clita duo justo et tempor eirmod</p>
-						<div class="row g-3 mb-4">
-							<div class="col-12 d-flex">
-								<div
-									class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-									<i class="fa fa-user-tie text-white"></i>
-								</div>
-								<div class="ms-4">
-									<h6>Business Planning</h6>
-									<span>Tempor erat elitr rebum at clita. Diam dolor ipsum
-										amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-								</div>
-							</div>
-							<div class="col-12 d-flex">
-								<div
-									class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-									<i class="fa fa-chart-line text-white"></i>
-								</div>
-								<div class="ms-4">
-									<h6>Financial Analaysis</h6>
-									<span>Tempor erat elitr rebum at clita. Diam dolor ipsum
-										amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-								</div>
-							</div>
-						</div>
-						<a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read
-							More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- About End -->
-
-
-		<!-- Newsletter Start -->
-		<div class="container-xxl bg-primary my-6 wow fadeInUp"
-			data-wow-delay="0.1s">
-			<div class="container px-lg-5">
-				<div class="row align-items-center" style="height: 250px;">
-					<div class="col-12 col-md-6">
-						<h3 class="text-white">Ready to get started</h3>
-						<small class="text-white">Diam elitr est dolore at sanctus
-							nonumy.</small>
-						<div class="position-relative w-100 mt-3">
-							<input class="form-control border-0 rounded-pill w-100 ps-4 pe-5"
-								type="text" placeholder="Enter Your Email" style="height: 48px;">
-							<button type="button"
-								class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2">
-								<i class="fa fa-paper-plane text-primary fs-4"></i>
-							</button>
-						</div>
-					</div>
-					<div class="col-md-6 text-center mb-n5 d-none d-md-block">
-						<img class="img-fluid mt-5" style="max-height: 250px;"
-							src="img/newsletter.png">
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Newsletter End -->
-
-
-		<!-- Service Start -->
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s"
-					style="max-width: 600px;">
-					<div
-						class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our
-						Services</div>
-					<h2 class="mb-5">We Provide Solutions On Your Business</h2>
-				</div>
-				<div class="row g-4">
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-user-tie fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">Business Research</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-chart-pie fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">Stretagic Planning</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-chart-line fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">Market Analysis</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-chart-area fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">Financial Analaysis</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-balance-scale fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">legal Advisory</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="service-item rounded h-100">
-							<div class="d-flex justify-content-between">
-								<div class="service-icon">
-									<i class="fa fa-house-damage fa-2x"></i>
-								</div>
-								<a class="service-btn" href=""> <i class="fa fa-link fa-2x"></i>
-								</a>
-							</div>
-							<div class="p-5">
-								<h5 class="mb-3">Tax & Insurance</h5>
-								<span>Erat ipsum justo amet duo et elitr dolor, est duo
-									duo eos lorem sed diam stet diam sed stet lorem.</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Service End -->
-
-
-
-		<!-- Client Start -->
-		<div class="container-xxl bg-primary my-6 py-5 wow fadeInUp"
-			data-wow-delay="0.1s">
-			<div class="container">
-				<div class="owl-carousel client-carousel">
-					<a href="#"><img class="img-fluid" src="img/logo-1.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-2.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-3.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-4.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-5.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-6.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-7.png" alt=""></a>
-					<a href="#"><img class="img-fluid" src="img/logo-8.png" alt=""></a>
-				</div>
-			</div>
-		</div>
-		<!-- Client End -->
-
-
-
-		<%@ include file="footer.jsp"%>
 </body>
+<jsp:include page="footer.jsp" />
 </html>

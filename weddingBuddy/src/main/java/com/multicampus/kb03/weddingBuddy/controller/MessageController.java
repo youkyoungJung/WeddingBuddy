@@ -26,6 +26,7 @@ import com.multicampus.kb03.weddingBuddy.service.UserService;
 @Controller
 public class MessageController {
 
+
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MessageController.class);
 
 	@Autowired
@@ -38,7 +39,7 @@ public class MessageController {
 	private PlannerService plannerService;
 	
 	/*
-	 * //¸Þ¼¼ÁöÇÔ
+	 * //ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @RequestMapping("/chat/{to_id}") public ModelAndView messageBox(@PathVariable
 	 * String to_id) throws Exception {
@@ -52,21 +53,21 @@ public class MessageController {
 	 * System.out.println("controller"); return mav; }
 	 */
 
-	// °³ÀÎ´ç ¸Þ½ÃÁö ÁÖ°í¹ÞÀ½
+	// ï¿½ï¿½ï¿½Î´ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½
 	@RequestMapping("/chat/{to_id}/{from_id}")
 	public ModelAndView messageList(@PathVariable int to_id, @PathVariable int from_id, Message msg, HttpServletRequest request) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
-		logger.info("msg´ã±ä°Í: " + msg);
+		logger.info("msgï¿½ï¿½ï¿½ï¿½: " + msg);
 
 		logger.info("to_id: " + to_id + "from_id: "+from_id);
 		List<Message> chatlist = service.chatList(msg);
 
-		logger.info("chatlist Å©±â " + chatlist.size());
+		logger.info("chatlist Å©ï¿½ï¿½ " + chatlist.size());
 		logger.info("chatting " + chatlist);
 		
 
-		// Ã¤ÆÃ _id °¡Á®¿À±â(userÀÏ °æ¿ì¸¸µÊ)
+		// Ã¤ï¿½ï¿½ _id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(userï¿½ï¿½ ï¿½ï¿½ì¸¸ï¿½ï¿½)
 		int chatting_id = service.selectChattingId(to_id, from_id);
 		
 		HttpSession session = request.getSession();
@@ -83,7 +84,7 @@ public class MessageController {
 		return mav;
 	}
 
-	// ¸Þ½ÃÁö º¸³»±â
+	// ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/chat/send", method = RequestMethod.POST)
 	public ModelAndView messagesend(@ModelAttribute Message m, HttpServletRequest request,  HttpSession session) throws Exception {
 
@@ -104,13 +105,13 @@ public class MessageController {
 		return mav;
 	}
 
-	// rest ÀÌ¿ëÇÏ¿© ¸Þ¼¼Áö ¹Þ±â
+	// rest ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½
 	@ResponseBody
 	@GetMapping(value = "/chat/{to_id}/{from_id}/list.json", produces = "application/json")
 	public List<Message> getMessage(@PathVariable int to_id, @PathVariable int from_id, Message m)
 			throws Exception {
 
-		//logger.info("¿ä±â±îÁø ¿Ô´Ï");
+		//logger.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´ï¿½");
 		m.setTo_id(to_id);
 		m.setFrom_id(from_id);
 
@@ -120,3 +121,4 @@ public class MessageController {
 	}
 
 }
+
