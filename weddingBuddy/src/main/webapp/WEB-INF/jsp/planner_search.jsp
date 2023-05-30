@@ -12,16 +12,54 @@
 
 
 .kong-team-item {
+
    margin-left:5px;
      width:25em;
     height:32em;
+
     position: relative;
    
     text-align: center;
     transition: .5s;
     z-index: 1;
     
-    
+
+}
+
+.kong-team-item::before,
+.kong-team-item::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    transition: .5s;
+    z-index: -1;
+}
+
+.kong-team-item::after {
+    top: auto;
+    bottom: 0;
+}
+
+.kong-team-item:hover::before,
+.kong-team-item:hover::after {
+    background: var(--primary);
+}
+
+.kong-team-item h5,
+.kong-team-item p {
+    transition: .5s;
+}
+
+.kong-team-item:hover h5,
+.kong-team-item:hover p {
+    color: #FFFFFF;
+=======
 }
 
 .kong-team-item::before,
@@ -58,6 +96,20 @@
 .kong-team-item:hover p {
     color: #FFFFFF;
 }
+
+.kong-team-item img {
+	
+    padding: 10px;
+    
+    
+    
+}
+.kong-pagination > a, #kongpage: hover {
+	color:orange;
+}
+
+
+.kong-container-xxl{display:flex;flex-wrap:inherit;align-items:center;}
 
 .kong-team-item img {
    
@@ -102,10 +154,10 @@
 }
 
 .kong-profile-photo-lg {
-   width:18em;
-   height:18em;
-   border-radius: 50%;
-   
+	width:18em;
+	height:18em;
+	border-radius: 50%;
+	
 
 }
 
@@ -122,11 +174,13 @@
 .kong-pagination{display:flex;padding-left:0;list-style:none}
 
 .kong-pagination:hover::before, a{
+
    color:black;
 }
 
 .kong-pagination > .active > a{
    color: pink;
+
 
 }
 
@@ -136,6 +190,7 @@
    box-shadow: none;
 }
 .kong-4, .gy-4 {
+
    --bs--gutter-y: 1.5rem;
 }
 
@@ -150,6 +205,7 @@
 }
 *, *::before, *::after {
    box-sizing: border-box;
+
 }
 .kong-col-lg-3{flex:0 0 auto;width:25%}
 
@@ -230,7 +286,9 @@
                <input type="text" class="form-control input-lg" placeholder="검색어를 입력하세요." name="search"  value = "${searchKeyword }"/>
                <span class="input-group-btn">
                   <button class="searchbutton" type="submit" style="margin-left:2em; margin-top:7px;">
-                     <i class="bi bi-search"></i>
+
+                  	<i class="bi bi-search"></i>
+
                   </button>
                </span>
             </div>
@@ -359,15 +417,6 @@ function goToPlannerDetail(planner_id) {
         location.href = url;
     }
 </script>
-   
-   
-  
-
-   
-   
-   
-   
-
 
 </body>
 <jsp:include page="footer.jsp" />

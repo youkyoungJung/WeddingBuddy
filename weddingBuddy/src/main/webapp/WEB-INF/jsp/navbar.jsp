@@ -21,10 +21,12 @@
 	rel="stylesheet"> -->
 
 <!-- Icon Font Stylesheet -->
+
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
 	rel="stylesheet">
 <link
+
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
@@ -38,8 +40,10 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="<c:url value ="/css/bootstrap.min.css"/>" rel="stylesheet">
 
+
 <!-- Template Stylesheet -->
 <link href="<c:url value = "/css/style.css"/>" rel="stylesheet">
+
 
 <style>
 @font-face {
@@ -81,7 +85,9 @@ body {
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav ms-auto py-0">
-					<a href="<c:url value= "/"/>" class="nav-item nav-link active">Home</a>
+
+					<a href="<c:url value= "/"/>" class="nav-item nav-link">Home</a>
+
 					<a href="<c:url value= "/search/planner"/>"
 						class="nav-item nav-link">플래너찾기</a>
 					<div class="nav-item dropdown">
@@ -89,10 +95,9 @@ body {
 							data-bs-toggle="dropdown">Pages</a>
 						<div class="dropdown-menu m-0">
 
-
-							<a href="<c:url value= "/studio"/>" class="dropdown-item">스튜디오 찾기</a> 
-							<a href="<c:url value= "/dress"/>" class="dropdown-item">드레스 찾기</a> 
-							<a href="<c:url value= "/beauty_Salon"/>" class="dropdown-item">메이크업 찾기</a>
+							<a href="<c:url value='/studio'/>" class="dropdown-item">스튜디오 찾기</a> 
+							<a href="<c:url value='/dress'/>" class="dropdown-item">드레스 찾기</a> 
+							<a href="<c:url value='/beauty_Salon'/>" class="dropdown-item">메이크업 찾기</a>
 
 						</div>
 					</div>
@@ -123,8 +128,9 @@ body {
 			</div>
 		</nav>
 	</div>
-	
-	<!— JavaScript Libraries —>
+
+	<!-- JavaScript Libraries -->
+
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -133,7 +139,8 @@ body {
 	<script src="<c url value = "/lib/waypoints/waypoints.min.js" />"></script>
 	<script src="<c:url value = "/lib/owlcarousel/owl.carousel.min.js"/>"></script>
 
-	<!— Template Javascript —>
+
+	<!-- Template Javascript -->
 
 	<script src="<c:url value = "/js/main.js" />"></script>
 </body>

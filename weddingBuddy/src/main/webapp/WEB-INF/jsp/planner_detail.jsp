@@ -20,7 +20,9 @@
 	crossorigin="anonymous">
 
 <style>
+
 	.review-item {
+
 	margin-bottom: 20px;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -239,6 +241,7 @@
 		</div>
 	</div>
 
+
 	<div class="image-container">
 		<div class="image-about-planner">
 			<div class="main-image">
@@ -277,7 +280,6 @@
 			<div class="all-image-button">사진 더보기</div>
 		</button>
 	</div>
-
 
 
 	<!-- 모달 창 -->

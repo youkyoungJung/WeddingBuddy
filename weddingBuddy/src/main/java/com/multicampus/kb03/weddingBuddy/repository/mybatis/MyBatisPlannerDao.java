@@ -149,6 +149,8 @@ public class MyBatisPlannerDao implements PlannerDao {
 		return mapper.getTop3ReviewsByPlannerId(planner_id);
 	}
 	
+
+	@Override	
 	public void insertPlannerLike(Map<String, Object> parameters) {
 		mapper.insertPlannerLike(parameters);
 	}

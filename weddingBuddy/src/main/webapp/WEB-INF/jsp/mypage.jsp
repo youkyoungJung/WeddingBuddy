@@ -147,6 +147,7 @@ figcaption .project-creator {
    </div>
    <!-- 추가해 줘야할 것 끝 -->
 
+
    <div class="container" style = "margin-top:10em;">
    <div class = "row">
       <hr class="divider-title">
@@ -195,6 +196,7 @@ figcaption .project-creator {
       </div>
    </div>
    </div>
+
 </body>
 <jsp:include page="footer.jsp" />
 

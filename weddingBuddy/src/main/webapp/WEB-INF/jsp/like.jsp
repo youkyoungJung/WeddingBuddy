@@ -7,9 +7,6 @@
 <head>
 
     <style>
-    
-
-    
    
       
        .rectangle14{
@@ -43,11 +40,19 @@
             
         }
         .plannerlike-item img {
+
            margin-top:20px;
         
         }
         .card-img-top {
            border-radius:10px;
+
+        	margin-top:20px;
+        
+        }
+        .card-img-top {
+        	border-radius:10px;
+
         
         }
         
@@ -61,7 +66,9 @@
         
         
         .btnplanner {
-           color:#ffff;
+
+        	color:#ffff;
+
         
         }
         
@@ -121,4 +128,6 @@
     </div>
 </body>
 <jsp:include page="footer.jsp" />
+
 </html>
+

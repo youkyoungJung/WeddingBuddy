@@ -39,6 +39,7 @@ public class UserController {
 	
 	@Autowired
 	private ChatReservationService chatReservationService;
+
 	
 	@RequestMapping(value = "/login")
 	public String loginGet(Model model) {
