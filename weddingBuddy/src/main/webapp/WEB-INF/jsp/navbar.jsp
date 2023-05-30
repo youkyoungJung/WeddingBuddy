@@ -88,9 +88,12 @@ body {
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown">Pages</a>
 						<div class="dropdown-menu m-0">
+
+
 							<a href="<c:url value= "/studio"/>" class="dropdown-item">스튜디오 찾기</a> 
 							<a href="<c:url value= "/dress"/>" class="dropdown-item">드레스 찾기</a> 
 							<a href="<c:url value= "/beauty_Salon"/>" class="dropdown-item">메이크업 찾기</a>
+
 						</div>
 					</div>
 				</div>
@@ -131,6 +134,7 @@ body {
 	<script src="<c:url value = "/lib/owlcarousel/owl.carousel.min.js"/>"></script>
 
 	<!— Template Javascript —>
+
 	<script src="<c:url value = "/js/main.js" />"></script>
 </body>
 </html>

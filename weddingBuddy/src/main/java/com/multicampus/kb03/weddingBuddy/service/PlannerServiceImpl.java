@@ -113,9 +113,6 @@ public class PlannerServiceImpl implements PlannerService {
 		return dao.getUserAccountName(user_id);
 	}
 
-
-	
-
 	@Override
 	public List<Top3Vo> searchByAd(String address) throws Exception {
 		return dao.searchByAd(address);

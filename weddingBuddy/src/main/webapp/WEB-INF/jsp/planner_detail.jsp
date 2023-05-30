@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+
+<meta charset="UTF-8">
+
 <title>플래너 상세보기</title>
 
 <!-- bootstrap CSS -->
@@ -18,8 +20,7 @@
 	crossorigin="anonymous">
 
 <style>
-<
-style>.review-item {
+	.review-item {
 	margin-bottom: 20px;
 	padding: 10px;
 	border: 1px solid #ccc;

@@ -12,16 +12,13 @@
 	<select id="selectTop3"
 		resultType="com.multicampus.kb03.weddingBuddy.dto.Top3Vo">
 		select rownum, P.planner_id as "_id", P.name as "name",
-		R.cnt as "cnt",
-		P.intro as "intro", A.name as "agency_name"
-		from planner_account P,
-		planner_agency A,
-		(select planner_id, count(*) as cnt from
-		planner_review group by planner_id )
-		R
+		R.cnt as "cnt",	P.intro as "intro", A.name as "agency_name"
+		from planner_account P, planner_agency A,
+			(select planner_id, count(*) as cnt from
+			planner_review group by planner_id ) R
 		where A.agency_id = P.agency_id
 		and P.planner_id = R.planner_id
-		and rownum <![CDATA[<=]]>3
+		and rownum &lt;= 3
 		order by cnt desc
 	</select>
 

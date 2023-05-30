@@ -9,6 +9,7 @@
 
 <style>
 body {
+
    margin-top: 20px;
    background: #FAFAFA;
 }
@@ -350,7 +351,6 @@ img.profile-photo-lg {
 
    <%@ include file="footer.jsp"%>
 
-   </script>
 </body>
 
 </html>

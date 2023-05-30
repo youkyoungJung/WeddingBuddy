@@ -233,9 +233,11 @@ textarea {
 }
 
 .msg_history {
-   padding-top: 20px;
-   height: 516px;
-   overflow-y: auto;
+
+	padding-top: 20px;
+	height: 516px;
+	overflow-y: auto;
+
 }
 
 .msg_history a {

@@ -152,7 +152,8 @@ public class ReviewController {
 	        model.addAttribute("reviewList", reviewList);
 	        model.addAttribute("reviewImagesList", reviewImagesList);
 	        model.addAttribute("userAccountMap", userAccountMap); // user_id와 name의 매핑 정보를 모델에 추가합니다.
-
+	        
+	       logger.info("reviewImagesList.size :"+reviewImagesList.size() );
 	        return "review_detail";
 	    } catch (Exception e) {
 	        logger.error("리뷰 상세 정보 가져오기에서 오류가 발생했습니다: " + e.getMessage());

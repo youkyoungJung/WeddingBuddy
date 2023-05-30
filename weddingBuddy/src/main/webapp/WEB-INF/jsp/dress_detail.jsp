@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Dress Detail</title>
 <style>
 .image-container {
@@ -109,9 +110,9 @@
 	
 	<div class="container">
 	<div class="image-container">
-		<c:forEach var="imagePath" items="${dressImagesList}" varStatus="loop">
+		<c:forEach var="imagePath" items="${studioImagesList}" varStatus="loop">
 			<img src="${pageContext.request.contextPath}/${imagePath}"
-				alt="Dress Image" />
+				alt="Studio Image" />
 			<c:if test="${loop.index eq 0}">
 				<%-- 첫 번째 이미지에만 적용될 스타일 --%>
 				<div style="margin-right: 20px;"></div>
