@@ -197,6 +197,7 @@
 .kong-4, .gx-4 {
    --bs--gutter-y: 1.5rem;
 }
+
 .kongrow {
    display:flex;
    flex-wrap: wrap;

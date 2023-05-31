@@ -137,7 +137,7 @@
 							class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 							<div>
 								<h5 class="mb-1">${info.name }</h5>
-								<p class="mb-1">채팅예약 시간: ${reservedDatesMap[planner.planner_id]}</p>
+								<p class="mb-1">채팅예약 시간: ${reservedDates[planner.planner_id]}</p>
 							</div>
 							
 							<%-- <div>

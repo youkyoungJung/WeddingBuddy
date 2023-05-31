@@ -16,12 +16,14 @@
 .image-container {
 	text-align: center;
 	margin-bottom: 10px;
+	max-height: 200px;
 }
 
 .image-container img {
 	display: flex;
 	padding : 5px;
 	margin : 3px;
+	justify-content: center;
 	max-width: 300px;
 	height: auto;
 	margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
@@ -85,7 +87,6 @@
 		</div> 
 	</div>
 
-
 	<div class="container-xxl py-6">
 		<div class="container">
 			<div class="row g-4">
@@ -106,16 +107,12 @@
 								<c:if
 									test="${studioImage.company_unique_id == studio.company_unique_id}">
 									<div class="image-container">
-
-										<!— 첫 번째 이미지만 표시하고 나머지 이미지는 숨김 —>
-
+										<!-- 첫 번째 이미지만 표시하고 나머지 이미지는 숨김 -->
 										<c:if test="${firstImage}">
 											<img src="<c:url value='${studioImage.image}' />"
 												alt="studio Image" style="max-width: 300px; height: auto;" />
 											<c:set var="firstImage" value="${false}" />
-
-											<!— 첫 번째 이미지를 표시했음을 나타내는 변수 변경 —>
-
+											<!-- 첫 번째 이미지를 표시했음을 나타내는 변수 변경 -->
 										</c:if>
 									</div>
 								</c:if>

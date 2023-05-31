@@ -72,7 +72,7 @@ public class ReviewController {
 	            for (MultipartFile imageFile : imageFiles) {
 	                if (!imageFile.isEmpty()) {
 	                    String fileName = generateUniqueFileName(imageFile.getOriginalFilename());
-	                    String uploadDirectory = "/Users/jeongeunlee/git/WeddingBuddy/weddingBuddy/src/main/resources/static/review_images";
+	                    String uploadDirectory = "C:\\Users\\heart\\git\\WeddingBuddy\\weddingBuddy\\src\\main\\resources\\static/review_images";
 	                    File destFile = new File(uploadDirectory + "/" + fileName);
 
 	                    destFile.createNewFile();
@@ -142,7 +142,7 @@ public class ReviewController {
 	                Map<String, String> reviewImageMap = new HashMap<>();
 	                reviewImageMap.put("review_id", String.valueOf(reviewImage.getReview_id()));
 	                String imagePath = reviewImage.getImage();
-	                String trimmedImagePath = imagePath.substring(imagePath.indexOf("/static") + 7); // "/static" 이후의 부분만 가져옴
+	                String trimmedImagePath = imagePath.substring(imagePath.indexOf("\\static") + 7); // "/static" 이후의 부분만 가져옴
 	                reviewImageMap.put("image", trimmedImagePath);
 	                reviewImagesList.add(reviewImageMap);
 	                logger.info("reviewImageMap : "+ reviewImageMap);

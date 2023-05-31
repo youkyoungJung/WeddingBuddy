@@ -151,7 +151,7 @@
 			<div class="col-lg-10 col-md-10 col-sm-12">
 				<c:forEach items="${chatPlanner}" var="planner">
 
-					<div class="list-group" onClick=location.href='<c:url value="/start"/>?to_id=${LoginUser.user_id }&from_id=${planner.planner_id }' >
+					<div class="list-group" >
 						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center custom-list-item">
 							<div>
 								<h5 class="mb-1">${planner.name }</h5>
