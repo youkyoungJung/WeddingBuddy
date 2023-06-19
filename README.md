@@ -46,6 +46,8 @@
 ![image](https://github.com/youkyoungJung/WeddingBuddy/assets/76727102/39bddd10-8bca-49f6-aadc-f71394b4498f)
 ![image](https://github.com/youkyoungJung/WeddingBuddy/assets/76727102/d952e6b7-ae30-4c9c-983c-d398d6af5e54)
 ![image](https://github.com/youkyoungJung/WeddingBuddy/assets/76727102/80e576a2-d1be-4745-b007-c75d43ea5c0f)
+![image](https://github.com/youkyoungJung/WeddingBuddy/assets/76727102/9ee84546-8311-45e5-966f-50f8e62eb5ad)
+
 
 * 시연영상
   ---
